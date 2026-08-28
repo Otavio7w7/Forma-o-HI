@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - PostgreSQL</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start;
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; 
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; 
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .highlight-box {
+            background-color: #eef5fb;
+            padding: 15px;
+            border-left: 4px solid var(--azul-hi);
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Banco de Dados PostgreSQL</h1>
+            <p><strong>Programação de Formação HI Tecnologia</strong></p>
+            <p>Um banco de dados é um sistema digital seguro para organizar, salvar e acessar grandes volumes de informações sem erros, sendo o PostgreSQL uma das opções gratuitas e robustas mais utilizadas por aplicativos e empresas. Nesta etapa, você terá contato com o pgAdmin, a plataforma de administração e desenvolvimento visual do Postgres, e aprenderá a utilizar comandos básicos de SQL, como INSERT e SELECT, para manipular e consultar seus dados. Para garantir a organização do seu aprendizado, não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, dentro do seu diretório localizado em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.</p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/Postgresql.png" alt="Tela do HIscada Pro HI Tecnologia">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - Banco de Dados PostgreSQL</h2>
+            
+            <div class="step">
+                <h3>1. Curso de PostgreSQL</h3>
+                <p>Assista ao Curso de PostgreSQL no YouTube e reproduza o conteúdo ensinado sobre Curso Postgre SQL.</p>
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=WXMOfdqxJFg&list=PLLeeWxuGiPrUwZUu3hhDk2fcPwBHYFSNZ" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Curso Postgre SQL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

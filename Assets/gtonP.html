@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - GTON P</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start;
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; 
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; 
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .highlight-box {
+            background-color: #eef5fb;
+            padding: 15px;
+            border-left: 4px solid var(--azul-hi);
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>GTON P</h1>
+            <p><strong>Programação de Formação HI Tecnologia</strong></p>
+            <p>O GTON-P é um gateway programável e modular da HI Tecnologia que funciona como um CLP de pequeno porte, integrando até seis interfaces customizáveis para converter protocolos e meios físicos enquanto executa lógicas de controle. Nessa etapa, você aprenderá a realizar tratamento de alarmes, filtros e lógicas complexas utilizando o ambiente HIstudio, além de trabalhar com protocolos como MQTT e o Portal de Telemetria. Não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.</p>
+        </div>
+        
+        <div class="hero-image">
+            <img src="Files/GTON-P.jpg" alt="Equipamento GTON P">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Trilha de Treinamento</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi); margin-bottom: 30px;">Etapa 1 - GTON P</h2>
+            
+            <div class="step">
+                <h3>1. Estudo e Aplicação do Manual</h3>
+                <p>Leia o conteúdo tutorial sobre o GTON P e o seu Manual. Em seguida, escreva exemplos de modelos e de utilização do equipamento.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/b/s!AnLN9W8UaRKvjV3SHF_mqcxaLYWn?e=piXCJG" target="_blank" class="btn-secondary btn">
+                        Acessar Tutorial
+                    </a>
+                    <a href="https://materiais.hitecnologia.com.br/downloads/pet30930000.pdf" target="_blank" class="btn-secondary btn">
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Protocolo Modbus e Conversão de Dados</h3>
+                <p>Assista ao curso sobre protocolo Modbus e conversões de valores para seus dados fundamentais. Após isso, aplique um projeto no GTON P SET para tratativa e conversão de dados.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/v/s!AnLN9W8UaRKvmGw5owFkN14Aj_d9?e=cPpflF" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar Curso Modbus
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Deslocamento de Bits</h3>
+                <p>Entenda sobre o conceito de deslocamento de Bits e aplique em um programa no GTON P SET. Finalize apresentando seus resultados para os colaboradores do departamento.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/v/c/af1269146ff5cd72/Eb5nyeM4FCpKog0xRYKSxZcBXyRhot8x6vu9JbQPtdJjVg?e=L3mLz0" target="_blank" class="btn-secondary btn">
+                        Acessar Material de Apoio
+                    </a>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>4. Conversão RS485 - RS232 (Cenário Petrobrás)</h3>
+                <p>Veja o procedimento para configurar um GTON P RS3 como conversor RS485 - RS232. Este é um cenário clássico na Petrobrás, um grande cliente da HI Tecnologia, onde eles utilizam o GTON apenas como conversor de RS232 para RS485.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/b/s!AnLN9W8UaRKvkFCnLleDmezokh4f?e=7LA2EQ" target="_blank" class="btn-secondary btn">
+                        Acesso ao Procedimento
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

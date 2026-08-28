@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treinamento HI Tecnologia - Conclusão</title>
+
+<style>
+:root{
+    --azul-hi:#004A8F;
+    --azul-escuro:#002f5f;
+    --laranja-hi:#F26522;
+    --cinza-claro:#F5F7FA;
+    --texto:#333;
+    --cinza:#667085;
+    --borda:#E2E8F0;
+    --onedrive:#0078D4;
+    --sucesso:#28a745;
+    --branco:#fff;
+    --sombra:0 10px 30px rgba(0,0,0,.08);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:85px;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    color:var(--texto);
+    line-height:1.6;
+    background:#fff;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:15px 5%;
+    color:#fff;
+    background:rgba(0,74,143,.96);
+    backdrop-filter:blur(12px);
+    box-shadow:0 3px 18px rgba(0,0,0,.12);
+}
+
+header h2{
+    margin:0;
+    font-size:1.25rem;
+}
+
+.header-link{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.35);
+    padding:8px 14px;
+    border-radius:7px;
+    font-weight:700;
+    font-size:.88rem;
+    margin-left:5px;
+}
+
+.header-link:hover{
+    background:#fff;
+    color:var(--azul-hi);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+    padding:65px 5%;
+    background:linear-gradient(135deg,#f5f7fa,#eaf2f9);
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+    background:var(--sucesso);
+    color:#fff;
+    padding:5px 15px;
+    border-radius:20px;
+    font-size:.85rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    box-shadow:0 4px 12px rgba(40,167,69,.25);
+}
+
+.hero h1{
+    color:var(--azul-hi);
+    font-size:clamp(2rem,4vw,2.8rem);
+    line-height:1.15;
+    margin:15px 0;
+}
+
+.hero p{
+    font-size:1.05rem;
+    color:#4b5563;
+}
+
+.hero-image{
+    text-align:center;
+}
+
+.hero-image img{
+    max-width:100%;
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 16px 35px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.hero-image img:hover{
+    transform:translateY(-5px);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.section{
+    padding:55px 5%;
+}
+
+.section.gray{
+    background:var(--cinza-claro);
+}
+
+.section-title{
+    text-align:center;
+    color:var(--azul-hi);
+    font-size:2rem;
+    margin:0 0 35px;
+}
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.progress{
+    max-width:1150px;
+    margin:0 auto 25px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--cinza);
+    font-size:.9rem;
+}
+
+.progress-bar{
+    height:8px;
+    flex:1;
+    background:#e7edf3;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar span{
+    display:block;
+    width:100%;
+    height:100%;
+    background:var(--sucesso);
+}
+
+/* =========================
+   PESQUISA / CONTROLES
+========================= */
+
+.toolbar{
+    max-width:1150px;
+    margin:0 auto 20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.search{
+    flex:1;
+    min-width:240px;
+    padding:12px 15px;
+    border:1px solid var(--borda);
+    border-radius:8px;
+    font:inherit;
+    outline:none;
+}
+
+.search:focus{
+    border-color:var(--azul-hi);
+    box-shadow:0 0 0 3px rgba(0,74,143,.08);
+}
+
+.tool-btn{
+    border:1px solid var(--borda);
+    background:#fff;
+    color:var(--azul-hi);
+    border-radius:8px;
+    padding:0 15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.tool-btn:hover{
+    background:var(--azul-hi);
+    color:#fff;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+
+.training-container{
+    max-width:1150px;
+    margin:0 auto;
+    background:#fff;
+    padding:35px;
+    border-radius:14px;
+    box-shadow:var(--sombra);
+    border-left:7px solid var(--sucesso);
+}
+
+.training-title{
+    color:var(--sucesso);
+    margin-top:0;
+}
+
+/* =========================
+   ETAPAS
+========================= */
+
+.step{
+    margin-bottom:22px;
+    padding:22px;
+    border:1px solid var(--borda);
+    border-radius:10px;
+    background:#fff;
+    position:relative;
+    overflow:hidden;
+    transition:.25s;
+    animation:fadeUp .5s ease both;
+}
+
+.step:hover{
+    transform:translateX(4px);
+    box-shadow:0 7px 22px rgba(0,0,0,.07);
+    border-left:4px solid var(--azul-hi);
+}
+
+.step:last-child{
+    margin-bottom:0;
+}
+
+.step-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    cursor:pointer;
+}
+
+.step h3{
+    color:var(--azul-hi);
+    margin:0;
+    font-size:1.2rem;
+}
+
+.chevron{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--cinza-claro);
+    display:grid;
+    place-items:center;
+    color:var(--azul-hi);
+    flex:none;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.step.open .chevron{
+    transform:rotate(45deg);
+    background:var(--azul-hi);
+    color:#fff;
+}
+
+.step-body{
+    display:none;
+    margin-top:16px;
+}
+
+.step.open .step-body{
+    display:block;
+}
+
+.step-body p{
+    margin:8px 0;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:11px 20px;
+    background:var(--laranja-hi);
+    color:#fff;
+    border-radius:7px;
+    font-weight:800;
+    margin-top:10px;
+    transition:.25s;
+}
+
+.btn:hover{
+    background:#d9561b;
+    transform:translateY(-2px);
+}
+
+.btn-link-action{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:11px 18px;
+    background:var(--onedrive);
+    color:#fff;
+    border-radius:7px;
+    font-weight:800;
+    box-shadow:0 3px 8px rgba(0,0,0,.1);
+    transition:.25s;
+}
+
+.btn-link-action:hover{
+    background:#005a9e;
+    transform:translateY(-2px);
+}
+
+.video-container{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
+
+/* =========================
+   NOTAS
+========================= */
+
+.note{
+    margin-top:15px;
+    padding:14px 16px;
+    background:#f8fafc;
+    border-left:4px solid var(--azul-hi);
+    border-radius:7px;
+}
+
+/* =========================
+   PROJETOS
+========================= */
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    margin-top:20px;
+}
+
+.project{
+    border:1px solid var(--borda);
+    border-radius:10px;
+    padding:20px;
+    background:#fff;
+    box-shadow:0 4px 14px rgba(0,0,0,.04);
+    transition:.25s;
+}
+
+.project:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.project h4{
+    margin:0 0 10px;
+    color:var(--azul-hi);
+    font-size:1.08rem;
+}
+
+.project p{
+    margin:7px 0;
+    font-size:.95rem;
+}
+
+.project strong{
+    color:#374151;
+}
+
+.project-link{
+    display:inline-block;
+    margin-top:10px;
+    color:var(--onedrive);
+    font-weight:800;
+}
+
+.placeholder{
+    background:#eef6ff;
+    border:1px dashed #9ac4e8;
+    color:#24577d;
+    padding:10px 12px;
+    border-radius:7px;
+    font-size:.9rem;
+    margin-top:12px;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer{
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:22px;
+    margin-top:0;
+}
+
+/* =========================
+   BOTÃO TOPO
+========================= */
+
+#top{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:var(--laranja-hi);
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 7px 18px rgba(0,0,0,.18);
+    display:none;
+    z-index:999;
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(16px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:800px){
+
+    .hero{
+        grid-template-columns:1fr;
+        padding:45px 5%;
+    }
+
+    .hero-content{
+        order:1;
+    }
+
+    .hero-image{
+        order:2;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    header{
+        flex-wrap:wrap;
+    }
+}
+
+@media(max-width:600px){
+
+    .section{
+        padding:42px 4%;
+    }
+
+    .training-container{
+        padding:20px;
+    }
+
+    .toolbar{
+        margin-bottom:15px;
+    }
+
+    .tool-btn{
+        height:44px;
+        flex:1;
+    }
+
+    .step{
+        padding:18px;
+    }
+
+    .header-link{
+        display:inline-block;
+        margin-top:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     CABEÇALHO
+========================================================= -->
+
+<header>
+
+    <h2>HI Tecnologia</h2>
+
+    <div>
+
+        <a
+            class="header-link"
+            href="https://www.hitecnologia.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Site HI Tecnologia
+        </a>
+
+        <a
+            class="header-link"
+            href="https://www.hitecnologia.com.br/suporte/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Central de Ajuda
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     CAPA
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            ★ Etapa Final
+        </span>
+
+        <h1>
+            Conclusão da Formação
+        </h1>
+
+        <p>
+            <strong>
+                Desenvolvimento Contínuo e Práticas Avançadas
+            </strong>
+        </p>
+
+        <p>
+            Você chegou à etapa final! O foco agora é consolidar
+            o aprendizado através de práticas avançadas, validando
+            todo o conhecimento adquirido e preparando o terreno
+            para o seu desenvolvimento contínuo na automação industrial.
+        </p>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img
+            src="Files/ParteFinal.jpg"
+            alt="Bancada de Testes da HI Tecnologia"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROGRAMA
+========================================================= -->
+
+<section class="section gray">
+
+    <h2 class="section-title">
+        Programa de Formação HI Tecnologia
+    </h2>
+
+
+    <!-- PROGRESSO -->
+
+    <div class="progress">
+
+        <strong>
+            Etapa 1 - Conclusão
+        </strong>
+
+        <div class="progress-bar">
+            <span></span>
+        </div>
+
+        <span>
+            4 atividades
+        </span>
+
+    </div>
+
+
+    <!-- PESQUISA -->
+
+    <div class="toolbar">
+
+        <input
+            class="search"
+            id="search"
+            type="search"
+            placeholder="Pesquisar uma atividade..."
+        >
+
+        <button
+            class="tool-btn"
+            id="openAll"
+        >
+            ＋ Abrir todas
+        </button>
+
+        <button
+            class="tool-btn"
+            id="closeAll"
+        >
+            − Fechar todas
+        </button>
+
+    </div>
+
+
+    <div class="training-container">
+
+
+        <!-- =====================================================
+             ETAPA 1
+        ====================================================== -->
+
+        <div class="step">
+
+            <div class="step-head">
+
+                <h3>
+                    1. Operação em Modo Loader
+                </h3>
+
+                <span class="chevron">
+                    +
+                </span>
+
+            </div>
+
+
+            <div class="step-body">
+
+                <p>
+                    Leia a documentação sobre modo Loader e aplique
+                    comandos do modo loader VIA SERIAL em um CLP G5
+                    [HIstudio] e em um CLP G3 [SPDSW].
+                </p>
+
+                <p>
+                    Apresente seus resultados para os colaboradores
+                    do departamento.
+                </p>
+
+
+                <div class="video-container">
+
+                    <a
+                        href="https://1drv.ms/b/s!AnLN9W8UaRKvgyGSnZ54b9K0r74g?e=4SXlRU"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-link-action"
+                    >
+                        ▶ Acesso à Documentação do Modo Loader
+                    </a>
+
+                </div>
+
+
+                <div class="note">
+
+                    <strong>
+                        Nota Extra:
+                    </strong>
+
+                    O modo Loader (ou BootLoader) corresponde a um
+                    recurso e modo de operação essencial integrado
+                    pela HI Tecnologia para realizar funções de
+                    gerência do sistema operacional e manutenção
+                    avançada de controladores e IHMs.
+
+                    Nessa etapa, você aprenderá o básico conceitual
+                    desse modo de inicialização preventiva
+                    (onde a aplicação não é executada) e a utilizá-lo
+                    no ecossistema de automação para atualizar firmwares,
+                    restaurar padrões de fábrica e gerenciar bases
+                    de dados.
+
+                    Para a execução de comandos de manutenção e
+                    transferência de sistemas via canal serial ou
+                    ethernet, você utilizará ferramentas de software
+                    essenciais como o HIstudio e o SPDSW.
+
+                    Não se esqueça de salvar os arquivos das aulas
+                    em pastas individuais para cada tema, na sua
+                    pasta localizada em:
+
+                    <strong>
+                        L:\GAdmn\DSuporte Técnico\Minha Pasta
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ETAPA 2
+        ====================================================== -->
+
+        <div class="step">
+
+            <div class="step-head">
+
+                <h3>
+                    2. Montagem do CLP P7C
+                </h3>
+
+                <span class="chevron">
+                    +
+                </span>
+
+            </div>
+
+
+            <div class="step-body">
+
+                <p>
+                    Consuma o conteúdo tutorial sobre montagem do
+                    CLP P7C com expansões e monte um na bancada.
+                </p>
+
+                <p>
+                    Apresente seus resultados para os colaboradores
+                    do departamento.
+                </p>
+
+
+                <div class="video-container">
+
+                    <a
+                        href="https://1drv.ms/f/s!AnLN9W8UaRKvk36-s0K3eJ_yekFc?e=oaB6cV"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-link-action"
+                    >
+                        ▶ Acesso à Documentação de Montagem do P7C
+                    </a>
+
+                </div>
+
+
+                <div class="note">
+
+                    <strong>
+                        Dica de Montagem:
+                    </strong>
+
+                    A expansão de bastidores do P7C é uma arquitetura
+                    de hardware modular desenvolvida e fabricada pela
+                    HI Tecnologia para ampliação da capacidade física
+                    de pontos de I/O em automações de grande porte.
+
+                    Nessa etapa, você aprenderá o básico conceitual do
+                    barramento do modelo P7C 302, compreendendo como
+                    interligar via backplane a configuração básica do
+                    bastidor principal a até 5 bastidores de expansão,
+                    totalizando 24 slots no ecossistema de automação.
+
+                    Para o mapeamento de variáveis, configuração física
+                    dos módulos e testes dos canais adicionais, você
+                    utilizará ferramentas de software essenciais como
+                    o SPDSW e o HIstudio.
+
+                    Não se esqueça de salvar os arquivos das aulas
+                    em pastas individuais para cada tema, na sua
+                    pasta localizada em:
+
+                    <strong>
+                        L:\GAdmn\DSuporte Técnico\Minha Pasta
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ETAPA 3
+        ====================================================== -->
+
+        <div class="step">
+
+            <div class="step-head">
+
+                <h3>
+                    3. Projetos Propostos
+                </h3>
+
+                <span class="chevron">
+                    +
+                </span>
+
+            </div>
+
+
+            <div class="step-body">
+
+                <p>
+                    Acesse a pagina de formação e faça
+                    os projetos propostos.
+                </p>
+
+                <p>
+                    Apresente seus resultados A CADA PROJETO para
+                    os colaboradores do departamento.
+                </p>
+
+
+                <div class="video-container">
+
+                    <a
+                        href="projetos.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-link-action"
+                    >
+                        ▶ Acessar Pagina de Formação (Projetos)
+                    </a>
+
+                </div>
+
+                <div class="note">
+
+                    <strong>
+                        Importante:
+                    </strong>
+
+                    Os projetos práticos são cenários
+                    de aplicações completas projetados e propostos
+                    pela HI Tecnologia para simular desafios reais
+                    de controle de velocidade, telemetria e redes
+                    híbridas.
+
+                    Nessa etapa, você aprenderá o básico conceitual
+                    da integração de dados em estruturas complexas,
+                    comunicando CLPs mestres e remotos via rádio,
+                    além do envio de dados à nuvem via modens 4G
+                    no ecossistema de automação.
+
+                    Para o desenvolvimento das lógicas em Ladder/ST,
+                    configuração do protocolo MQTT e monitoramento
+                    de alarmes locais ou remotos com banco de dados
+                    PostgreSQL, você utilizará ferramentas de software
+                    essenciais como o HIstudio, o HIscada Pro e o
+                    Portal de Telemetria.
+
+                    Não se esqueça de salvar os arquivos das aulas
+                    em pastas individuais para cada tema, na sua
+                    pasta localizada em:
+
+                    <strong>
+                        L:\GAdmn\DSuporte Técnico\Minha Pasta
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ETAPA 4
+        ====================================================== -->
+
+        <div class="step">
+
+            <div class="step-head">
+
+                <h3>
+                    4. Desenvolvimento Contínuo
+                </h3>
+
+                <span class="chevron">
+                    +
+                </span>
+
+            </div>
+
+
+            <div class="step-body">
+
+                <p>
+                    Após consumir todo o conteúdo básico de formação
+                    anterior, reproduza todo conteúdo disponível
+                    nesta planilha.
+                </p>
+
+                <p>
+                    Acesse aba a aba da planilha e reproduza os
+                    tutoriais que temos por lá para continuar o
+                    seu desenvolvimento contínuo.
+                </p>
+
+
+                <!-- =================================================
+                     LINK PARA TROCAR
+                ================================================== -->
+
+                <div class="video-container">
+
+                    <a
+                        href="https://docs.google.com/spreadsheets/d/1XAhGZuiayI9uVau7YfhYijBnM8S6r2hqowqX6jgtp1A/edit?gid=553527156#gid=553527156"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-link-action"
+                    >
+                        ▶ Vídeo 
+                    </a>
+
+                </div>
+
+                <div class="video-container">
+
+                    <a
+                        href="https://docs.google.com/spreadsheets/d/1XAhGZuiayI9uVau7YfhYijBnM8S6r2hqowqX6jgtp1A/edit?gid=553527156#gid=553527156"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-link-action"
+                    >
+                        ▶ Acessar Tutoriais de Desenvolvimento Contínuo
+                    </a>
+
+                </div>
+
+
+                <div class="note">
+
+                    <strong>
+                        Parabéns!
+                    </strong>
+
+                    A evolução nunca para. Aproveite os materiais
+                    para se tornar um especialista nas soluções da
+                    HI Tecnologia.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     VOLTAR
+========================================================= -->
+
+<div style="padding:0 5% 25px">
+
+    <a
+        href="../index.html"
+        class="btn"
+    >
+        ← Voltar
+    </a>
+
+</div>
+
+
+<!-- =========================================================
+     RODAPÉ
+========================================================= -->
+
+<footer>
+
+    <p>
+        Copyright © HI Tecnologia Automação Industrial.
+        Todos os direitos reservados.
+    </p>
+
+</footer>
+
+
+<!-- BOTÃO VOLTAR AO TOPO -->
+
+<button
+    id="top"
+    aria-label="Voltar ao topo"
+>
+    ↑
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+const steps = [
+    ...document.querySelectorAll('.step')
+];
+
+const search = document.getElementById('search');
+
+const topBtn = document.getElementById('top');
+
+
+/* =========================================================
+   ABRIR / FECHAR ETAPA
+========================================================= */
+
+steps.forEach(step => {
+
+    step
+        .querySelector('.step-head')
+        .addEventListener('click', () => {
+
+            step.classList.toggle('open');
+
+        });
+
+});
+
+
+/* =========================================================
+   ABRIR TODAS
+========================================================= */
+
+document
+    .getElementById('openAll')
+    .addEventListener('click', () => {
+
+        steps.forEach(step => {
+
+            step.classList.add('open');
+
+        });
+
+    });
+
+
+/* =========================================================
+   FECHAR TODAS
+========================================================= */
+
+document
+    .getElementById('closeAll')
+    .addEventListener('click', () => {
+
+        steps.forEach(step => {
+
+            step.classList.remove('open');
+
+        });
+
+    });
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+search.addEventListener('input', () => {
+
+    const term = search.value
+        .toLowerCase()
+        .trim();
+
+
+    steps.forEach(step => {
+
+        const content = step
+            .textContent
+            .toLowerCase();
+
+
+        if(content.includes(term)){
+
+            step.style.display = 'block';
+
+        }else{
+
+            step.style.display = 'none';
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   BOTÃO VOLTAR AO TOPO
+========================================================= */
+
+window.addEventListener('scroll', () => {
+
+    if(window.scrollY > 450){
+
+        topBtn.style.display = 'block';
+
+    }else{
+
+        topBtn.style.display = 'none';
+
+    }
+
+});
+
+
+topBtn.addEventListener('click', () => {
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:'smooth'
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

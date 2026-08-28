@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - HIscada Pro</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start;
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; 
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; 
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .highlight-box {
+            background-color: #eef5fb;
+            padding: 15px;
+            border-left: 4px solid var(--azul-hi);
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HIscada Pro</h1>
+            <p><strong>Programa de Formação HI Tecnologia</strong></p>
+            <p>O HIscada Pro é um ambiente de desenvolvimento integrado, desenvolvido pela HI Tecnologia, para a criação, supervisão e controle de aplicações de máquinas e processos industriais. Nesta etapa, você terá contato com módulos de sua arquitetura, como o Kernel e o Viewer. Ao longo do treinamento do HIscada Pro, você também fará um breve contato com a linguagem Lua, recurso para o desenvolvimento de scripts e lógicas personalizadas. Não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.
+</p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/HIscadaPro.png" alt="Tela do HIscada Pro HI Tecnologia">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - HIscada Pro</h2>
+            
+            <div class="step">
+                <h3>1. Primeiros Passos no HIscada Pro</h3>
+                <p>Assista ao Tutorial dos primeiros passos no HIscada Pro e siga a documentação contida na descrição do vídeo.</p>
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=69YmT-kZClg&list=PLKZKdzmHfbg9pWjy_av2Bds-3oMf9TJ24&index=2&t=46s&pp=iAQB" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Primeiros Passos
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Licença de Desenvolvedor e MPL Server</h3>
+                <p>Crie uma conta e peça uma licença de desenvolvedor para seu projeto utilizando o ambiente de licenças do HIscada e MPL Server. Acesse o tutorial do GLIC.</p>
+                <a href="https://www.youtube.com/watch?v=YShplyBjNI4&list=PLKZKdzmHfbg9pWjy_av2Bds-3oMf9TJ24&index=1&pp=iAQB" class="btn btn-secondary" target="_blank">Acessar tutorial GLIC</a>
+            </div>
+
+            <div class="step">
+                <h3>3. Treinamento Completo</h3>
+                <p>Assista ao Treinamento completo MPL Server e Hiscada Pro e <b>siga as documentações na descrição do vídeo reproduzindo o que foi ensinado</b> (Treinamento Parte 1 e Treinamento Parte 2).</p>
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=a0UQJ0wM15A&list=PLKZKdzmHfbg9pWjy_av2Bds-3oMf9TJ24&index=3&pp=iAQB" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Treinamento Parte 1
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=4phRFoaIuzk&list=PLKZKdzmHfbg9pWjy_av2Bds-3oMf9TJ24&index=4&t=3803s&pp=iAQB" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Treinamento Parte 2
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Utilização de CLP ZAP G3 (SPDSW)</h3>
+                <p>Para seguir os treinamentos anteriores, será necessário utilizar um CLP ZAP G3 [SPDSW]. Após a conclusão, apresente seus resultados para os colaboradores do departamento.</p>
+                <a href="https://1drv.ms/u/c/af1269146ff5cd72/IQCfQA09dwyuS6y8_EmIIqeJAa6cbdoYdchgSGC2YnQSdeU?e=amFqOl" target="_blank" class="btn btn-secondary">Acessar conteúdo</a>
+            </div>
+
+            <div class="step">
+                <h3>5. Integração com HIstudio</h3>
+                <p>Agora integre o HIscada Pro com CLPs programados no HIstudio seguindo este tutorial e faça um projeto completo utilizando os programas que você já fez no treinamento do HIstudio. O projeto deve conter alarmes e relatório completo. Ao finalizar, apresente seus resultados para os colaboradores do departamento.</p>
+                <a href="https://1drv.ms/v/s!AnLN9W8UaRKvg1RiTCEXDqgGaP2J?e=lhQSL0" class="btn btn-secondary" target="_blank">Acessar tutorial de Integração</a>
+            </div>
+
+            <div class="step">
+                <h3>6. Scripts em LUA no HIscada Pro</h3>
+                <p>Assista ao treinamento de scripts na linguagem LUA no HIscada Pro e a utilize a documentação de apoio para reproduzir o que foi ensinado.</p>
+                <div class="video-container">
+                <a href="https://1drv.ms/u/c/af1269146ff5cd72/ESHKfYFVpm1Eq6gaPtrVpB4BtTT6OtkM3PPWYjJIsv6GQw?e=Qqqcg7" target="_blank" class="btn-youtube">
+                <svg width="16" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Acessar conteúdo: Treinamento Scripts
+                <a href="https://1drv.ms/p/s!AnLN9W8UaRKvlQ4BwevYO8sqIgxn?e=B0wrpq" class="btn btn-secondary" target="_blank">Acessar conteúdo: Documentação Scripts</a>
+                </div>
+            </div>
+              
+            <div class="step">
+                <h3>7. Comandos no HIscada Pro e Integração</h3>
+                <p>Agora que você aprendeu sobre PostgreSQL, linguagem SQL e script LUA, tente executar comandos no HIscada Pro utilizando os programas de exemplo e tutoriais de integração entre HIscada e Banco de Dados. Você já teve uma prévia no treinamento de script LUA.</p>
+                <a href="https://doc.hitecnologia.com.br/hiscada_pro/br/_files_overview/integracao_bd.html" class="btn btn-secondary" target="_blank">Acessar tutorial de Integração</a>
+            </div>
+
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formação HI Tecnologia | Parte 2</title>
+
+    <style>
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        :root {
+            --blue: #004A8F;
+            --blue-dark: #002b5e;
+            --blue-light: #eaf3fb;
+
+            --orange: #F26522;
+            --orange-dark: #d94f10;
+            --orange-light: #fff1e9;
+
+            --background: #f4f7fb;
+            --white: #ffffff;
+
+            --text: #1f2937;
+            --text-light: #667085;
+            --border: #e3e8ef;
+
+            --shadow:
+                0 10px 30px rgba(0, 43, 94, 0.08);
+
+            --shadow-hover:
+                0 20px 45px rgba(0, 43, 94, 0.15);
+
+            --radius: 16px;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            background: var(--background);
+            color: var(--text);
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+
+            position: sticky;
+            top: 0;
+
+            z-index: 999;
+
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom:
+                1px solid rgba(0, 74, 143, 0.08);
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            color: var(--blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+        }
+
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+
+        /* =========================================================
+           BOTÕES
+        ========================================================= */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+        }
+
+        .btn-blue {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: var(--blue-dark);
+        }
+
+        .btn-orange {
+            background: var(--orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background: var(--orange-dark);
+        }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid var(--blue);
+            color: var(--blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--blue);
+            color: white;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 85px 5% 100px;
+            color: white;
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(255,255,255,.12),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(242,101,34,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--blue-dark)
+                );
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            top: -250px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 50%;
+            bottom: -170px;
+            left: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 50px;
+            background: rgba(255,255,255,.1);
+            backdrop-filter: blur(10px);
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #ff9b68;
+        }
+
+        .hero-description {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.15rem;
+            opacity: .9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 45px;
+        }
+
+        .stat {
+            min-width: 150px;
+            padding: 18px 25px;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 12px;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(8px);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.8rem;
+        }
+
+        .stat span {
+            font-size: .85rem;
+            opacity: .75;
+        }
+
+
+        /* =========================================================
+           SEÇÕES
+        ========================================================= */
+
+        .section {
+            padding: 75px 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title {
+            color: var(--blue);
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+
+        /* =========================================================
+           INTRODUÇÃO
+        ========================================================= */
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 30px;
+            padding: 40px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--orange);
+        }
+
+        .intro h2 {
+            color: var(--blue);
+            margin-bottom: 18px;
+            font-size: 1.8rem;
+        }
+
+        .intro p {
+            margin-bottom: 12px;
+            color: #4b5563;
+        }
+
+
+        /* =========================================================
+           ÁREA DE PROJETOS
+        ========================================================= */
+
+        .projects-section {
+            background: linear-gradient(180deg, #f5f7fa, #eef3f8);
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================================================
+           LISTA DOS PROJETOS
+        ========================================================= */
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-bottom: 5px solid var(--blue);
+            box-shadow: var(--shadow);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-bottom-color: var(--orange);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+
+        /* =========================================================
+           CABEÇALHO DO CARD
+        ========================================================= */
+
+        .accordion-checkbox {
+            display: none;
+        }
+
+        .card-header {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 25px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .project-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+            color: white;
+            font-size: 1rem;
+            font-weight: 900;
+            box-shadow: 0 7px 15px rgba(0,74,143,.18);
+        }
+
+        .card-title h3 {
+            color: var(--blue);
+            font-size: 1.35rem;
+            line-height: 1.35;
+        }
+
+        .arrow {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--background);
+            color: var(--blue);
+            transition: .4s ease;
+        }
+
+        .arrow::after {
+            content: "+";
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        .card-header:hover .arrow {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
+
+
+        /* =========================================================
+           CONTEÚDO DO CARD
+        ========================================================= */
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0 25px;
+            transition: max-height .6s ease, opacity .35s ease, padding .4s ease;
+        }
+
+        .accordion-checkbox:checked ~ .card-content {
+            max-height: 1600px;
+            opacity: 1;
+            padding: 0 25px 30px;
+        }
+
+        .accordion-checkbox:checked ~ .card-header .arrow {
+            background: var(--blue);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .card-content p {
+            color: #4b5563;
+            margin-bottom: 17px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .card-content p:last-of-type {
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================================
+           CAIXA DE DICAS
+        ========================================================= */
+
+        .tips {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--orange);
+            background: var(--orange-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .tips-title {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--orange-dark);
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           TAGS
+        ========================================================= */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            padding: 6px 11px;
+            border-radius: 50px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: .85rem;
+            font-weight: 750;
+        }
+
+
+        /* =========================================================
+           BOTÕES DO CARD
+        ========================================================= */
+
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card-buttons .btn {
+            min-width: 280px;
+        }
+
+
+        /* =========================================================
+           FOOTER E VOLTAR AO TOPO
+        ========================================================= */
+
+        footer {
+            padding: 35px 5%;
+            background: #121820;
+            color: #b8c0ca;
+            text-align: center;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        footer small {
+            display: block;
+            margin-top: 8px;
+            color: #7d8793;
+        }
+
+        #topButton {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: var(--orange);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: .3s;
+            z-index: 100;
+        }
+
+        #topButton.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media(max-width: 650px) {
+            header {
+                height: auto;
+                padding: 12px 5%;
+            }
+            .header-buttons {
+                display: none;
+            }
+            .logo-text {
+                font-size: .78rem;
+            }
+            .hero {
+                padding: 60px 5% 70px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-stats {
+                flex-direction: column;
+            }
+            .stat {
+                width: 100%;
+            }
+            .section {
+                padding: 50px 5%;
+            }
+            .card-header {
+                padding: 20px;
+            }
+            .card-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .accordion-checkbox:checked ~ .card-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .project-number {
+                width: 40px;
+                height: 40px;
+            }
+            .card-title h3 {
+                font-size: 1.15rem;
+            }
+            .arrow {
+                width: 38px;
+                height: 38px;
+            }
+            .card-buttons .btn {
+                min-width: 100%;
+            }
+        }
+
+
+        /* =========================================================
+           MODAL
+        ========================================================= */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 43, 94, 0.4); backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box {
+            background: white; width: 90%; max-width: 480px;
+            border-radius: var(--radius); padding: 25px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+            transform: translateY(20px); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;
+        }
+        .modal-header h3 { color: var(--blue); margin: 0; font-size: 1.25rem; }
+        .modal-close {
+            background: none; border: none; font-size: 1.2rem;
+            color: var(--text-light); cursor: pointer; transition: color 0.2s;
+        }
+        .modal-close:hover { color: var(--orange); }
+        .modal-link-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 15px; margin-bottom: 10px;
+            background: var(--background); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--blue); font-weight: 600;
+            transition: all 0.2s; text-decoration: none;
+        }
+        .modal-link-item:hover {
+            background: var(--blue-light); border-color: var(--blue);
+            transform: translateX(5px);
+        }
+        .modal-link-item span:first-child { font-size: 1.2rem; }
+    </style>
+</head>
+
+
+<body id="top">
+
+<header>
+    <div class="logo">
+        <img src="Files/HILINO.png" alt="Logo HI Tecnologia" class="logo-img">
+        <div class="logo-text">
+            Formação Técnica
+        </div>
+    </div>
+    <div class="header-buttons">
+        <a href="https://www.hitecnologia.com.br/" target="_blank" class="btn btn-outline">
+            🌐 HI Tecnologia
+        </a>
+        <a href="https://www.hitecnologia.com.br/suporte/" target="_blank" class="btn btn-outline">
+            🛠 Central de Ajuda
+        </a>
+    </div>
+</header>
+
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            ⚙️ Jornada de Formação Técnica
+        </div>
+        <h1>
+            Formação HI
+            <span>Tecnologia</span>
+        </h1>
+        <p class="hero-description">
+            Parte 2 da programação de formação, composta por projetos práticos envolvendo automação, comunicação, supervisão, banco de dados, nuvem e integração de sistemas.
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <strong>04</strong>
+                <span>Projetos</span>
+            </div>
+            <div class="stat">
+                <strong>100%</strong>
+                <span>Prática</span>
+            </div>
+            <div class="stat">
+                <strong>HI</strong>
+                <span>Tecnologia</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section projects-section" id="projetos">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Projetos da Formação</h2>
+            <p class="section-subtitle">
+                Clique em um projeto para expandir sua documentação.
+            </p>
+        </div>
+
+        <div class="toolbar">
+            <button class="btn btn-blue" id="openAll">
+                ＋ Abrir todos
+            </button>
+            <button class="btn btn-outline" id="closeAll">
+                − Fechar todos
+            </button>
+        </div>
+
+        <div class="projects-grid" id="projectGrid">
+
+            <!-- PROJETO 1 -->
+            <article class="project-card" data-search="projeto 1 cfw500 inversor motor velocidade 40 hz alarme led nuvem ihm supervisório postgresql telegram email modbus mdb gateway notify">
+                <input type="checkbox" id="project1" class="accordion-checkbox">
+                <label for="project1" class="card-header">
+                    <div class="card-title">
+                        <span class="project-number">01</span>
+                        <h3>Controle de velocidade de motor com CFW500</h3>
+                    </div>
+                    <span class="arrow"></span>
+                </label>
+                <div class="card-content">
+                    <div class="tags">
+                        <span class="tag">CFW500</span>
+                        <span class="tag">Modbus</span>
+                        <span class="tag">IHM</span>
+                        <span class="tag">HIscada</span>
+                        <span class="tag">Portal</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    
+                    <p><strong>Objetivo do Projeto:</strong> O cliente precisa controlar a velocidade de um motor usando um inversor de frequência CFW500. Para segurança, ele pediu a instalação de um LED físico. Esse LED funcionará como o <strong>alarme</strong> do sistema, que deve ser acionado especificamente quando o motor estiver rodando abaixo do limite de <strong>40 Hz</strong>.</p>
+                    
+                    <p><strong>Como o controle vai funcionar:</strong> O sistema terá três formas de acesso:
+                    <br>1. <strong>IHM Local (Tela Touch):</strong> Será o único lugar onde o operador poderá ligar e desligar o motor (garantindo segurança visual perto da máquina).
+                    <br>2. <strong>Supervisório Local (HIscada):</strong> Os operadores só poderão visualizar os dados. Já os supervisores terão permissão para enviar comandos. O histórico de dados deve ser salvo em um banco de dados PostgreSQL.
+                    <br>3. <strong>Portal na Nuvem:</strong> Vai seguir as mesmas regras de permissão do supervisório (visualização para uns, controle para outros).</p>
+
+                    <p><strong>Organização dos Dados:</strong> No CLP, você deve guardar as informações dentro de uma estrutura de dados chamada <code>CFW500</code>. Preste atenção na conversão de dados: os valores de corrente <strong>não</strong> devem ser convertidos para "Real" (ponto flutuante) direto no CLP. Você deve fazer essa conversão matemática apenas no HIscada e no Portal usando scripts. Além disso, tanto o Portal quanto o HIscada devem gerar um relatório com o nome da <strong>HI Tecnologia</strong>.</p>
+                    
+                    <p><strong>Alertas Automáticos:</strong> O sistema precisa enviar notificações por E-mail e Telegram sempre que necessário. O próprio HIscada também deve ter uma configuração para disparar e-mails de alerta de forma automática.</p>
+                    
+                    <div class="tips">
+                        <span class="tips-title">💡 Dica de Comunicação Modbus</span>
+                        Para ler e escrever no inversor CFW500, você deve usar o bloco <strong>MDB_GATEWAY_EX</strong>. Use junto a função <strong>NOTIFY</strong> para conseguir mandar comandos só quando a condição for verdadeira. Se tiver dúvidas, assista aos vídeos de apoio sobre script, banco de dados, relatórios e comunicação Modbus.
+                    </div>
+
+                    <div class="card-buttons">
+                        <button class="btn btn-blue open-modal" data-project="1">
+                            📚 Acessar Materiais de Apoio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJETO 2 -->
+            <article class="project-card" data-search="projeto 2 sala servidores temperatura pt100 ntc tht860 tht863 umidade rádio wsc720 esc plc mestre modem 4g mqtt gton m nuvem supervisório postgresql alarmes trend">
+                <input type="checkbox" id="project2" class="accordion-checkbox">
+                <label for="project2" class="card-header">
+                    <div class="card-title">
+                        <span class="project-number">02</span>
+                        <h3>Monitoramento de temperatura em sala de servidores</h3>
+                    </div>
+                    <span class="arrow"></span>
+                </label>
+                <div class="card-content">
+                    <div class="tags">
+                        <span class="tag">PT100</span>
+                        <span class="tag">NTC</span>
+                        <span class="tag">THT860</span>
+                        <span class="tag">THT863</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">GTON M</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+
+                    <p><strong>Objetivo do Projeto:</strong> Monitorar a temperatura nos quatro cantos de uma sala de servidores para garantir que o ambiente não aqueça demais.</p>
+
+                    <p><strong>Sensores e IHM Local:</strong> Você vai usar sensores diferentes (PT100, NTC, THT860 e THT863). Os sensores THT precisam ficar instalados em lados opostos da sala para conseguir medir a umidade também. Dentro dessa sala, uma IHM vai mostrar as temperaturas ao vivo e salvar o histórico ali mesmo, para que os técnicos consigam consultar se precisarem.</p>
+
+                    <p><strong>Comunicação e Internet:</strong> Os dados dos sensores vão ser enviados via rádio para um CLP principal (Mestre). Como a sala não tem internet a cabo liberada, esse CLP Mestre vai usar um modem 4G para se conectar e enviar os dados para a nuvem usando o protocolo MQTT.</p>
+
+                    <p><strong>Supervisório e Banco de Dados:</strong> A rede local vai conectar o sistema ao supervisório, que vai gerar relatórios e salvar tudo em um banco de dados PostgreSQL. É muito importante configurar alarmes (tanto na nuvem quanto no supervisório) para disparar se a temperatura cair para 20ºC ou menos, ou subir para 30ºC ou mais.</p>
+
+                    <p><strong>Notificações:</strong> Qualquer alerta da sala de servidores deve chegar para a equipe pelo Telegram e por E-mail. E não esqueça: o próprio HIscada também deve estar configurado para disparar avisos por e-mail.</p>
+                    
+                    <div class="tips">
+                        <span class="tips-title">💡 Dicas Práticas</span>
+                        <strong>Visualização:</strong> No HIscada, use o gráfico do tipo <em>Trend</em> para mostrar como a temperatura está variando.<br>
+                        <strong>Nuvem (GTON M):</strong> Para conectar usando MQTT com o modem GTON externo, preencha o IP e a Porta do Broker no bloco <em>MQTT GATEWAY</em> do CLP apontando para o GTON, e ele se encarregará de mandar para a nuvem.<br>
+                        <strong>Rede de Rádio:</strong> Na hora de usar o rádio WSC720, lembre que os cabos certos para conectar ao CLP são os da interface ESC (fios ESC - PLC).<br>
+                        <strong>Organização:</strong> Crie estruturas de dados (Structs) no software para organizar todas as variáveis de temperatura de um jeito mais limpo.
+                    </div>
+
+                    <div class="card-buttons">
+                        <button class="btn btn-blue open-modal" data-project="2">
+                            📚 Acessar Materiais de Apoio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJETO 3 -->
+            <article class="project-card" data-search="projeto 3 pulsos medidor vazão litros instantânea totalizada uma hora 60 minutos persistente ihm nuvem hiscada sqlite email telegram pwm fct">
+                <input type="checkbox" id="project3" class="accordion-checkbox">
+                <label for="project3" class="card-header">
+                    <div class="card-title">
+                        <span class="project-number">03</span>
+                        <h3>Medição e totalização de vazão</h3>
+                    </div>
+                    <span class="arrow"></span>
+                </label>
+                <div class="card-content">
+                    <div class="tags">
+                        <span class="tag">Vazão</span>
+                        <span class="tag">PWM</span>
+                        <span class="tag">FCT</span>
+                        <span class="tag">IHM Touch</span>
+                        <span class="tag">HISCADA PRO</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+
+                    <p><strong>Objetivo do Projeto:</strong> Monitorar os pulsos de um medidor de vazão para calcular a quantidade de litros consumidos, exibindo esses dados tanto no formato de vazão instantânea quanto de vazão totalizada.</p>
+
+                    <p><strong>Regras de Tempo (O Desafio):</strong> O valor da vazão totalizada deve ser armazenado temporariamente na memória e enviado ao portal na nuvem exatamente a cada 60 minutos. <strong>Atenção:</strong> após esse envio, o valor precisa ser resetado (zerado) para recomeçar a contagem do zero. Para os demais dados e dispositivos, as informações podem ser transmitidas normalmente, conforme o intervalo de coleta padrão da sua rede.</p>
+
+                    <p><strong>Proteção de Dados (Persistência):</strong> É fundamental que o valor da vazão totalizada não seja perdido caso você precise desligar o CLP ou ocorra uma queda de energia. Ou seja, esse dado deve ser configurado como persistente na memória.</p>
+
+                    <p><strong>Monitoramento e Relatórios:</strong> O cliente exige a supervisão local desses dados no chão de fábrica por meio de uma <strong>IHM touch</strong>. Além disso, o processo será monitorado em nuvem e também por meio do software <strong>HISCADA PRO</strong>. Em ambos os sistemas (Nuvem e HISCADA) deverão ser gerados relatórios de processo, sendo que no HISCADA PRO é obrigatória a utilização do banco de dados SQLite.</p>
+
+                    <p><strong>Alertas e Notificações:</strong> O cliente solicita o envio automático de notificações por E-mail e Telegram sempre que ocorrerem casos de desconexão, e também para receber um resumo diário do processo. Adicionalmente, o HISCADA PRO deve enviar um E-mail ao cliente a cada 1 hora, relatando com exatidão o valor da vazão total acumulada naquele ciclo.</p>
+                    
+                    <div class="tips">
+                        <span class="tips-title">💡 Dica de Lógica (PWM e FCT)</span>
+                        Para montar a lógica, use o bloco <strong>PWM</strong> com uma frequência baixa para imitar os pulsos físicos do sensor. Em seguida, use o bloco <strong>FCT</strong> para contar esses pulsos e transformar esse valor em vazão instantânea. A partir daí, é só usar matemática básica no CLP para chegar na vazão acumulada geral e na acumulada por hora.
+                    </div>
+
+                    <div class="card-buttons">
+                        <button class="btn btn-blue open-modal" data-project="3">
+                            📚 Acessar Materiais de Apoio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJETO 4 -->
+            <article class="project-card" data-search="projeto 4 zap900 transmissor temperatura novus modsim modbus rtu rs485 setpoint sp pv ihm hiscada pro relatório 50 100 led scb trend alarme">
+                <input type="checkbox" id="project4" class="accordion-checkbox">
+                <label for="project4" class="card-header">
+                    <div class="card-title">
+                        <span class="project-number">04</span>
+                        <h3>Controle de temperatura com ZAP900 e MODSIM</h3>
+                    </div>
+                    <span class="arrow"></span>
+                </label>
+                <div class="card-content">
+                    <div class="tags">
+                        <span class="tag">ZAP900</span>
+                        <span class="tag">MODBUS RTU</span>
+                        <span class="tag">RS485</span>
+                        <span class="tag">MODSIM</span>
+                        <span class="tag">IHM</span>
+                        <span class="tag">HISCADA PRO</span>
+                    </div>
+
+                    <p><strong>Objetivo do Projeto:</strong> Fazer o controlador ZAP900 se comunicar com um transmissor de temperatura da Novus (que será simulado pelo aplicativo MODSIM) através da rede Modbus RTU RS485.</p>
+
+                    <p><strong>O que o CLP vai fazer:</strong> Você precisa programar o CLP para enviar (escrever) o valor desejado de SetPoint (SP) para o transmissor simulado e, ao mesmo tempo, ficar lendo qual é a temperatura atual, que chamamos de Variável de Processo (PV).</p>
+
+                    <p><strong>Interface IHM:</strong> O operador deve conseguir ir até a IHM, digitar o valor do SetPoint (SP) que ele deseja e ver na mesma tela qual é a temperatura atual (PV).</p>
+
+                    <p><strong>Regras Lógicas do Processo:</strong>
+                    <br>▶ O processo da máquina só pode iniciar quando a temperatura (PV) chegar a 50ºC.
+                    <br>⏹ O processo deve desligar sozinho assim que a temperatura atingir 100ºC.
+                    <br>💡 Você deve colocar um LED que acenda para avisar que o processo está em funcionamento.</p>
+
+                    <p><strong>Supervisão e Histórico:</strong> Tudo isso precisa ser controlado pelo HISCADA PRO, que também vai gerar um relatório do processo. Não esqueça de criar um alarme no HISCADA PRO que dispare toda vez que a temperatura cair abaixo de 50ºC.</p>
+                    
+                    <div class="tips">
+                        <span class="tips-title">💡 Dica de Simulação de Temperatura</span>
+                        Depois que você der o comando para enviar o SetPoint para o Modsim, crie uma lógica no CLP usando temporizadores (timers) para ir subindo a temperatura (PV) bem devagarzinho. Escreva esse valor no MODSIM para simular que está esquentando de verdade. O CLP vai ler esse valor de volta via Modbus e, quando a temperatura (PV) se igualar ao SetPoint (SP), você desliga o comando de escrita.
+                    </div>
+                    
+                    <div class="tips">
+                        <span class="tips-title">💡 Configuração Modbus RTU</span>
+                        Para garantir a comunicação correta da leitura e escrita com equipamentos escravos pela rede RS485, você deve usar o Bloco <strong>SCB</strong> no ladder.
+                    </div>
+                    
+                    <div class="tips">
+                        <span class="tips-title">📈 Visualização no HISCADA PRO</span>
+                        Para o visual do projeto ficar bacana e profissional, use o gráfico do tipo <em>Trend</em> no HISCADA PRO para mostrar a linha da Temperatura (PV) junto com a linha do SetPoint (SP).
+                    </div>
+
+                    <div class="card-buttons">
+                        <button class="btn btn-blue open-modal" data-project="4">
+                            📚 Acessar Materiais de Apoio
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="linkModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalTitle">Materiais de Apoio</h3>
+            <button class="modal-close" id="closeModal">✕</button>
+        </div>
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>
+        <strong>HI Tecnologia Automação Industrial</strong>
+    </p>
+    <p>Programação de Formação — Parte 2</p>
+    <small>Documentação local de treinamento.</small>
+</footer>
+
+<button id="topButton" title="Voltar ao topo">↑</button>
+
+<script>
+    const cards = [...document.querySelectorAll(".project-card")];
+
+    document.getElementById("openAll").addEventListener("click", () => {
+        cards.forEach(card => {
+            card.querySelector(".accordion-checkbox").checked = true;
+        });
+    });
+
+    document.getElementById("closeAll").addEventListener("click", () => {
+        cards.forEach(card => {
+            card.querySelector(".accordion-checkbox").checked = false;
+        });
+    });
+
+    const topButton = document.getElementById("topButton");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+            topButton.classList.add("visible");
+        } else {
+            topButton.classList.remove("visible");
+        }
+    });
+
+    topButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    const modal = document.getElementById('linkModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalTitle = document.getElementById('modalTitle');
+
+    const projectLinks = {
+        1: [
+            { icon: '📁', title: 'OneDrive — Script de envio de email', url: 'https://1drv.ms/f/s!AnLN9W8UaRKvj3Fj1z1dExtuD_NA?e=fKTqfi' },
+            { icon: '📄', title: 'Documentação — MDB_GATEWAY_EX', url: 'https://doc.hitecnologia.com.br/histudio/br/_files/libs/hi_std/mdb_gateway_ex.html' },
+            { icon: '🎥', title: 'Tutorial — MDB_GATEWAY_EX via Serial', url: 'https://1drv.ms/f/s!AnLN9W8UaRKvmRWBi5N-U4fTEvEF?e=bF8ap4' },
+            { icon: '🎥', title: 'Tutorial — MDB_GATEWAY_EX via Ethernet', url: 'https://1drv.ms/f/s!AnLN9W8UaRKvmRi-qUjRivBjYIcT?e=Vgi3gE' }
+        ],
+        2: [
+            { icon: '🎥', title: 'Tutorial PostgreSQL', url: 'https://youtu.be/WXMOfdqxJFg?si=HioIl5Utem_uGZc4' },
+            { icon: '🎥', title: 'Tutorial — THT860', url: 'https://1drv.ms/f/c/af1269146ff5cd72/Ep-5H7V6OQBPpUhaiperJJcB4QoiNK1s6xZqoX3BxdKE7A?e=oha5qJ' },
+            { icon: '🎥', title: 'Tutorial — Troca modo de operação THT860', url: 'https://1drv.ms/v/s!AnLN9W8UaRKvlySIWiyjqBUkCqLl?e=gLBkqd' },
+            { icon: '🎥', title: 'Configuração  - GTON M', url:'https://onedrive.live.com/?qt=allmyphotos&photosData=%2Fshare%2FAF1269146FF5CD72%212579%3Fithint%3Dvideo%26e%3DQcAJNU%26migratedtospo%3Dtrue&cid=AF1269146FF5CD72&id=AF1269146FF5CD72%212579&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBbkxOOVc4VWFSS3ZsQk1LZHg3bXlGVmdETWZWP2U9UWNBSk5V&v=photos' }
+        ],
+        3: [
+            { icon: '📁', title: 'Tutorial Buffer no SDcard', url: 'https://1drv.ms/u/s!AnLN9W8UaRKvmEz0KCf6x3mBGOZf?e=3dPOFe' },
+            { icon: '🎥', title: 'Lógica — Bloco PWM ', url: 'https://1drv.ms/v/c/af1269146ff5cd72/EeBh0dNcf3pLgtwkqQLWBi0BArrq9DqFV_WEV6R1wAtGlg?e=mg7bhb' },
+            { icon: '🎥', title: 'Lógica — Bloco FCT ', url: 'https://1drv.ms/v/c/af1269146ff5cd72/Ebl4TXz2pjpNs2YzqFTJ9cQB0qip2m1-lJph8j4r-RxkBw?e=eAyf6i' }
+        ],
+        4: [
+            { icon: '📄', title: 'Tutorial — Bloco SCB ', url: 'https://1drv.ms/f/s!AnLN9W8UaRKvij2TDywNR2BP5eVQ?e=JdF9HC' },
+            { icon: '🛠', title: 'Instalar — MODSIM e MODSCAN', url: 'https://1drv.ms/u/c/af1269146ff5cd72/EbxWEmiDrnNCg2CnM3sd4ToB0uO4yPLM5IOEVUj7zaCO3A?e=IAY8IQ' }
+        ]
+    };
+
+    document.querySelectorAll('.open-modal').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = button.dataset.project;
+            const links = projectLinks[projectId] || [];
+
+            modalTitle.textContent = `Materiais de Apoio — Projeto 0${projectId}`;
+
+            modalContent.innerHTML = links.map(link => `
+                <a href="${link.url}" target="_blank" class="modal-link-item">
+                    <span>${link.icon}</span>
+                    <span>${link.title}</span>
+                </a>
+            `).join('');
+
+            modal.classList.add('active');
+        });
+    });
+
+    const close = () => modal.classList.remove('active');
+    closeModal.addEventListener('click', close);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) close();
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - Rádios</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+            --onedrive-blue: #0078D4; 
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start; 
+        }
+
+        /* Botão estilizado para links mantendo a setinha solicitada */
+        .btn-link-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: var(--onedrive-blue); 
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-link-action:hover {
+            background-color: #005a9e; 
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Comunicação via Rádio</h1>
+            <p><strong>Aplicações em Saneamento e Óleo e Gás</strong></p>
+            <p>Os rádios XBee-PRO e o modelo R9X307 são dispositivos de comunicação comercializados e integrados pela HI Tecnologia para conversão de meio físico, permitindo o tráfego de dados seriais ou ethernet via interfaces wireless em processos industriais. Nessa etapa, você aprenderá o básico conceitual dessas linhas de rádio de 900MHz e a utilizá-las no ecossistema de automação através de topologias ponto a ponto, ponto-multiponto ou redes malha (Mesh). Para a configuração, diagnóstico e testes de comunicação entre as redes de rádio, você utilizará ferramentas de software essenciais como o XCTU. Não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.</p>
+        </div>
+        <div class="hero-image">
+            <!-- Sugestão: Adicione uma imagem ilustrativa dos rádios WSC aqui -->
+            <img src="Files/radio.png" alt="Equipamentos de Rádio da HI Tecnologia">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - Rádios</h2>
+            
+            <div class="step">
+                <h3>1. Estudo da Documentação</h3>
+                <p>Leia a documentação sobre rádios para entender as características técnicas e de configuração dos equipamentos.</p>
+                <div class="video-container">
+                    <!-- INSIRA O LINK DO ONEDRIVE NO HREF ABAIXO -->
+                    <a href="https://1drv.ms/b/s!AnLN9W8UaRKvlmht_TNr_hbHI06c?e=IZEkj5" target="_blank" class="btn-link-action">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Software XCTU</h3>
+                <p>Utilize o software XCTU para encontrar rádios no ambiente. Assista ao vídeo tutorial para o passo a passo da configuração e varredura de dispositivos.</p>
+                <div class="video-container">
+                    <!-- INSIRA O LINK DO ONEDRIVE NO HREF ABAIXO -->
+                    <a href="https://1drv.ms/v/s!AnLN9W8UaRKvjT0ioKeYAQrmEc-P?e=GTee0p" target="_blank" class="btn-link-action">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Aplicação Prática de Comunicação</h3>
+                <p>Faça uma aplicação para comunicar 2 CLPs via Rádio seguindo a estrutura abaixo:</p>
+                <ul>
+                    <li><strong>CLP1 &rarr; Conexão Serial &rarr; WSC1 ~~~~ WSC2 &larr; Conexão Serial &larr; CLP2</strong></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

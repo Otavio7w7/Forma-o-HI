@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - SPDSW</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        /* NOVO STYLO: Botões personalizados para o Youtube */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start; /* Mantém os botões alinhados à esquerda sem esticar */
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; /* Vermelho padrão do YouTube */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; /* Vermelho ligeiramente mais escuro */
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SPDSW</h1>
+            <p><strong>Programação de Formação HI Tecnologia </strong></p>
+            <p>O SPDSW é um ambiente de desenvolvimento integrado, desenvolvido pela HI Tecnologia, para a programação, configuração, supervisão e documentação de programas de aplicação para Controladores Lógicos Programáveis (CLPs). Nesta etapa, você terá contato com CLPs G3, como o ZAP900 e o NEON. Ao longo do treinamento do SPDSW, você também fará um breve contato com o OPPE, ambiente de criação de telas em IHMs da HI Tecnologia. Não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta. </p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/SPDSW.png" alt="Tela do SPDSW">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - SPDSW </h2>
+            
+            <div class="step">
+                <h3>1. Preparação: Documentação e Manuais</h3>
+                <p>Leia a documentação e manuais sobre ZAP900, KIT ZTK e cabos seriais da HI Tecnologia: Você precisará deles para trabalhar com o SPDSW. </p>
+                <ul>
+                    <li>CLP ZAP900 </li>
+                    <li>Kit ZTK910 </li>
+                    <li>Cabos Seriais HI Tecnologia.pdf. </li>
+                </ul>
+                <a href="https://www.hitecnologia.com.br/obsoletos/zap900/" class="btn btn-secondary" target="_blank">Acessar Manual ZAP900</a>
+                <a href="https://www.hitecnologia.com.br/obsoletos/ztk910s/" class="btn btn-secondary" target="_blank">Acessar Manual ZTK910</a>
+                <a href="https://1drv.ms/b/s!AnLN9W8UaRKvjkwOENdbmXTfIhGG?e=qCOr9N" class="btn btn-secondary" target="_blank">Documentação Cabos </a>            
+            </div>
+
+            <div class="step">
+                <h3>2. Treinamentos em Vídeo (Online)</h3>
+                <p>Assista a playlist com conteúdos básicos sobre o SPDSW e reproduza os conteúdos: Playlist Tutorial. </p>
+                    <a href="https://www.youtube.com/playlist?list=PLKZKdzmHfbg_GkPDeGdO6N8VamX7_Gtyx" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                <p>Assista ao treinamento básico do SPDSW: Treinamento básico online do SPDSW. </p>
+                    <a href="https://youtu.be/10-U-v2-YbU?si=_M14jIv9wKiMjSJF" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+            </div>
+
+             <div class="step">
+                <h3>3. Comunicação Prática com Equipamentos</h3>
+                <p>Pegue um CLP ZAP900 ou kit ZTK, ligue e se comunique via Serial com o equipamento. </p>
+                <a href="https://www.youtube.com/watch?v=KSDOzU_NRyE&list=PLKZKdzmHfbg_GkPDeGdO6N8VamX7_Gtyx&index=4&pp=iAQB" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Comunicação Serial com o ZAP900
+                    </a>
+            </div>
+
+            <div class="step">
+                <h3>4. Treinamento na Rede Corporativa</h3>
+                <p>Assista ao curso do SPDSW localizado na rede corporativa da empresa e siga a documentação PDF reproduzindo o conteúdo, não se preocupe em dar certo ou errado, o vídeo é para familiarizar com os recursos. </p>
+                <p><strong>Caminho:</strong> <code>L:\Corp\Treinamentos\SPDSW\Video\Treinamento SPDSW - 18-11-2020</code> </p>
+            </div>
+
+            <div class="step">
+                <h3>5. Atividades de Ladder</h3>
+                <p>Faça as atividades de Treinamento de Ladder básico e avançado contidas nesta pasta. </p>
+                <p>Apresente seus resultados para os colaboradores do departamento. </p>
+                <a href="https://1drv.ms/f/c/af1269146ff5cd72/IgBF6zvyFjAQSJAPQmnogQuLAdSkhxf9IvZEgx6sBEwraDA?e=dOwKLQ" class="btn btn-secondary" target="_blank">Acessar Pasta de Atividades</a>
+            </div>
+
+            <div class="step">
+                <h3>6. Comunicação Modbus com CFW500 (NEON G3)</h3>
+                <p>Faça uma comunicação Modbus entre o NEON G3 do painel que possui IP: 192.168.0.134 e o Inversor CFW500 via RS485: Tutorial Bloco SCB para comunicação remota. </p>
+                <a href="https://youtu.be/6XhPhmXSlzw?si=WJNYkmVon3P2XREU" class="btn" target="_blank">Acessar conteúdo</a>
+            </div>
+
+            <div class="step">
+                <h3>7. Portal de Telemetria (NEON G3)</h3>
+                <p>Utilize o NEON programável no SPDSW que está no painel no IP 192.168.0.134 e conecte o equipamento no Portal de Telemetria. Cadastre alguns dados dos projetos que possui (Habilite Histórico para os dados) e cadastre alarmes para os dados, crie uma interação entre o Portal e o seu projeto. </p>
+                <a href="https://youtu.be/H7uKcHI12Zc?si=E9whWcLo7dnobuZl" class="btn" target="_blank">Acessar conteúdo</a>
+            </div>
+
+            <div class="step">
+                <h3>8. Acesso Remoto e Resultados (NEON G3)</h3>
+                <p>Utilize o Plug de Telemetria para acesso remoto no equipamento através do SPDSW: Tutorial Plug G3. </p> 
+                <a href="https://1drv.ms/b/s!AnLN9W8UaRKvlxS8P72m0ZC8Jr4m?e=nOZ9cD" class="btn" target="_blank">Acessar conteúdo</a>
+            </div>
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - HIstudio</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        /* NOVO STYLO: Botões personalizados para o Youtube */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start; /* Mantém os botões alinhados à esquerda sem esticar */
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; /* Vermelho padrão do YouTube */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; /* Vermelho ligeiramente mais escuro */
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HIstudio</h1>
+            <p><strong>Ambiente de programação dos CLPs G5</strong></p>
+            <p>O HIstudio é um ambiente de software desenvolvido para a programação, configuração, depuração e documentação de programas dos controladores da HI Tecnologia. Disponibiliza as linguagens de programação ST (Texto Estruturado) e LD (Ladder), com bibliotecas de funções aderentes à norma IEC 61131-3 e suporte para criação de funções e blocos de funções.
+            Nesta etapa você deverá assistir aos cursos e playlists e reproduzir todo conteúdo ensinado, além de realizar programas
+            para praticar os recursos do ambiente nas duas principais linguagens disponíveis. Não se esqueça de salvar
+            os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/HIstudio.png" alt="Tela do HIstudio">
+        </div>
+    </section>
+
+<section class="section" style="background-color: var(--cinza-claro);">
+            <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+    <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - Programação de CLPs - HIstudio</h2>
+            
+            <div class="step">
+                <h3>1. Preparação: Kits de Treinamento NTK400 e RTK510</h3>
+                <p>Para trabalhar nesta etapa você precisará utilizar os Kits de Treinamento NTK400 e RTK510, acesse as páginas dos produtos e baixe os manuais, leia a documentação dos Kits para entender o seu funcionamento antes de iniciar no ambiente de programação.</p>
+                <a href="https://www.hitecnologia.com.br/obsoletos/ntk400/" class="btn btn-secondary" target="_blank">Acessar Manual do NTK400</a>
+                <a href="https://www.hitecnologia.com.br/produto/rtk510/" class="btn btn-secondary" target="_blank">Acessar Manual do RTK510</a>            
+            </div>
+
+            <div class="step">
+                <h3>2. Treinamento em Ladder (LD)</h3>
+                <p>Assista a playlist do curso de programação em Ladder no HIstudio e <b>reproduza o que foi ensinado:</b></p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/playlist?list=PLKZKdzmHfbg_DbZDrL8lgGcll3Rxa6LV4" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Treinamento em Ladder
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Treinamento em Texto Estruturado (ST)</h3>
+                <p>Assista aos cursos de programação em Texto Estruturado no HIstudio e <b>reproduza o que foi ensinado:</b></p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/playlist?list=PLZrEpXjEEbuBIKTMt3-SmQ90SbH8JMKm3" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Texto Estruturado (Parte 1)
+                    </a>
+                    <a href="https://www.youtube.com/playlist?list=PLZrEpXjEEbuCNA7VyCFOeJgS75dspcFxU" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Texto Estruturado (Parte 2)
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Exercício Prático: Trabalhando nas duas linguagens</h3>
+                <p>Após assistir os cursos e reproduzir o que foi ensinado você terá alguns programas em Ladder e em ST, reescreva o programa que foi feito na linguagem Ladder para a linguagem ST e reescreva o programa que foi feito na linguagem ST para a linguagem Ladder.</p>
+            </div>
+
+            <div class="step">
+                <h3>5. Boas práticas na documentação de um projeto</h3>
+                <p>Baixe um programa de exemplo da engenharia de aplicação da HI e observe como é feita toda a parte de documentação e comentários, aplique em seus projetos o conceito.</p>
+                <a href="https://materiais.hitecnologia.com.br/downloads/epe20054_rw_2_vsd_danfoss_serial.zip" class="btn btn-secondary" target="_blank">Acessar conteúdo</a>
+            </div>
+    </div>
+
+        <div class="training-container">   
+                <h2 style="color: var(--azul-hi);">Etapa 2 - Programação de CLPs - HIstudio</h2>
+            
+            <div class="step">
+                <h3>1. Lista de Exercícios de Programação</h3>
+                <p>Após assistir os treinamentos de Ladder e ST no HIstudio e realizar as atividades anteriores, faça a lista de exercícios a seguir, tanto na linguagem Ladder quanto na Linguagem ST:</p>
+                <a href="https://1drv.ms/b/c/af1269146ff5cd72/IQANNAoxNOz_R5ZOmPaqcVFaAeW-J6_wuyx0YWxkwrWAykI?e=MgGVXX" class="btn" target="_blank">Acessar Lista de Exercícios </a>
+            </div>
+
+            <div class="step">
+                <h3>2. Playlist com Tutoriais Complementares do Ambiente HIstudio</h3>
+                <p>Assista aos tutoriais complementares e de reforço de conceito sobre funcionalidades do HIstudio a seguir e <b>reproduza os conteúdos:</b></p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/playlist?list=PLKZKdzmHfbg-Rklols3-D4eDzcReGVC7F" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Tutoriais Complementares
+                    </a>
+                </div>
+            </div>
+        
+    </div>
+</section>
+
+            <div>
+                <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+            </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

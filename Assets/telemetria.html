@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - Portal de Telemetria</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        /* NOVO STYLO: Botões personalizados para o Youtube */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start; /* Mantém os botões alinhados à esquerda sem esticar */
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; /* Vermelho padrão do YouTube */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; /* Vermelho ligeiramente mais escuro */
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Portal de Telemetria</h1>
+            <p><strong>Treinamento e formação HI Tecnologia</strong></p>
+            <p>Ambiente focado no monitoramento, integração e gestão de dados utilizando o Portal de Telemetria. Esta etapa abrange desde a criação da conta e cadastro de equipamentos até o desenvolvimento de telas, relatórios personalizados, alertas via Telegram, configuração de buffers de dados e integração via API Rest.
+             Não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/portal.png" alt="Tela do Portal de Telemetria HI Tecnologia">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - Portal de Telemetria: Introdução e Cadastros</h2>
+            
+            <div class="step">
+                <h3>1. Introdução ao Portal</h3>
+                <p>Leia a documentação oficial, escreva um resumo sobre o que é o Portal de Telemetria, cite seus recursos e onde pode ser utilizado. Em seguida, apresente seus resultados para os colaboradores do departamento.</p>
+                <a href="https://qrcode.hitecnologia.com.br/apresentacao_portal" class="btn btn-secondary" target="_blank">Acessar conteúdo</a>
+            </div>
+
+            <div class="step">
+                <h3>2. Criação de Conta (Plano Enterprise)</h3>
+                <p>Crie uma conta no Portal de Telemetria e contrate o plano Enterprise seguindo o tutorial.</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=NvoDt6bcul8" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Criação de Conta
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Cadastro de Equipamento (Conector G5)</h3>
+                <p>Cadastre um equipamento que foi programado no HIstudio no Portal.</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=wNvG9eTKrbY" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Cadastro de Equipamento
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Cadastro de Dados e Variáveis</h3>
+                <p>Cadastre dados do equipamento seguindo os tutoriais (Habilite Histórico para os dados).</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=t3CVtZZKEoQ" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Cadastro de Dados (Parte 1)
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=aK-yrXvrIcY" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Cadastro de Dados (Parte 2)
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=YIahDZRodEE" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Cadastro de Dados (Parte 3)
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Cadastro de Alarmes e Apresentação</h3>
+                <p>Cadastre alarmes para os dados no Portal de Telemetria. Ao finalizar todas essas etapas de cadastro, apresente seus resultados para os colaboradores do departamento.</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=oAiWwLZNT-k" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Cadastro de Alarmes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="training-container">
+                <h2 style="color: var(--azul-hi);">Etapa 2 - Portal de Telemetria: Telas, Relatórios e Integrações</h2>
+            
+             <div class="step">
+                <h3>1. Desenvolvimento de Telas</h3>
+                <p>Assista ao Treinamento do Portal de Telemetria sobre desenvolvimento de telas, utilizando o programa para simulação de dados de energia e reproduza os conteúdos dos vídeos.</p>
+                <a href="https://1drv.ms/u/c/af1269146ff5cd72/IQD9ggiqeEPbT7OWEyvzlr_EAXPiGe_uHkasJ-yPGyFOGP4?e=uXhtxx" class="btn" target="_blank">Acessar o programa  </a>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/playlist?list=PLKZKdzmHfbg9bfpY4zbh45sa5Dam9IyVt" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Relatórios Personalizados</h3>
+                <p>Faça um relatório personalizado para os dados cadastrados anteriormente e apresente seus resultados para os colaboradores.</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=GhHYjz4r_V4" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Notificações via Telegram</h3>
+                <p>Crie um Bot no Telegram para receber notificações configuradas no portal.</p>
+                <a href="https://doc.hitecnologia.com.br/portal_telemetria/br/_files/glb_notification.html#notificacoes-telegram" class="btn" target="_blank">Acessar conteúdo</a>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=80MoxRuTh4c" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo 
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Acesso Remoto (Plug de Telemetria)</h3>
+                <p>Realize um acesso remoto no CLP conectado no Portal utilizando o Plug de Telemetria. Após concluir, apresente seus resultados para os colaboradores do departamento.</p>
+                <a href="https://1drv.ms/b/s!AnLN9W8UaRKvlw-l4h91nex-rtsN?e=yKhCcu" class="btn" target="_blank">Acessar conteúdo</a>
+            </div>
+        </div>
+
+        <div class="training-container">
+                <h2 style="color: var(--azul-hi);">Etapa 3 - Portal de Telemetria: Buffer de Dados </h2>
+            
+            <div class="step">
+                <h3>1. Conceitos de Buffer [HIWG]</h3>
+                <p>Entenda a possibilidade de coleta de dados salvos em uma estrutura do CLP (buffer), que pode ser expandida para SDCard. Leia e assista sobre o antigo bloco [HIWG] para entender os conceitos fundamentais (cache, id, timestamp, endereço da base local), <b> sem necessidade de implementar no programa.</b></p>
+                <a href="https://1drv.ms/u/c/af1269146ff5cd72/IQBHoBe_e-G3SabhFu7PnqGTAW279aTDyhM12YI5PbLWaF4?e=7SMqot" class="btn" target="_blank">Acessar conteúdo </a>
+            </div>
+
+            <div class="step">
+                <h3>2. Implementação do Buffer </h3>
+                <p>Assista aos vídeos tutoriais sobre o novo buffer de dados para o Portal e reproduza o conteúdo. </p>
+                <a href="https://1drv.ms/f/s!AnLN9W8UaRKvmQewCa4U8KBgBkIV?e=XBbxbc" class="btn" target="_blank">Acessar conteúdo </a>
+            </div>
+        </div>
+
+        <div class="training-container">
+                <h2 style="color: var(--azul-hi);">Etapa 4 - Portal de Telemetria: Integração via API Rest </h2>
+            
+            <div class="step">
+                <h3>1. Integração via API Rest</h3>
+                <p>Entenda os conceitos de integração utilizando a API Rest do Portal de Telemetria e reproduza os conteúdos dos vídeos tutoriais.</p>
+                
+                <div class="video-container">
+                    <a href="https://www.youtube.com/playlist?list=PLKZKdzmHfbg-0FJcwLdA-Rcr6Az1qQnqz" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+            <div>
+                <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+            </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

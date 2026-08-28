@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - Fundamentos da Automação</title>
+    
+       <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        /* NOVO STYLO: Botões personalizados para o Youtube */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start; /* Mantém os botões alinhados à esquerda sem esticar */
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; /* Vermelho padrão do YouTube */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; /* Vermelho ligeiramente mais escuro */
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fundamentos da Automação Industrial</h1>
+            <p><strong>Conceitos teóricos importantes da automação e dos produtos HI Tecnologia</strong></p>
+            <p>Nesta etapa você deverá ler as documentações para criar uma base teórica sobre conceitos da automação industrial
+            e dos produtos comercializados pela HI Tecnologia e responder a prova baseada nos conteúdos. Não se esqueça de salvar
+            os arquivos das aulas em pastas individuais para cada tema, na sua pasta localizada em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.
+            </p>
+        </div>
+             <div class="hero-image">
+                <img src="Files/Fundamentos.png" alt="Equipamentos e Softwares HI Tecnologia">
+            </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi);">Etapa 1 - Fundamentos da Automação Industrial e Treinamento de Produtos da HI Tecnologia</h2>
+            
+            <div class="step">
+                <h3>1. Leitura de Documentos</h3>
+                <p>Leia os documentos:</p>
+                <ul>
+                    <li>1. Fundamentos da Automação Industrial</li>
+                    <li>2. Reforço de Conceitos de Automação Industrial</li>
+                    <li>3. Treinamento de Produto HI Tecnologia</li>
+                </ul>
+                <a href="https://1drv.ms/b/c/af1269146ff5cd72/IQBNzOrbCWSxSbvCBHkfLlASARjbwxirJthnTPWm-xvitfU?e=OQGNFO" class="btn btn-secondary" target="_blank">Acessar conteúdo 1</a>
+                <a href="https://1drv.ms/b/c/af1269146ff5cd72/IQA2JVZUNomhTY4nPoOIRzj4AX8Rs-z_gUTV-nz88y9Okfk?e=7xlqwa" class="btn btn-secondary" target="_blank">Acessar conteúdo 2</a>
+                <a href="https://1drv.ms/b/c/af1269146ff5cd72/IQBsjMhbo9U2Tqp0hls_NhfMAXT9scvjQu2Eak33zzB6E8s?e=lvcVh6" class="btn btn-secondary" target="_blank">Acessar conteúdo 3</a>
+            </div>
+
+            <div class="step">
+                <h3>2. Avaliação Prática</h3>
+                <p>Responda a prova utilizando como base os conteúdos estudados nos documentos anteriores:</p>
+                <a href="https://1drv.ms/w/c/af1269146ff5cd72/IQDr2H_EEWIDRZYlxM998T8_Ac51IoWgNgNiowBADxJjsN0?e=VSydyP" class="btn" target="_blank">Acessar Prova</a>
+            </div>
+        </div>
+    </section>
+
+    <div>
+       <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+</body>
+</html>

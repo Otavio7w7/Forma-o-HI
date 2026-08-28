@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Treinamento HI Tecnologia - Atendimento ao Cliente</title>
+    
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F; 
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.5rem;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section {
+            padding: 50px 5%;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--azul-hi);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-left: 8px solid var(--laranja-hi);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h3 {
+            color: var(--laranja-hi);
+            margin-top: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--laranja-hi);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #1941d5;
+        }
+        .btn-secondary {
+            background-color: var(--azul-hi);
+        }
+        .btn-secondary:hover {
+            background-color: #00366b;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            align-items: flex-start;
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: #004A8F; 
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .btn-youtube:hover {
+            background-color: #00366b; 
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+        }
+
+        .highlight-box {
+            background-color: #eef5fb;
+            padding: 15px;
+            border-left: 4px solid var(--azul-hi);
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Atendimento ao Cliente e Suporte</h1>
+            <p><strong>Programação de Formação HI Tecnologia</strong></p>
+            <p>A comunicação assertiva e o CX se unem para otimizar as relações corporativas, onde o foco no cliente se soma a um diálogo claro e empático. Essa combinação capacita as equipes a solucionar problemas com rapidez e transmitir total confiança. Para dominar essas práticas, é fundamental que você conclua os dois cursos indicados a seguir e organize seus materiais de estudo. Para garantir a organização do seu aprendizado, não se esqueça de salvar os arquivos das aulas em pastas individuais para cada tema, dentro do seu diretório localizado em: L:\GAdmn\DSuporte Tecnico\Minha Pasta.</p>
+        </div>
+        <div class="hero-image">
+            <img src="Files/AtendimentoAoCliente.png" alt="Treinamento de Suporte HI Tecnologia">
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--cinza-claro);">
+        <h2 class="section-title">Programa de Formação HI Tecnologia</h2>
+        
+        <div class="training-container">
+            <h2 style="color: var(--azul-hi); margin-bottom: 30px;">Etapa 1 - Atendimento ao cliente e rotinas do suporte técnico</h2>
+            
+            <div class="step">
+                <h3>1. Elementos da Comunicação Assertiva</h3>
+                <p>Explore os conceitos de comunicação assertiva para melhorar o contato direto e a clareza no atendimento ao cliente.</p>
+                <div class="video-container">
+                    <a href="https://sp.senai.br/inscricaogratuita/elementos-da-comunicacao-assertiva/103471/150/129081" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: SENAI
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Curso de Atendimento ao Cliente</h3>
+                <p>Assista ao curso gratuito focado nas melhores práticas e rotinas gerais de atendimento.</p>
+                <div class="video-container">
+                    <a href="https://unitrack.eadplataforma.app/curso/curso-gratuito-2021-12-06-14-44-58" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar conteúdo: Unitrack
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Registrando um Suporte Prestado</h3>
+                <p>Assista ao vídeo tutorial focado nos procedimentos corretos para a abertura e o registro de tickets de suporte do cotidiano.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/u/s!AnLN9W8UaRKvmVQaIEPWaNXQ-UOm?e=ng1sRy" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar vídeo tutorial 
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Registrando um Reporte de Bug ou Melhoria</h3>
+                <p>Vídeo tutorial explicando a rotina de registro e envio de falhas ou sugestões de melhorias de produto/software diretamente para a equipe de desenvolvimento da HI.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/u/s!AnLN9W8UaRKvmVMDppUT61oKiVjW?e=zMlCFQ" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar vídeo tutorial 
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Registrando uma Pré-Manutenção</h3>
+                <p>Aprenda a registrar corretamente uma solicitação de pré-manutenção caso ocorra alguma anomalia física ou de hardware durante o atendimento de suporte.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/v/c/af1269146ff5cd72/EbPTV_ktXuFLt8QN9ganOUcBT5TljdeC1nHZtH8YfP7WKA?e=xY0oCn" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar vídeo tutorial 
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>6. Padrão de Criação de Conteúdo em Vídeo para Suporte</h3>
+                <p>Diretrizes e boas práticas para a gravação, edição e envio de materiais explicativos em vídeo produzidos pela equipe de suporte.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/u/c/af1269146ff5cd72/EZj7ZE_N3F9OguJeJsiml3ABefw66Or6gj6aNBaOSxw2cw?e=XfhGUb" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar vídeo tutorial 
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>7. Planilha para Gestão de Itens do Suporte</h3>
+                <p>Vídeo explicativo sobre as rotinas de preenchimento, controle de fluxos e manuseio da planilha oficial de gestão de itens do suporte.</p>
+                <div class="video-container">
+                    <a href="https://1drv.ms/v/c/af1269146ff5cd72/IQBEy4qErtwLSoE4LYfrwPoLAUYamqD_M_3xEnLPCl6mtuc?e=4sA0Op" target="_blank" class="btn-youtube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        Acessar vídeo tutorial 
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div>
+        <a href="../index.html" class="btn" style="margin-left: 5%;">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
