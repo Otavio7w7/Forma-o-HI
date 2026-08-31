@@ -236,3 +236,6 @@ um `styles.css` central.
   acima (duplicar página + adicionar card na home).
 - Quero mudar a cor/identidade visual → edite o bloco `<style>` em cada
   arquivo HTML (não há CSS centralizado).
+#   F o r m a - o - H I  
+ #   F o r m a - o - H I  
+ 
