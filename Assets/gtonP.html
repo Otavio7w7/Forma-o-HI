@@ -139,6 +139,36 @@
             border-radius: 0 5px 5px 0;
         }
 
+        .recipe-table {
+            width: 100%;
+            max-width: 620px;
+            border-collapse: collapse;
+            margin: 18px 0;
+            background-color: white;
+        }
+        .recipe-table th,
+        .recipe-table td {
+            padding: 12px 15px;
+            border: 1px solid #D5DEE8;
+            text-align: left;
+        }
+        .recipe-table th {
+            background-color: var(--azul-hi);
+            color: white;
+        }
+        .exercise-list {
+            padding-left: 22px;
+        }
+        .exercise-list li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #E8EEF5;
+            color: #173A5E;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
         footer {
             background-color: #222;
             color: white;
@@ -212,6 +242,67 @@
                 <div class="video-container">
                     <a href="https://1drv.ms/b/s!AnLN9W8UaRKvkFCnLleDmezokh4f?e=7LA2EQ" target="_blank" class="btn-secondary btn">
                         Acesso ao Procedimento
+                    </a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Exercício Prático: Pesagem, Receita em Flash e Envio de String</h3>
+
+                <p><strong>Objetivo:</strong> desenvolver no GTON P SET uma aplicação que receba a String de pesagem de uma balança industrial, identifique o peso, calcule o valor do saco conforme uma receita parametrizada na memória flash do CLP e apresente a String final em um monitor.</p>
+
+                <p><strong>Cenário:</strong> um cliente precisa pesar sacos de frutas utilizando uma balança industrial com comunicação RS232. A balança envia os dados em caracteres ASCII no formato <code>"1221KG"</code>. O programa deverá receber essa String, remover a unidade <code>"KG"</code> e manter apenas o peso <code>"1221"</code>, permitindo sua utilização no cálculo do valor final esperado para o comércio e na previsão do fluxo de caixa.</p>
+
+                <h4>Receita parametrizada na memória flash</h4>
+                <table class="recipe-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo de fruta</th>
+                            <th>Preço por kg</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Banana</td>
+                            <td>R$ 4,00</td>
+                        </tr>
+                        <tr>
+                            <td>Maçã</td>
+                            <td>R$ 12,00</td>
+                        </tr>
+                        <tr>
+                            <td>Laranja</td>
+                            <td>R$ 6,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Requisitos do exercício</h4>
+                <ol class="exercise-list">
+                    <li>Utilizar escrita e leitura na memória flash para parametrizar o preço por quilograma de cada tipo de fruta.</li>
+                    <li>Receber a String ASCII da balança pela interface RS232, simulando o envio com o software Hercules.</li>
+                    <li>Formatar a String recebida, removendo a unidade <code>"KG"</code> e convertendo o peso para um formato que possa ser utilizado nos cálculos.</li>
+                    <li>Permitir a seleção do tipo de fruta correspondente à pesagem.</li>
+                    <li>Ler da memória flash o preço da fruta selecionada e calcular: <strong>valor final = peso recebido × preço por kg</strong>.</li>
+                    <li>Montar a String com o resultado final e enviá-la via TCP para outra instância do software Hercules, que funcionará como monitor.</li>
+                </ol>
+
+                <div class="highlight-box">
+                    <strong>Dica:</strong> primeiro grave e leia os preços de cada fruta na memória flash. Depois, receba a String ASCII via RS232, trate o conteúdo, selecione a fruta da pesagem, faça o cálculo e envie a String final por uma conexão TCP.
+                </div>
+
+                <div class="video-container">
+                    <a href="https://1drv.ms/f/s!AnLN9W8UaRKvjljg6voHcoiHIcbb?e=bXDrmx" target="_blank" rel="noopener noreferrer" class="btn-secondary btn">
+                        Conteúdo: Memória Flash
+                    </a>
+                    <a href="https://1drv.ms/f/c/af1269146ff5cd72/Es9DgJf4OpdMvSH4waIMrUABGECpufjIseUeIhcbVk99wQ?e=WbYPGt" target="_blank" rel="noopener noreferrer" class="btn-secondary btn">
+                        Conteúdo: Receber String
+                    </a>
+                    <a href="https://doc.hitecnologia.com.br/histudio/br/_files/libs/iec_std/delete.html" target="_blank" rel="noopener noreferrer" class="btn-secondary btn">
+                        Documentação: Formatar String
+                    </a>
+                    <a href="https://1drv.ms/u/s!AnLN9W8UaRKvkEe9-OTt1jbv6bQy?e=EeVz0u" target="_blank" rel="noopener noreferrer" class="btn-secondary btn">
+                        Conteúdo: Enviar String
                     </a>
                 </div>
             </div>
