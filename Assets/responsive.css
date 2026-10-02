@@ -573,3 +573,117 @@ body.pagina-interna footer {
         padding-bottom: 32px;
     }
 }
+
+/* =========================================================
+   PROGRESSO DO ALUNO (Assets/progresso.js)
+   Botão de conclusão nas etapas e painel de progresso na home.
+========================================================= */
+.etapa-concluir {
+    flex: 1 1 100%;
+    margin-bottom: 4px;
+}
+
+.etapa-nav .btn-concluir {
+    cursor: pointer;
+    background: #fff;
+    color: var(--azul-hi, #004A8F);
+    box-shadow: inset 0 0 0 2px var(--azul-hi, #004A8F);
+}
+
+.etapa-nav .btn-concluir:hover {
+    background: #eaf3fb;
+    color: var(--azul-hi, #004A8F);
+}
+
+.etapa-nav .btn-concluir.concluida {
+    background: var(--laranja-marca, #F26522);
+    color: #fff;
+    box-shadow: none;
+}
+
+.etapa-nav .btn-concluir.concluida:hover {
+    background: #d9541a;
+    color: #fff;
+}
+
+.progresso-formacao {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    padding: 16px 20px;
+    border: 1px solid #e3e8ef;
+    border-left: 6px solid var(--azul-hi, #004A8F);
+    border-radius: 14px;
+    background: #fff;
+}
+
+.progresso-topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    margin-bottom: 10px;
+}
+
+.progresso-texto {
+    font-weight: 800;
+    color: var(--azul-hi, #004A8F);
+}
+
+.progresso-zerar {
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    color: #666;
+    font: inherit;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.progresso-zerar:hover {
+    color: var(--azul-hi, #004A8F);
+}
+
+.progresso-trilha {
+    height: 10px;
+    border-radius: 5px;
+    background: #e3e8ef;
+    overflow: hidden;
+}
+
+.progresso-barra {
+    width: 0;
+    height: 100%;
+    border-radius: 5px;
+    background: var(--laranja-marca, #F26522);
+    transition: width 0.4s ease;
+}
+
+.progresso-dica {
+    margin: 10px 0 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.selo-concluida {
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--laranja-marca, #F26522);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .progresso-formacao {
+        padding: 14px 16px;
+    }
+
+    .selo-concluida {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+    }
+}
