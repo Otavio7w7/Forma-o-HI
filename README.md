@@ -70,6 +70,14 @@ Forma-o-HI/
    programa, ela linka para `projetos.html`, uma segunda página ("Parte 2")
    com desafios/projetos práticos finais. `projetos.html` tem, ao final da
    lista de projetos, links de volta para a Etapa 15 e para a página inicial.
+5. **Progresso do aluno** (`Assets/progresso.js`, carregado pela home e
+   pelas 15 etapas): cada etapa tem, acima da `.etapa-nav`, o botão
+   **"Marcar etapa como concluída"** (`.btn-concluir[data-etapa="N"]`).
+   A marcação fica salva no `localStorage` do navegador (chave
+   `formacaoHI.etapasConcluidas`) e a home mostra o painel
+   **"X de 15 etapas concluídas"** com barra, botão "Zerar progresso" e o
+   selo **✓ Concluída** nos cards. Não há servidor: o progresso vale só
+   para aquele navegador.
 
 ### Mapa completo Etapa → Arquivo
 
