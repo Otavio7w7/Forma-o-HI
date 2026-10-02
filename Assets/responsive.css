@@ -457,3 +457,119 @@ select {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================================
+   IDENTIDADE VISUAL DAS PÁGINAS INTERNAS
+   Etapas, Etapa 15 e Projetos (body.pagina-interna).
+   Alinha cabeçalho, hero, cartões e rodapé ao visual da home.
+========================================================= */
+body.pagina-interna header {
+    min-height: 64px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--laranja-marca, #F26522);
+}
+
+body.pagina-interna header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+body.pagina-interna .hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background: #F5F7FA;
+    border-bottom: 1px solid #e3e8ef;
+}
+
+body.pagina-interna .hero-content h1 {
+    margin: 12px 0 14px;
+    font-size: clamp(2rem, 3.4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+}
+
+body.pagina-interna .hero-image img {
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(0, 43, 94, 0.12);
+}
+
+.etapa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: var(--azul-hi, #004A8F);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.etapa-badge::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--laranja-marca, #F26522);
+}
+
+body.pagina-interna .section-title {
+    font-weight: 800;
+    letter-spacing: -0.4px;
+}
+
+body.pagina-interna .section-title::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin: 14px auto 0;
+    border-radius: 2px;
+    background: var(--laranja-marca, #F26522);
+}
+
+body.pagina-interna .training-container {
+    border: 1px solid #e3e8ef;
+    border-left: 6px solid var(--azul-hi, #004A8F);
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.055);
+}
+
+body.pagina-interna .etapa-nav {
+    padding-top: 0;
+    padding-bottom: 48px;
+    background: #F5F7FA;
+}
+
+body.pagina-interna footer {
+    margin-top: 0;
+    padding: 28px 5%;
+    background: #171717;
+    color: #c8c8c8;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    body.pagina-interna .hero {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    body.pagina-interna .hero-content h1 {
+        font-size: clamp(1.7rem, 7.5vw, 2.1rem);
+    }
+
+    body.pagina-interna .training-container {
+        border-left-width: 5px;
+    }
+
+    body.pagina-interna .etapa-nav {
+        padding-bottom: 32px;
+    }
+}
