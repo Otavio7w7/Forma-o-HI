@@ -470,9 +470,12 @@
         }
 
         .arrow::after {
-            content: "+";
-            font-size: 1.8rem;
-            font-weight: 300;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: translateY(-2px) rotate(45deg);
         }
 
         .card-header:hover .arrow {
@@ -502,7 +505,7 @@
         .accordion-checkbox:checked ~ .card-header .arrow {
             background: var(--blue);
             color: white;
-            transform: rotate(45deg);
+            transform: rotate(180deg);
         }
 
         .card-content p {

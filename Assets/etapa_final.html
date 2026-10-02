@@ -284,8 +284,17 @@ header{
     transition:.25s;
 }
 
+.chevron::after{
+    content:"";
+    width:8px;
+    height:8px;
+    border-right:2px solid currentColor;
+    border-bottom:2px solid currentColor;
+    transform:translateY(-2px) rotate(45deg);
+}
+
 .step.open .chevron{
-    transform:rotate(45deg);
+    transform:rotate(180deg);
     background:var(--azul-hi);
     color:#fff;
 }
@@ -680,9 +689,7 @@ footer{
                     1. Operação em Modo Loader
                 </h3>
 
-                <span class="chevron">
-                    +
-                </span>
+                <span class="chevron"></span>
 
             </div>
 
@@ -766,9 +773,7 @@ footer{
                     2. Montagem do CLP P7C
                 </h3>
 
-                <span class="chevron">
-                    +
-                </span>
+                <span class="chevron"></span>
 
             </div>
 
@@ -849,9 +854,7 @@ footer{
                     3. Projetos Propostos
                 </h3>
 
-                <span class="chevron">
-                    +
-                </span>
+                <span class="chevron"></span>
 
             </div>
 
@@ -934,9 +937,7 @@ footer{
                     4. Desenvolvimento Contínuo
                 </h3>
 
-                <span class="chevron">
-                    +
-                </span>
+                <span class="chevron"></span>
 
             </div>
 

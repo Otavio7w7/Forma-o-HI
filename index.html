@@ -596,14 +596,16 @@
         }
 
         .setinha::after {
-            content: "+";
+            content: "";
 
-            font-size:
-                1.65rem;
+            width: 9px;
+            height: 9px;
 
-            font-weight: 300;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
 
-            line-height: 1;
+            transform:
+                translateY(-2px) rotate(45deg);
 
             transition:
                 transform 0.3s ease;
@@ -656,7 +658,7 @@
         }
 
         .accordion-checkbox:checked ~ .card-header .setinha::after {
-            transform: rotate(45deg);
+            transform: translateY(2px) rotate(225deg);
         }
 
 
