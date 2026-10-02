@@ -84,6 +84,19 @@ select {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Largura única dos botões nas etapas, Etapa 15 e Projetos */
+.training-container .btn,
+.training-container .btn-secondary,
+.training-container .btn-youtube,
+.training-container .btn-onedrive,
+.training-container .btn-link-action,
+.etapa-nav .btn,
+.card-buttons .btn {
+    width: 340px;
+    max-width: 100%;
+    text-align: center;
+}
+
 /* Botões de link de conteúdo: azul HI */
 .btn-youtube,
 .btn-onedrive,
@@ -341,6 +354,16 @@ select {
         align-items: center;
         justify-content: center;
         padding: 11px 14px;
+    }
+
+    .training-container .btn,
+    .training-container .btn-secondary,
+    .training-container .btn-youtube,
+    .training-container .btn-onedrive,
+    .training-container .btn-link-action,
+    .etapa-nav .btn,
+    .card-buttons .btn {
+        width: 100%;
     }
 
     body > div > .btn[style*="margin-left"] {
