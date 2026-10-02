@@ -85,28 +85,15 @@
 
         header {
 
-            position: sticky;
-            top: 0;
-
-            z-index: 999;
-
-            height: 72px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 20px;
 
-            padding: 0 5%;
+            padding: 20px 5%;
 
-            background: rgba(255, 255, 255, 0.92);
-
-            backdrop-filter: blur(15px);
-
-            border-bottom:
-                1px solid rgba(0, 74, 143, 0.08);
-
-            box-shadow:
-                0 4px 20px rgba(0, 0, 0, 0.04);
+            background: var(--blue);
+            color: white;
         }
 
 
@@ -118,12 +105,15 @@
 
         .logo-img {
             height: 42px;
+            padding: 4px 6px;
+            background: white;
+            border-radius: 6px;
             width: auto;
             object-fit: contain;
         }
 
         .logo-text {
-            color: var(--blue);
+            color: white;
             font-size: 0.95rem;
             font-weight: 800;
             letter-spacing: 0.7px;
@@ -146,8 +136,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 10px 22px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             font-weight: 700;
@@ -172,12 +162,12 @@
         }
 
         .btn-orange {
-            background: var(--orange);
+            background: var(--blue);
             color: white;
         }
 
         .btn-orange:hover {
-            background: var(--orange-dark);
+            background: var(--blue-dark);
         }
 
         .btn-outline {
@@ -191,6 +181,20 @@
             color: white;
         }
 
+        header .btn-outline {
+            padding: 8px 14px;
+            min-height: 0;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.35);
+            color: white;
+            font-size: .88rem;
+        }
+
+        header .btn-outline:hover {
+            background: white;
+            color: var(--blue);
+        }
+
 
         /* =========================================================
            HERO
@@ -199,25 +203,15 @@
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 85px 5% 100px;
-            color: white;
-            text-align: center;
-            background:
-                radial-gradient(
-                    circle at 15% 20%,
-                    rgba(255,255,255,.12),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 90% 80%,
-                    rgba(242,101,34,.18),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    var(--blue),
-                    var(--blue-dark)
-                );
+            padding: 60px 5%;
+            color: var(--text);
+            text-align: left;
+            background: #F5F7FA;
+        }
+
+        .hero::before,
+        .hero::after {
+            display: none;
         }
 
         .hero::before {
@@ -245,7 +239,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1050px;
+            max-width: 1200px;
             margin: auto;
         }
 
@@ -255,57 +249,55 @@
             gap: 8px;
             padding: 8px 16px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,.2);
             border-radius: 50px;
-            background: rgba(255,255,255,.1);
-            backdrop-filter: blur(10px);
-            font-size: .9rem;
+            background: var(--blue);
+            color: white;
+            font-size: .85rem;
             font-weight: 700;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.05;
-            margin-bottom: 20px;
-            font-weight: 900;
+            color: var(--blue);
+            font-size: 2.5rem;
+            line-height: 1.15;
+            margin-bottom: 15px;
         }
 
         .hero h1 span {
-            color: #ff9b68;
+            color: var(--blue);
         }
 
         .hero-description {
             max-width: 800px;
-            margin: auto;
-            font-size: 1.15rem;
-            opacity: .9;
+            font-size: 1rem;
+            color: #4b5563;
         }
 
         .hero-stats {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 45px;
+            margin-top: 30px;
         }
 
         .stat {
             min-width: 150px;
             padding: 18px 25px;
-            border: 1px solid rgba(255,255,255,.13);
-            border-radius: 12px;
-            background: rgba(255,255,255,.08);
-            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
         }
 
         .stat strong {
             display: block;
+            color: var(--blue);
             font-size: 1.8rem;
         }
 
         .stat span {
             font-size: .85rem;
-            opacity: .75;
+            color: var(--text-light);
         }
 
 
@@ -314,7 +306,7 @@
         ========================================================= */
 
         .section {
-            padding: 75px 5%;
+            padding: 50px 5%;
         }
 
         .container {
@@ -330,7 +322,7 @@
 
         .section-title {
             color: var(--blue);
-            font-size: clamp(2rem, 4vw, 2.7rem);
+            font-size: 2rem;
             margin-bottom: 10px;
         }
 
@@ -372,7 +364,7 @@
         ========================================================= */
 
         .projects-section {
-            background: linear-gradient(180deg, #f5f7fa, #eef3f8);
+            background: #F5F7FA;
         }
 
         .toolbar {
@@ -402,18 +394,15 @@
 
         .project-card {
             background: white;
-            border-radius: var(--radius);
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid var(--border);
-            border-bottom: 5px solid var(--blue);
-            box-shadow: var(--shadow);
-            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            border-left: 8px solid var(--blue);
+            box-shadow: 0 5px 25px rgba(0,0,0,.1);
+            transition: box-shadow .3s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
-            border-bottom-color: var(--orange);
         }
 
         .project-card.hidden {
@@ -487,8 +476,8 @@
         }
 
         .card-header:hover .arrow {
-            background: var(--orange-light);
-            color: var(--orange);
+            background: var(--blue-light);
+            color: var(--blue);
         }
 
 
@@ -584,9 +573,7 @@
             margin-top: 30px;
         }
 
-        .card-buttons .btn {
-            min-width: 280px;
-        }
+
 
 
         /* =========================================================
@@ -594,9 +581,10 @@
         ========================================================= */
 
         footer {
-            padding: 35px 5%;
-            background: #121820;
-            color: #b8c0ca;
+            padding: 20px 5%;
+            margin-top: 40px;
+            background: #222;
+            color: white;
             text-align: center;
         }
 
@@ -607,7 +595,7 @@
         footer small {
             display: block;
             margin-top: 8px;
-            color: #7d8793;
+            color: #b8c0ca;
         }
 
         #topButton {
@@ -618,7 +606,7 @@
             height: 48px;
             border: none;
             border-radius: 50%;
-            background: var(--orange);
+            background: var(--blue);
             color: white;
             font-size: 1.2rem;
             cursor: pointer;
@@ -687,9 +675,7 @@
                 width: 38px;
                 height: 38px;
             }
-            .card-buttons .btn {
-                min-width: 100%;
-            }
+
         }
 
 
@@ -798,10 +784,10 @@
         </div>
 
         <div class="toolbar">
-            <button class="btn btn-blue" id="openAll">
+            <button class="tool-btn" id="openAll">
                 ＋ Abrir todos
             </button>
-            <button class="btn btn-outline" id="closeAll">
+            <button class="tool-btn" id="closeAll">
                 − Fechar todos
             </button>
         </div>
@@ -1000,11 +986,11 @@
 
         </div>
 
-        <div class="toolbar" style="justify-content: flex-start; margin: 30px 0 0;">
+        <div class="etapa-nav" style="padding: 30px 0 0;">
             <a href="etapa_final.html" class="btn btn-blue">
                 ← Voltar para a Etapa 15
             </a>
-            <a href="../index.html" class="btn btn-orange">
+            <a href="../index.html" class="btn btn-blue">
                 Página inicial
             </a>
         </div>
