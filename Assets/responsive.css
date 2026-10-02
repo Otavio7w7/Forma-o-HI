@@ -46,6 +46,77 @@ select {
     max-width: 100%;
 }
 
+/* =========================================================
+   PADRÃO ÚNICO DE BOTÕES
+   Mesmo tamanho, formato e fonte em todas as páginas.
+========================================================= */
+.btn,
+.btn-azul,
+.btn-secondary,
+.btn-youtube,
+.btn-onedrive,
+.btn-link-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 22px;
+    border: 0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+    box-shadow: none;
+    transform: none;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover,
+.btn-azul:hover,
+.btn-secondary:hover,
+.btn-youtube:hover,
+.btn-onedrive:hover,
+.btn-link-action:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Botões de link de conteúdo: azul HI */
+.btn-youtube,
+.btn-onedrive,
+.btn-link-action {
+    background-color: var(--azul-hi, #004A8F);
+    color: #fff;
+}
+
+.btn-youtube:hover,
+.btn-onedrive:hover,
+.btn-link-action:hover {
+    background-color: #00366b;
+}
+
+/* Controles de lista (Abrir/Fechar todas) */
+.tool-btn {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--azul-hi, #004A8F);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tool-btn:hover {
+    background: var(--azul-hi, #004A8F);
+    color: #fff;
+}
+
 /* Navegação entre etapas (Voltar / anterior / próxima) */
 .etapa-nav {
     display: flex;
@@ -55,10 +126,13 @@ select {
     padding: 0 5%;
 }
 
+.etapa-nav .btn,
 .etapa-nav .btn-etapa {
-    background: var(--azul-hi);
+    background: var(--azul-hi, #004A8F);
+    color: #fff;
 }
 
+.etapa-nav .btn:hover,
 .etapa-nav .btn-etapa:hover {
     background: #00366b;
 }
