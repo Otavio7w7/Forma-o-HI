@@ -46,6 +46,31 @@ select {
     max-width: 100%;
 }
 
+/* Navegação entre etapas (Voltar / anterior / próxima) */
+.etapa-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 0 5%;
+}
+
+.etapa-nav .btn-etapa {
+    background: var(--azul-hi);
+}
+
+.etapa-nav .btn-etapa:hover {
+    background: #00366b;
+}
+
+@media (max-width: 480px) {
+    .etapa-nav .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 @media (max-width: 1024px) {
     .hero {
         gap: 32px;
