@@ -687,3 +687,391 @@ body.pagina-interna footer {
         font-size: 0.7rem;
     }
 }
+
+/* =========================================================
+   MODO ESCURO (Assets/tema.js)
+   Ativado por html[data-theme="dark"]. O azul HI continua nos
+   cabeçalhos e botões; o laranja continua nos destaques.
+   Só textos, fundos e bordas mudam.
+========================================================= */
+.tema-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 12px;
+    padding: 6px 4px;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tema-switch-trilho {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 22px;
+    border-radius: 11px;
+    background: rgba(128, 138, 150, 0.45);
+    transition: background-color 0.25s ease;
+}
+
+.tema-switch-bolinha {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease;
+}
+
+.tema-switch[aria-checked="true"] .tema-switch-trilho {
+    background: var(--laranja-marca, #F26522);
+}
+
+.tema-switch[aria-checked="true"] .tema-switch-bolinha {
+    transform: translateX(18px);
+}
+
+.tema-switch:focus-visible {
+    outline: 2px solid var(--laranja-marca, #F26522);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Cabeçalho das etapas: switch à direita do título */
+body.pagina-interna header > .tema-switch {
+    margin-left: auto;
+}
+
+@media (max-width: 600px) {
+    .tema-switch {
+        margin: 4px 0 0;
+        justify-content: center;
+    }
+
+    header nav .tema-switch {
+        display: flex;
+        margin: 10px auto 0;
+    }
+
+    header > div .tema-switch,
+    .header-buttons .tema-switch {
+        margin-left: 12px;
+    }
+
+    body.pagina-interna header > .tema-switch {
+        margin: 0 auto;
+    }
+}
+
+/* Projetos: no celular os botões do cabeçalho somem; o switch fica */
+@media (max-width: 650px) {
+    .header-buttons:has(.tema-switch) {
+        display: flex !important;
+    }
+
+    .header-buttons:has(.tema-switch) > a {
+        display: none;
+    }
+
+    .header-buttons .tema-switch {
+        margin-left: 0;
+    }
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --esc-fundo: #0f1620;
+    --esc-fundo-2: #141d29;
+    --esc-superficie: #1a2533;
+    --esc-superficie-2: #223042;
+    --esc-borda: #2c3a4d;
+    --esc-texto: #e4e9f0;
+    --esc-texto-2: #a8b3c2;
+    --esc-azul-texto: #7db8f0;
+    --esc-azul-fundo: #1b324d;
+
+    /* Variáveis das páginas (home, etapas, Etapa 15, Projetos) */
+    --cinza-claro: var(--esc-fundo-2);
+    --cinza-fundo: var(--esc-superficie-2);
+    --texto-escuro: var(--esc-texto);
+    --texto-cinza: var(--esc-texto-2);
+    --texto: var(--esc-texto);
+    --cinza: var(--esc-texto-2);
+    --borda: var(--esc-borda);
+    --azul-claro: var(--esc-azul-fundo);
+    --sombra-card: 0 8px 25px rgba(0, 0, 0, 0.35);
+    --sombra-card-hover: 0 14px 34px rgba(0, 0, 0, 0.5);
+    --background: var(--esc-fundo-2);
+    --text: var(--esc-texto);
+    --text-light: var(--esc-texto-2);
+    --border: var(--esc-borda);
+    --blue-light: var(--esc-azul-fundo);
+    --orange-light: #33241a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.5);
+    --onedrive: #4aa3f0;
+}
+
+html[data-theme="dark"] body {
+    background: var(--esc-fundo);
+    color: var(--esc-texto);
+}
+
+/* Títulos e textos em azul HI ficam em azul claro para leitura */
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .hero-content h1,
+html[data-theme="dark"] body.pagina-interna .hero h1,
+html[data-theme="dark"] body.pagina-interna .hero h1 span,
+html[data-theme="dark"] .training-title,
+html[data-theme="dark"] .step h3,
+html[data-theme="dark"] .card-title h3,
+html[data-theme="dark"] .project h4,
+html[data-theme="dark"] .intro h2,
+html[data-theme="dark"] .stat strong,
+html[data-theme="dark"] .modal-header h3,
+html[data-theme="dark"] .progresso-texto,
+html[data-theme="dark"] [style*="color: var(--azul-hi)"]:not([style*="background-color: white"]) {
+    color: var(--esc-azul-texto) !important;
+}
+
+/* Sem !important: os títulos com cor própria (ex.: card azul da home) ficam como estão */
+html[data-theme="dark"] .card h3 {
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] a:not([class]) {
+    color: var(--esc-azul-texto);
+}
+
+/* Cartões e caixas */
+html[data-theme="dark"] .training-container,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .project-card,
+html[data-theme="dark"] .intro,
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .modal-box,
+html[data-theme="dark"] .progresso-formacao,
+html[data-theme="dark"] .recipe-table {
+    background: var(--esc-superficie);
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] .training-container,
+html[data-theme="dark"] .project-card {
+    border-left-color: var(--azul-hi, #004A8F);
+}
+
+html[data-theme="dark"] .intro {
+    border-left-color: var(--orange, #F26522);
+}
+
+html[data-theme="dark"] .card {
+    border-bottom-color: var(--azul-hi, #004A8F);
+}
+
+html[data-theme="dark"] .card:hover {
+    border-bottom-color: var(--laranja-hi, #F26522);
+}
+
+html[data-theme="dark"] .progresso-formacao {
+    border-left-color: var(--azul-hi, #004A8F);
+}
+
+html[data-theme="dark"] .step {
+    background: transparent;
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] .project,
+html[data-theme="dark"] .note,
+html[data-theme="dark"] .highlight-box {
+    background: var(--esc-superficie-2);
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] .note,
+html[data-theme="dark"] .highlight-box {
+    border-left-color: var(--azul-hi, #004A8F);
+}
+
+html[data-theme="dark"] .recipe-table th,
+html[data-theme="dark"] .recipe-table td {
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] code {
+    background: var(--esc-superficie-2);
+    color: #cfe3f7;
+}
+
+html[data-theme="dark"] .placeholder {
+    background: var(--esc-azul-fundo);
+    border-color: #2f5d86;
+    color: #a9cdf0;
+}
+
+/* Textos secundários */
+html[data-theme="dark"] .hero p,
+html[data-theme="dark"] .hero-description,
+html[data-theme="dark"] .intro p,
+html[data-theme="dark"] .card-content p,
+html[data-theme="dark"] .progresso-dica,
+html[data-theme="dark"] .progresso-zerar {
+    color: var(--esc-texto-2);
+}
+
+html[data-theme="dark"] .project strong {
+    color: var(--esc-texto);
+}
+
+/* Home: a faixa azul do topo continua igual */
+html[data-theme="dark"] body:not(.pagina-interna) .hero p {
+    color: inherit;
+}
+
+html[data-theme="dark"] body:not(.pagina-interna) header {
+    background: rgba(15, 22, 32, 0.94);
+    border-bottom-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] header h1 {
+    color: var(--esc-azul-texto);
+}
+
+/* Home: card "O Legado do Suporte Técnico" (estilo inline) */
+html[data-theme="dark"] .card[style*="135deg"] {
+    background: linear-gradient(135deg, var(--esc-superficie), var(--esc-fundo-2)) !important;
+}
+
+html[data-theme="dark"] [style*="background-color: #ffffff"] {
+    background-color: var(--esc-superficie-2) !important;
+}
+
+html[data-theme="dark"] .section-cinza {
+    background: linear-gradient(180deg, var(--esc-fundo-2) 0%, #111a25 100%);
+}
+
+/* Fundos claros das páginas internas */
+html[data-theme="dark"] body.pagina-interna .hero,
+html[data-theme="dark"] body.pagina-interna .etapa-nav,
+html[data-theme="dark"] .projects-section {
+    background: var(--esc-fundo-2);
+    border-color: var(--esc-borda);
+}
+
+/* Botões claros (contorno) */
+html[data-theme="dark"] .btn-outline,
+html[data-theme="dark"] .tool-btn,
+html[data-theme="dark"] .etapa-nav .btn-concluir {
+    background: var(--esc-superficie);
+    border-color: var(--esc-borda);
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .etapa-nav .btn-concluir {
+    box-shadow: inset 0 0 0 2px var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .btn-outline:hover,
+html[data-theme="dark"] .tool-btn:hover {
+    background: var(--azul-hi, #004A8F);
+    border-color: var(--azul-hi, #004A8F);
+    color: #fff;
+}
+
+html[data-theme="dark"] .etapa-nav .btn-concluir:hover {
+    background: var(--esc-azul-fundo);
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .etapa-nav .btn-concluir.concluida {
+    background: var(--laranja-marca, #F26522);
+    color: #fff;
+    box-shadow: none;
+}
+
+html[data-theme="dark"] .etapa-nav .btn-concluir.concluida:hover {
+    background: #d9541a;
+}
+
+html[data-theme="dark"] header .btn-outline {
+    background: transparent;
+}
+
+html[data-theme="dark"] body.pagina-interna header .btn-outline {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+}
+
+html[data-theme="dark"] body.pagina-interna header .btn-outline:hover {
+    background: #fff;
+    color: var(--azul-hi, #004A8F);
+}
+
+/* Setas dos cards e chips */
+html[data-theme="dark"] .setinha,
+html[data-theme="dark"] .arrow,
+html[data-theme="dark"] .chevron {
+    border-color: var(--esc-borda);
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .card-header:hover .setinha {
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] .accordion-checkbox:checked ~ .card-header .setinha,
+html[data-theme="dark"] .accordion-checkbox:checked ~ .card-header .arrow,
+html[data-theme="dark"] .step.open .chevron {
+    color: #fff;
+}
+
+html[data-theme="dark"] .stage-count,
+html[data-theme="dark"] .tag {
+    color: var(--esc-azul-texto);
+}
+
+/* Campos de busca */
+html[data-theme="dark"] .formation-search input,
+html[data-theme="dark"] .search {
+    background: var(--esc-superficie-2);
+    border-color: var(--esc-borda);
+    color: var(--esc-texto);
+}
+
+html[data-theme="dark"] .no-results {
+    background: rgba(26, 37, 51, 0.7);
+    border-color: var(--esc-borda);
+}
+
+/* Barras de progresso */
+html[data-theme="dark"] .progresso-trilha,
+html[data-theme="dark"] .progress-bar {
+    background: var(--esc-superficie-2);
+}
+
+/* Projetos: dicas e janela de links */
+html[data-theme="dark"] .tips-title {
+    color: #ff9a5c;
+}
+
+html[data-theme="dark"] .modal-link-item {
+    color: var(--esc-azul-texto);
+}
+
+/* Rodapé um pouco mais escuro que a página */
+html[data-theme="dark"] footer {
+    background: #0a0f15;
+}
