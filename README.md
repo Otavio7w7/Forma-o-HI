@@ -19,6 +19,7 @@ Forma-o-HI/
 ├── README.md
 └── Assets/
     ├── responsive.css            ← CSS de responsividade compartilhado (todas as páginas)
+    ├── busca-conteudo.js         ← busca da home dentro do conteúdo das etapas
     ├── fundamentos.html          ← Etapa 1
     ├── HIstudio.html             ← Etapa 2
     ├── telemetria.html           ← Etapa 3
@@ -78,6 +79,16 @@ Forma-o-HI/
    **"X de 15 etapas concluídas"** com barra, botão "Zerar progresso" e o
    selo **✓ Concluída** nos cards. Não há servidor: o progresso vale só
    para aquele navegador.
+6. **Busca no conteúdo** (`Assets/busca-conteudo.js`, carregado só pela
+   home): na primeira vez que a pesquisa é usada, a home lê as páginas das
+   15 etapas (os blocos `.step` de cada uma). A partir de 2 letras, mostra
+   o painel `#buscaConteudo` com os passos que contêm o termo (ignora
+   acentos e maiúsculas) e mantém visíveis os cards dessas etapas. Cada
+   resultado abre a etapa já rolada até o título do passo (Text Fragment
+   `#:~:text=`). Não há índice para manter: um passo novo entra na busca
+   automaticamente, desde que esteja dentro de um `.step` com `<h3>`.
+   Aberto como arquivo local (`file://`), o navegador bloqueia essa leitura
+   e a busca volta a filtrar só pelo texto dos cards.
 
 ### Mapa completo Etapa → Arquivo
 
@@ -110,7 +121,8 @@ Forma-o-HI/
   accordion via CSS puro.
 - JavaScript (uma única `<script>` no final do `<body>`, IIFE) responsável
   por 4 comportamentos:
-  - **Busca** (`#stageSearch`): filtra os cards de etapa pelo texto digitado.
+  - **Busca** (`#stageSearch`): filtra os cards de etapa pelo texto digitado
+    (e, com `Assets/busca-conteudo.js`, pelo conteúdo das etapas).
   - **Abrir todas / Fechar todas** (`#openStages` / `#closeStages`): marca/
     desmarca todos os checkboxes dos accordions visíveis.
   - **Botão "Voltar ao topo"** (`#backToTop`): aparece após rolar 450px.

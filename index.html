@@ -1441,8 +1441,8 @@
                 <input
                     type="search"
                     id="stageSearch"
-                    placeholder="Pesquisar uma etapa..."
-                    aria-label="Pesquisar uma etapa"
+                    placeholder="Pesquisar etapa ou assunto..."
+                    aria-label="Pesquisar etapa ou assunto"
                 >
 
             </div>
@@ -2508,9 +2508,18 @@
                             card.textContent
                             .toLowerCase();
 
+                        /* Assets/busca-conteudo.js: procura também
+                           dentro da página da etapa */
                         const match =
                             !term ||
-                            text.includes(term);
+                            text.includes(term) ||
+                            (
+                                window.buscaConteudo &&
+                                window.buscaConteudo.etapaContem(
+                                    card,
+                                    term
+                                )
+                            );
 
 
                         card.classList.toggle(
@@ -2721,5 +2730,6 @@
 
 
     <script src="Assets/progresso.js"></script>
+    <script src="Assets/busca-conteudo.js"></script>
 </body>
 </html>

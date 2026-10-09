@@ -677,8 +677,85 @@ body.pagina-interna footer {
     white-space: nowrap;
 }
 
+/* Busca no conteúdo das etapas (home, Assets/busca-conteudo.js) */
+.busca-conteudo {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    padding: 16px 20px;
+    border: 1px solid #e3e8ef;
+    border-left: 6px solid var(--laranja-marca, #F26522);
+    border-radius: 14px;
+    background: #fff;
+}
+
+.busca-conteudo-titulo {
+    margin: 0;
+    color: var(--azul-hi, #004A8F);
+    font-weight: 800;
+}
+
+.busca-conteudo-lista {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.busca-conteudo-lista li + li {
+    border-top: 1px solid #e3e8ef;
+}
+
+.busca-conteudo-lista a {
+    display: block;
+    padding: 10px 8px;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+}
+
+.busca-conteudo-lista a:hover,
+.busca-conteudo-lista a:focus-visible {
+    background: #f0f5fb;
+}
+
+.busca-conteudo-etapa {
+    display: block;
+    color: #b84a12; /* laranja HI escurecido: legível em fonte pequena */
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.busca-conteudo-lista strong {
+    display: block;
+    margin: 2px 0 4px;
+    color: var(--azul-hi, #004A8F);
+}
+
+.busca-conteudo-trecho {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.busca-conteudo-trecho mark {
+    padding: 0 2px;
+    border-radius: 3px;
+    background: #ffe2cf;
+    color: inherit;
+}
+
+.busca-conteudo-mais {
+    margin: 8px 0 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
 @media (max-width: 480px) {
-    .progresso-formacao {
+    .progresso-formacao,
+    .busca-conteudo {
         padding: 14px 16px;
     }
 
@@ -1074,4 +1151,39 @@ html[data-theme="dark"] .modal-link-item {
 /* Rodapé um pouco mais escuro que a página */
 html[data-theme="dark"] footer {
     background: #0a0f15;
+}
+
+/* Busca no conteúdo das etapas */
+html[data-theme="dark"] .busca-conteudo {
+    background: var(--esc-superficie);
+    border-color: var(--esc-borda);
+    border-left-color: var(--laranja-marca, #F26522);
+}
+
+html[data-theme="dark"] .busca-conteudo-titulo,
+html[data-theme="dark"] .busca-conteudo-lista strong {
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .busca-conteudo-lista li + li {
+    border-color: var(--esc-borda);
+}
+
+html[data-theme="dark"] .busca-conteudo-lista a:hover,
+html[data-theme="dark"] .busca-conteudo-lista a:focus-visible {
+    background: var(--esc-superficie-2);
+}
+
+html[data-theme="dark"] .busca-conteudo-trecho,
+html[data-theme="dark"] .busca-conteudo-mais {
+    color: var(--esc-texto-2);
+}
+
+html[data-theme="dark"] .busca-conteudo-etapa {
+    color: var(--laranja-marca, #F26522);
+}
+
+html[data-theme="dark"] .busca-conteudo-trecho mark {
+    background: #5a3416;
+    color: #fff;
 }
