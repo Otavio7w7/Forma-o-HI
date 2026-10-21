@@ -9,6 +9,6 @@
    site funciona como antes (progresso só no navegador).
 ========================================================= */
 window.FORMACAO_HI_SUPABASE = {
-    url: "",
-    anonKey: ""
+    url: "https://uoynmwbyxruzfkumdifn.supabase.co",
+    anonKey: "sb_publishable_ko2NmevUvqGZ3c3El2H0GQ_gQSFAY_F"
 };
