@@ -219,13 +219,16 @@
         }
         var uid = sessao.user.id;
 
-        return rest("progresso?select=etapas,nome&user_id=eq." + encodeURIComponent(uid))
+        return rest("progresso?select=etapas,nome,criado_em,ultima_etapa&user_id=eq." + encodeURIComponent(uid))
             .then(function (linhas) {
                 var linha = linhas && linhas[0];
                 var servidor = (linha && linha.etapas) || [];
                 var local = progresso ? progresso.ler() : [];
                 var dono = lerLocal(CH_DONO);
                 var lista;
+
+                info.criado_em = linha ? linha.criado_em : new Date().toISOString();
+                info.ultima_etapa = linha ? linha.ultima_etapa : null;
 
                 if (linha && linha.nome && !sessao.user.nome) {
                     sessao.user.nome = linha.nome;
@@ -244,6 +247,8 @@
 
                 gravarLocal(CH_DONO, uid);
                 if (progresso) progresso.definir(lista);
+                if (etapaDaPagina) info.ultima_etapa = etapaDaPagina;
+                desenharCartao();
 
                 var campos = { etapas: lista };
                 if (etapaDaPagina) campos.ultima_etapa = etapaDaPagina;
@@ -259,6 +264,7 @@
     if (progresso) {
         progresso.aoAlterar(function (lista) {
             if (!sessao || paginaAdmin) return;
+            if (contaCartao && !contaCartao.hidden) desenharCartao();
             gravarLocal(CH_PENDENTE, "1");
             enviar({ etapas: lista }).then(function () {
                 gravarLocal(CH_PENDENTE, null);
@@ -387,24 +393,137 @@
 
 
     /* -----------------------------------------------------
-       "CONECTADO COMO" + SAIR
+       ÍCONE DA CONTA (canto inferior esquerdo) + CARTÃO
     ----------------------------------------------------- */
 
-    function removerUsuario() {
-        Array.prototype.forEach.call(document.querySelectorAll(".conta-usuario"), function (el) {
-            el.remove();
-        });
+    var ETAPAS = [
+        null,
+        ["Fundamentos", "fundamentos.html"],
+        ["HIstudio", "HIstudio.html"],
+        ["Telemetria", "telemetria.html"],
+        ["SPDSW", "spdsw.html"],
+        ["PostgreSQL", "postgre_sql.html"],
+        ["HIscada Pro", "HIscadapro.html"],
+        ["Atendimento ao Cliente", "atendimento_ao_cliente.html"],
+        ["MQTT", "mqtt.html"],
+        ["GTON C SET e ESC717", "gtonC_e_esc.html"],
+        ["GTON M", "gtonM.html"],
+        ["GTON P", "gtonP.html"],
+        ["IHMs Touch", "ihm_touch.html"],
+        ["IHMs Alfanuméricas", "ihm_alfanumerica.html"],
+        ["Rádios", "radios.html"],
+        ["Conclusão", "etapa_final.html"]
+    ];
+    var PASTA = /\/Assets\/[^\/]*$/i.test(location.pathname) ? "" : "Assets/";
+
+    /* dados vindos da conta (preenchidos em sincronizar) */
+    var info = { criado_em: null, ultima_etapa: null, admin: false };
+    var contaBotao = null;
+    var contaCartao = null;
+
+    function iniciais(nome) {
+        var partes = String(nome || "?").trim().split(/\s+/);
+        var r = partes[0].charAt(0) + (partes.length > 1 ? partes[partes.length - 1].charAt(0) : "");
+        return r.toUpperCase();
     }
 
-    function mostrarUsuario() {
-        removerUsuario();
-        var p = document.createElement("p");
-        p.className = "conta-usuario";
-        p.appendChild(document.createTextNode("Conectado como "));
-        var b = document.createElement("strong");
-        b.textContent = sessao.user.nome || sessao.user.email;
-        p.appendChild(b);
-        p.appendChild(document.createTextNode(" · "));
+    function nomeEtapa(n) {
+        return "Etapa " + n + ": " + ETAPAS[n][0];
+    }
+
+    function linkEtapa(n) {
+        var a = document.createElement("a");
+        a.href = PASTA + ETAPAS[n][1];
+        a.textContent = nomeEtapa(n);
+        return a;
+    }
+
+    function linha(pai, rotulo, conteudo) {
+        var dt = document.createElement("dt");
+        dt.textContent = rotulo;
+        var dd = document.createElement("dd");
+        if (typeof conteudo === "string") {
+            dd.textContent = conteudo;
+        } else {
+            dd.appendChild(conteudo);
+        }
+        pai.appendChild(dt);
+        pai.appendChild(dd);
+    }
+
+    function removerUsuario() {
+        if (contaBotao) contaBotao.remove();
+        if (contaCartao) contaCartao.remove();
+        contaBotao = contaCartao = null;
+    }
+
+    function abrirCartao(abrir) {
+        if (!contaCartao) return;
+        contaCartao.hidden = !abrir;
+        contaBotao.setAttribute("aria-expanded", abrir ? "true" : "false");
+        if (abrir) desenharCartao();
+    }
+
+    function desenharCartao() {
+        if (!contaCartao || !sessao) return;
+        var u = sessao.user;
+        var lista = progresso ? progresso.ler() : [];
+        var total = progresso ? progresso.TOTAL : 15;
+        var pct = Math.round(lista.length / total * 100);
+        var atual = null;
+        for (var n = 1; n <= total; n++) {
+            if (lista.indexOf(n) === -1) { atual = n; break; }
+        }
+        var ultima = etapaDaPagina || info.ultima_etapa;
+
+        contaCartao.innerHTML = "";
+
+        var topo = document.createElement("div");
+        topo.className = "conta-cartao-topo";
+        var av = document.createElement("span");
+        av.className = "conta-avatar";
+        av.setAttribute("aria-hidden", "true");
+        av.textContent = iniciais(u.nome || u.email);
+        topo.appendChild(av);
+        var quem = document.createElement("div");
+        var nome = document.createElement("strong");
+        nome.id = "contaCartaoNome";
+        nome.textContent = u.nome || u.email;
+        quem.appendChild(nome);
+        var email = document.createElement("span");
+        email.className = "conta-cartao-email";
+        email.textContent = u.email;
+        quem.appendChild(email);
+        var status = document.createElement("span");
+        status.className = "conta-cartao-status";
+        status.textContent = info.admin ? "Conectado · Administrador" : "Conectado";
+        quem.appendChild(status);
+        topo.appendChild(quem);
+        contaCartao.appendChild(topo);
+
+        var prog = document.createElement("div");
+        prog.className = "conta-cartao-progresso";
+        prog.innerHTML = '<span></span><div class="progresso-trilha"><div class="progresso-barra"></div></div>';
+        prog.querySelector("span").textContent = lista.length + " de " + total + " etapas concluídas (" + pct + "%)";
+        prog.querySelector(".progresso-barra").style.width = pct + "%";
+        contaCartao.appendChild(prog);
+
+        var dl = document.createElement("dl");
+        dl.className = "conta-cartao-dados";
+        linha(dl, "Próxima etapa", atual ? linkEtapa(atual) : "Concluiu as 15 etapas");
+        if (ultima) linha(dl, "Última etapa aberta", linkEtapa(ultima));
+        if (info.criado_em) linha(dl, "Conta criada em", new Date(info.criado_em).toLocaleDateString("pt-BR"));
+        contaCartao.appendChild(dl);
+
+        var acoes = document.createElement("div");
+        acoes.className = "conta-cartao-acoes";
+        if (info.admin && !paginaAdmin) {
+            var adm = document.createElement("a");
+            adm.href = PASTA + "admin.html";
+            adm.className = "conta-cartao-adm";
+            adm.textContent = "Painel ADM";
+            acoes.appendChild(adm);
+        }
         var sair = document.createElement("button");
         sair.type = "button";
         sair.className = "conta-sair";
@@ -414,25 +533,62 @@
             if (t) chamar("/auth/v1/logout", { method: "POST" }, t).catch(function () {});
             apagarSessao();
             logado = false;
+            info = { criado_em: null, ultima_etapa: null, admin: false };
             mostrarLogin();
         });
-        p.appendChild(sair);
+        acoes.appendChild(sair);
+        contaCartao.appendChild(acoes);
+    }
+
+    function mostrarUsuario() {
+        removerUsuario();
+        var u = sessao.user;
+
+        contaBotao = document.createElement("button");
+        contaBotao.type = "button";
+        contaBotao.className = "conta-icone";
+        contaBotao.setAttribute("aria-haspopup", "dialog");
+        contaBotao.setAttribute("aria-expanded", "false");
+        contaBotao.setAttribute("aria-label", "Minha conta: " + (u.nome || u.email));
+        contaBotao.title = "Conectado como " + (u.nome || u.email);
+        contaBotao.innerHTML = '<span class="conta-avatar" aria-hidden="true"></span><span class="conta-online" aria-hidden="true"></span>';
+        contaBotao.querySelector(".conta-avatar").textContent = iniciais(u.nome || u.email);
+
+        contaCartao = document.createElement("div");
+        contaCartao.className = "conta-cartao";
+        contaCartao.setAttribute("role", "dialog");
+        contaCartao.setAttribute("aria-labelledby", "contaCartaoNome");
+        contaCartao.hidden = true;
+
+        contaBotao.addEventListener("click", function (ev) {
+            ev.stopPropagation();
+            abrirCartao(contaCartao.hidden);
+        });
+        contaCartao.addEventListener("click", function (ev) { ev.stopPropagation(); });
+
+        document.body.appendChild(contaCartao);
+        document.body.appendChild(contaBotao);
 
         var dica = document.querySelector(".progresso-dica");
         if (dica) {
             dica.textContent = "Marque cada etapa como concluída no final da página dela. O progresso fica salvo na sua conta.";
         }
+    }
 
-        var lugar = document.querySelector(".progresso-formacao") ||
-            document.querySelector(".etapa-concluir") ||
-            document.querySelector(".conta-lugar");
-        if (lugar) {
-            lugar.appendChild(p);
-        } else {
-            var rodape = document.querySelector("footer");
-            p.classList.add("conta-usuario-solta");
-            document.body.insertBefore(p, rodape || null);
+    document.addEventListener("click", function () { abrirCartao(false); });
+    document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape" && contaCartao && !contaCartao.hidden) {
+            abrirCartao(false);
+            contaBotao.focus();
         }
+    });
+
+    function verificarAdmin() {
+        return rest("admins?select=user_id&user_id=eq." + encodeURIComponent(sessao.user.id))
+            .then(function (r) {
+                info.admin = !!(r && r.length);
+                if (contaCartao && !contaCartao.hidden) desenharCartao();
+            }, function () { /* sem permissão ou sem rede */ });
     }
 
     function entrou() {
@@ -440,6 +596,7 @@
         esconderLogin();
         mostrarUsuario();
         sincronizar();
+        verificarAdmin();
         aoEntrar.forEach(function (fn) {
             try { fn(sessao.user); } catch (e) { /* ignora */ }
         });
