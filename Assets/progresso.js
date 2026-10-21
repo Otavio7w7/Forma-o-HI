@@ -4,12 +4,17 @@
    foram marcadas como concluídas.
    - Páginas de etapa: botão .btn-concluir[data-etapa="N"]
    - Home: barra #progressoFormacao e selo nos cards #etapaN
+   - window.FormacaoHIProgresso: usado pelo Assets/conta.js
+     para sincronizar com a conta do colaborador
 ========================================================= */
 
 (function () {
 
     var CHAVE = "formacaoHI.etapasConcluidas";
     var TOTAL = 15;
+    var ouvintes = [];
+    var botoes = [];
+    var atualizarHome = null;
 
     function ler() {
         try {
@@ -44,7 +49,42 @@
         }
         lista.sort(function (a, b) { return a - b; });
         gravar(lista);
+        notificar(lista);
     }
+
+    function notificar(lista) {
+        ouvintes.forEach(function (fn) {
+            try { fn(lista.slice()); } catch (e) { /* ignora */ }
+        });
+    }
+
+    function atualizarTela() {
+        botoes.forEach(function (b) { atualizarBotao(b.botao, b.n); });
+        if (atualizarHome) {
+            atualizarHome();
+        }
+    }
+
+    window.FormacaoHIProgresso = {
+        TOTAL: TOTAL,
+        ler: ler,
+        /* substitui a lista salva (sem avisar os ouvintes) */
+        definir: function (lista) {
+            var limpa = [];
+            (lista || []).forEach(function (n) {
+                n = Number(n);
+                if (n >= 1 && n <= TOTAL && limpa.indexOf(n) === -1) {
+                    limpa.push(n);
+                }
+            });
+            limpa.sort(function (a, b) { return a - b; });
+            gravar(limpa);
+            atualizarTela();
+        },
+        aoAlterar: function (fn) {
+            ouvintes.push(fn);
+        }
+    };
 
 
     /* -----------------------------------------------------
@@ -67,6 +107,7 @@
         document.querySelectorAll(".btn-concluir[data-etapa]"),
         function (botao) {
             var n = Number(botao.getAttribute("data-etapa"));
+            botoes.push({ botao: botao, n: n });
             atualizarBotao(botao, n);
             botao.addEventListener("click", function () {
                 alternar(n);
@@ -91,7 +132,7 @@
     var trilha = painel.querySelector(".progresso-trilha");
     var zerar = document.getElementById("progressoZerar");
 
-    function atualizarHome() {
+    atualizarHome = function () {
         var lista = ler();
         var qtd = lista.length;
         var pct = Math.round((qtd / TOTAL) * 100);
@@ -123,12 +164,13 @@
                 selo.remove();
             }
         }
-    }
+    };
 
     zerar.addEventListener("click", function () {
         if (window.confirm("Apagar o progresso salvo neste navegador?")) {
             gravar([]);
             atualizarHome();
+            notificar([]);
         }
     });
 

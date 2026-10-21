@@ -1187,3 +1187,232 @@ html[data-theme="dark"] .busca-conteudo-trecho mark {
     background: #5a3416;
     color: #fff;
 }
+
+
+/* =========================================================
+   LOGIN DO COLABORADOR (Assets/conta.js)
+   Tela de acesso e "Conectado como … · Sair".
+   Só aparece com o Supabase configurado (Assets/config-conta.js).
+========================================================= */
+html.conta-bloqueada,
+html.conta-bloqueada body {
+    overflow: hidden;
+}
+
+.conta-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 38, 74, 0.82);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+}
+
+.conta-gate[hidden] {
+    display: none;
+}
+
+.conta-caixa {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 28px 24px 22px;
+    border-top: 6px solid var(--laranja-marca, #F26522);
+    border-radius: 14px;
+    background: #fff;
+    color: #333;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.conta-marca {
+    margin: 0 0 4px;
+    color: var(--laranja-marca, #F26522);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.conta-caixa h2 {
+    margin: 0 0 18px;
+    color: var(--azul-hi, #004A8F);
+    font-size: 1.4rem;
+}
+
+.conta-abas {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 18px;
+    padding: 4px;
+    border-radius: 8px;
+    background: #eef2f7;
+}
+
+.conta-aba {
+    flex: 1;
+    padding: 8px;
+    border: 0;
+    border-radius: 6px;
+    background: none;
+    color: #555;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.conta-aba.ativa {
+    background: #fff;
+    color: var(--azul-hi, #004A8F);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.conta-campo {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.conta-campo[hidden] {
+    display: none;
+}
+
+.conta-campo input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px 12px;
+    border: 1px solid #c9d3df;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font: inherit;
+    font-weight: 400;
+}
+
+.conta-campo input:focus {
+    outline: 2px solid var(--azul-hi, #004A8F);
+    outline-offset: 0;
+    border-color: var(--azul-hi, #004A8F);
+}
+
+.conta-msg {
+    margin: 0 0 12px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #fdecea;
+    color: #a12a1b;
+    font-size: 0.88rem;
+}
+
+.conta-msg[hidden] {
+    display: none;
+}
+
+.conta-caixa .conta-enviar {
+    width: 100%;
+    background: var(--azul-hi, #004A8F);
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+}
+
+.conta-caixa .conta-enviar:hover {
+    background: #00366b;
+    color: #fff;
+}
+
+.conta-caixa .conta-enviar:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.conta-aviso {
+    margin: 14px 0 0;
+    color: #666;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.conta-usuario {
+    margin: 10px 0 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.conta-usuario strong {
+    color: var(--azul-hi, #004A8F);
+}
+
+.conta-usuario-solta {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.conta-sair {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.conta-sair:hover {
+    color: var(--azul-hi, #004A8F);
+}
+
+/* Modo escuro */
+html[data-theme="dark"] .conta-gate {
+    background: rgba(5, 10, 16, 0.85);
+}
+
+html[data-theme="dark"] .conta-caixa {
+    background: var(--esc-superficie);
+    color: var(--esc-texto);
+}
+
+html[data-theme="dark"] .conta-caixa h2,
+html[data-theme="dark"] .conta-usuario strong,
+html[data-theme="dark"] .conta-aba.ativa {
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .conta-abas {
+    background: var(--esc-fundo-2);
+}
+
+html[data-theme="dark"] .conta-aba {
+    color: var(--esc-texto-2);
+}
+
+html[data-theme="dark"] .conta-aba.ativa {
+    background: var(--esc-superficie-2);
+}
+
+html[data-theme="dark"] .conta-campo input {
+    border-color: var(--esc-borda);
+    background: var(--esc-fundo-2);
+    color: var(--esc-texto);
+}
+
+html[data-theme="dark"] .conta-msg {
+    background: #4a1f1a;
+    color: #ffb4a8;
+}
+
+html[data-theme="dark"] .conta-aviso,
+html[data-theme="dark"] .conta-usuario {
+    color: var(--esc-texto-2);
+}
