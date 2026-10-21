@@ -666,9 +666,20 @@ body.pagina-interna footer {
     font-size: 0.85rem;
 }
 
+/* Selo fica na borda de cima do card, fora do fluxo, para não
+   apertar o título e manter todos os cards com a mesma altura */
+.card.etapa-concluida {
+    position: relative;
+}
+
 .selo-concluida {
-    flex-shrink: 0;
+    position: absolute;
+    top: -11px;
+    right: 22px;
+    z-index: 1;
     padding: 4px 10px;
+    line-height: 1.2;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     background: var(--laranja-marca, #F26522);
     color: #fff;
