@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Treinamento HI Tecnologia - Painel ADM</title>
+
+    <style>
+        :root {
+            --azul-hi: #004A8F;
+            --laranja-hi: #004A8F;
+            --cinza-claro: #F5F7FA;
+            --texto-escuro: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--texto-escuro);
+            line-height: 1.6;
+            background: var(--cinza-claro);
+        }
+        header {
+            background-color: var(--azul-hi);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero {
+            padding: 40px 5% 30px;
+            background-color: var(--cinza-claro);
+        }
+        .hero-content h1 {
+            color: var(--azul-hi);
+            font-size: 2.2rem;
+            margin: 8px 0;
+        }
+        .section {
+            padding: 0 5% 50px;
+        }
+        .training-container {
+            background-color: white;
+            padding: 28px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--laranja-hi);
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* ---------- Painel ---------- */
+        .adm-status {
+            margin: 0;
+            color: #555;
+        }
+        .adm-status.erro {
+            color: #a12a1b;
+        }
+        .adm-resumo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .adm-numero {
+            padding: 14px 16px;
+            border: 1px solid #e3e8ef;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .adm-numero strong {
+            display: block;
+            color: var(--azul-hi);
+            font-size: 1.8rem;
+            line-height: 1.1;
+        }
+        .adm-numero span {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .adm-ferramentas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .adm-ferramentas input,
+        .adm-ferramentas select {
+            min-height: 40px;
+            padding: 8px 12px;
+            border: 1px solid #c9d3df;
+            border-radius: 6px;
+            background: #fff;
+            color: inherit;
+            font: inherit;
+        }
+        .adm-ferramentas input {
+            flex: 1 1 220px;
+        }
+        .adm-botao {
+            min-height: 40px;
+            padding: 8px 16px;
+            border: 2px solid var(--azul-hi);
+            border-radius: 6px;
+            background: #fff;
+            color: var(--azul-hi);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .adm-botao:hover {
+            background: var(--azul-hi);
+            color: #fff;
+        }
+        .adm-tabela-caixa {
+            overflow-x: auto;
+        }
+        .adm-tabela {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+        .adm-tabela th {
+            padding: 10px;
+            border-bottom: 2px solid var(--azul-hi);
+            color: var(--azul-hi);
+            text-align: left;
+            white-space: nowrap;
+        }
+        .adm-tabela td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e3e8ef;
+            vertical-align: top;
+        }
+        .adm-nome {
+            font-weight: 700;
+        }
+        .adm-email,
+        .adm-sub {
+            display: block;
+            color: #666;
+            font-size: 0.82rem;
+            word-break: break-all;
+        }
+        .adm-barra {
+            width: 120px;
+            height: 8px;
+            margin: 4px 0 6px;
+            border-radius: 4px;
+            background: #e3e8ef;
+            overflow: hidden;
+        }
+        .adm-barra span {
+            display: block;
+            height: 100%;
+            background: var(--laranja-marca, #F26522);
+        }
+        .adm-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            max-width: 220px;
+        }
+        .adm-chip {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            background: #e3e8ef;
+            color: #777;
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 22px;
+            text-align: center;
+        }
+        .adm-chip.feita {
+            background: var(--laranja-marca, #F26522);
+            color: #fff;
+        }
+        .adm-vazio {
+            padding: 24px 10px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Celular: cada colaborador vira um cartão */
+        @media (max-width: 760px) {
+            .training-container {
+                padding: 18px;
+            }
+            .hero-content h1 {
+                font-size: 1.7rem;
+            }
+            .adm-tabela thead {
+                display: none;
+            }
+            .adm-tabela,
+            .adm-tabela tbody,
+            .adm-tabela tr,
+            .adm-tabela td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .adm-tabela tr {
+                margin-bottom: 12px;
+                padding: 6px 12px;
+                border: 1px solid #e3e8ef;
+                border-radius: 10px;
+            }
+            .adm-tabela td {
+                padding: 8px 0;
+            }
+            .adm-tabela td:last-child {
+                border-bottom: 0;
+            }
+            .adm-tabela td[data-rotulo]::before {
+                content: attr(data-rotulo);
+                display: block;
+                color: var(--azul-hi);
+                font-size: 0.75rem;
+                font-weight: 800;
+                text-transform: uppercase;
+            }
+            .adm-chips {
+                max-width: none;
+            }
+        }
+
+        /* Modo escuro */
+        html[data-theme="dark"] .adm-status {
+            color: var(--esc-texto-2);
+        }
+        html[data-theme="dark"] .adm-status.erro {
+            color: #ffb4a8;
+        }
+        html[data-theme="dark"] .adm-numero,
+        html[data-theme="dark"] .adm-tabela tr {
+            border-color: var(--esc-borda);
+            background: var(--esc-superficie);
+        }
+        html[data-theme="dark"] .adm-numero strong,
+        html[data-theme="dark"] .adm-tabela th {
+            color: var(--esc-azul-texto);
+        }
+        html[data-theme="dark"] .adm-tabela th {
+            border-color: var(--esc-azul-texto);
+        }
+        html[data-theme="dark"] .adm-tabela td {
+            border-color: var(--esc-borda);
+        }
+        html[data-theme="dark"] .adm-numero span,
+        html[data-theme="dark"] .adm-email,
+        html[data-theme="dark"] .adm-sub,
+        html[data-theme="dark"] .adm-vazio {
+            color: var(--esc-texto-2);
+        }
+        html[data-theme="dark"] .adm-ferramentas input,
+        html[data-theme="dark"] .adm-ferramentas select {
+            border-color: var(--esc-borda);
+            background: var(--esc-fundo-2);
+        }
+        html[data-theme="dark"] .adm-botao {
+            border-color: var(--esc-azul-texto);
+            background: var(--esc-superficie);
+            color: var(--esc-azul-texto);
+        }
+        html[data-theme="dark"] .adm-botao:hover {
+            background: var(--azul-hi);
+            color: #fff;
+        }
+        html[data-theme="dark"] .adm-barra,
+        html[data-theme="dark"] .adm-chip {
+            background: var(--esc-superficie-2);
+            color: var(--esc-texto-2);
+        }
+        html[data-theme="dark"] .adm-chip.feita {
+            background: var(--laranja-marca, #F26522);
+            color: #fff;
+        }
+        @media (max-width: 760px) {
+            html[data-theme="dark"] .adm-tabela td[data-rotulo]::before {
+                color: var(--esc-azul-texto);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="tema.js"></script>
+</head>
+<body class="pagina-interna">
+
+    <header>
+        <h2>HI Tecnologia</h2>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="etapa-badge">Acesso restrito</span>
+            <h1>Painel ADM</h1>
+            <p><strong>Acompanhamento do treinamento dos colaboradores</strong></p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="training-container">
+
+            <p class="adm-status" id="admStatus">Carregando…</p>
+
+            <div id="admPainel" hidden>
+                <div class="adm-resumo">
+                    <div class="adm-numero"><strong id="admTotal">0</strong><span>colaboradores</span></div>
+                    <div class="adm-numero"><strong id="admAtivos">0</strong><span>acessaram nos últimos 7 dias</span></div>
+                    <div class="adm-numero"><strong id="admMedia">0%</strong><span>progresso médio</span></div>
+                    <div class="adm-numero"><strong id="admConcluiram">0</strong><span>concluíram as 15 etapas</span></div>
+                </div>
+
+                <div class="adm-ferramentas">
+                    <input type="search" id="admBusca" placeholder="Buscar por nome ou e-mail" aria-label="Buscar colaborador">
+                    <select id="admOrdem" aria-label="Ordenar">
+                        <option value="nome">Ordenar: nome</option>
+                        <option value="progresso">Ordenar: mais avançados</option>
+                        <option value="acesso">Ordenar: último acesso</option>
+                    </select>
+                    <button type="button" class="adm-botao" id="admAtualizar">Atualizar</button>
+                    <button type="button" class="adm-botao" id="admCsv">Exportar CSV</button>
+                </div>
+
+                <div class="adm-tabela-caixa">
+                    <table class="adm-tabela">
+                        <thead>
+                            <tr>
+                                <th>Colaborador</th>
+                                <th>Etapa atual</th>
+                                <th>Progresso</th>
+                                <th>Última etapa aberta</th>
+                                <th>Último acesso</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admLinhas"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="conta-lugar"></p>
+        </div>
+    </section>
+
+    <div class="etapa-nav">
+        <a href="../index.html" class="btn">Voltar</a>
+    </div>
+
+    <footer>
+        <p>Copyright © HI Tecnologia Automação Industrial. Todos os direitos reservados. </p>
+    </footer>
+
+    <script>
+        window.FORMACAO_HI_PAGINA_ADMIN = true;
+    </script>
+    <script src="config-conta.js"></script>
+    <script src="conta.js"></script>
+    <script>
+    (function () {
+
+        var ETAPAS = [
+            "", "Fundamentos", "HIstudio", "Telemetria", "SPDSW", "PostgreSQL",
+            "HIscada Pro", "Atendimento ao Cliente", "MQTT", "GTON C SET e ESC717",
+            "GTON M", "GTON P", "IHMs Touch", "IHMs Alfanuméricas", "Rádios", "Conclusão"
+        ];
+        var TOTAL = 15;
+
+        var status = document.getElementById("admStatus");
+        var painel = document.getElementById("admPainel");
+        var corpo = document.getElementById("admLinhas");
+        var busca = document.getElementById("admBusca");
+        var ordem = document.getElementById("admOrdem");
+        var dados = [];
+
+        function aviso(txt, erro) {
+            status.textContent = txt;
+            status.classList.toggle("erro", !!erro);
+            status.hidden = !txt;
+        }
+
+        var conta = window.FormacaoHIConta;
+        if (!conta) {
+            aviso("O login ainda não está configurado. Preencha o Assets/config-conta.js com os dados do Supabase.", true);
+            return;
+        }
+
+        function nomeEtapa(n) {
+            return n ? "Etapa " + n + ": " + ETAPAS[n] : "—";
+        }
+
+        function etapaAtual(etapas) {
+            for (var n = 1; n <= TOTAL; n++) {
+                if (etapas.indexOf(n) === -1) return n;
+            }
+            return null;
+        }
+
+        function data(iso) {
+            if (!iso) return "—";
+            var d = new Date(iso);
+            return d.toLocaleDateString("pt-BR") + " " +
+                d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+        }
+
+        function haQuanto(iso) {
+            if (!iso) return "";
+            var dias = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+            if (dias <= 0) return "hoje";
+            if (dias === 1) return "ontem";
+            return "há " + dias + " dias";
+        }
+
+        function celula(tr, rotulo) {
+            var td = document.createElement("td");
+            td.setAttribute("data-rotulo", rotulo);
+            tr.appendChild(td);
+            return td;
+        }
+
+        function texto(pai, tag, classe, conteudo) {
+            var el = document.createElement(tag);
+            if (classe) el.className = classe;
+            el.textContent = conteudo;
+            pai.appendChild(el);
+            return el;
+        }
+
+        function desenhar() {
+            var termo = busca.value.trim().toLowerCase();
+            var lista = dados.filter(function (p) {
+                return !termo || (p.nome + " " + (p.email || "")).toLowerCase().indexOf(termo) !== -1;
+            });
+
+            lista.sort(function (a, b) {
+                if (ordem.value === "progresso") return b.etapas.length - a.etapas.length || a.nome.localeCompare(b.nome);
+                if (ordem.value === "acesso") return String(b.ultimo_acesso).localeCompare(String(a.ultimo_acesso));
+                return a.nome.localeCompare(b.nome, "pt-BR");
+            });
+
+            corpo.innerHTML = "";
+            if (!lista.length) {
+                var tr0 = document.createElement("tr");
+                var td0 = document.createElement("td");
+                td0.colSpan = 5;
+                td0.className = "adm-vazio";
+                td0.textContent = dados.length ? "Ninguém encontrado com essa busca." : "Nenhum colaborador entrou no portal ainda.";
+                tr0.appendChild(td0);
+                corpo.appendChild(tr0);
+                return;
+            }
+
+            lista.forEach(function (p) {
+                var tr = document.createElement("tr");
+
+                var c1 = celula(tr, "Colaborador");
+                texto(c1, "span", "adm-nome", p.nome);
+                texto(c1, "span", "adm-email", p.email || "");
+
+                var atual = etapaAtual(p.etapas);
+                texto(celula(tr, "Etapa atual"), "span", "adm-nome",
+                    atual ? nomeEtapa(atual) : "Concluiu as 15 etapas");
+
+                var c3 = celula(tr, "Progresso");
+                texto(c3, "span", "", p.etapas.length + " de " + TOTAL + " (" + Math.round(p.etapas.length / TOTAL * 100) + "%)");
+                var barra = document.createElement("div");
+                barra.className = "adm-barra";
+                var preench = document.createElement("span");
+                preench.style.width = Math.round(p.etapas.length / TOTAL * 100) + "%";
+                barra.appendChild(preench);
+                c3.appendChild(barra);
+                var chips = document.createElement("div");
+                chips.className = "adm-chips";
+                for (var n = 1; n <= TOTAL; n++) {
+                    var chip = texto(chips, "span", "adm-chip" + (p.etapas.indexOf(n) !== -1 ? " feita" : ""), String(n));
+                    chip.title = nomeEtapa(n) + (p.etapas.indexOf(n) !== -1 ? " (concluída)" : "");
+                }
+                c3.appendChild(chips);
+
+                texto(celula(tr, "Última etapa aberta"), "span", "", nomeEtapa(p.ultima_etapa));
+
+                var c5 = celula(tr, "Último acesso");
+                texto(c5, "span", "", data(p.ultimo_acesso));
+                texto(c5, "span", "adm-sub", haQuanto(p.ultimo_acesso));
+
+                corpo.appendChild(tr);
+            });
+        }
+
+        function resumo() {
+            var semana = Date.now() - 7 * 86400000;
+            var soma = 0;
+            document.getElementById("admTotal").textContent = dados.length;
+            document.getElementById("admAtivos").textContent = dados.filter(function (p) {
+                return p.ultimo_acesso && new Date(p.ultimo_acesso).getTime() >= semana;
+            }).length;
+            dados.forEach(function (p) { soma += p.etapas.length; });
+            document.getElementById("admMedia").textContent =
+                (dados.length ? Math.round(soma / (dados.length * TOTAL) * 100) : 0) + "%";
+            document.getElementById("admConcluiram").textContent = dados.filter(function (p) {
+                return p.etapas.length === TOTAL;
+            }).length;
+        }
+
+        function carregar() {
+            aviso("Carregando…");
+            conta.rest("progresso?select=user_id,nome,email,etapas,ultima_etapa,ultimo_acesso&order=nome.asc")
+                .then(function (linhas) {
+                    dados = (linhas || []).map(function (p) {
+                        p.nome = p.nome || p.email || "(sem nome)";
+                        p.etapas = (p.etapas || []).map(Number).filter(function (n) { return n >= 1 && n <= TOTAL; });
+                        return p;
+                    });
+                    aviso("");
+                    painel.hidden = false;
+                    resumo();
+                    desenhar();
+                })
+                .catch(function (e) {
+                    aviso("Não foi possível carregar os dados: " + e.message, true);
+                });
+        }
+
+        function csv() {
+            var linhas = [["Nome", "E-mail", "Etapas concluídas", "Etapa atual", "Última etapa aberta", "Último acesso", "Etapas"]];
+            dados.forEach(function (p) {
+                var atual = etapaAtual(p.etapas);
+                linhas.push([
+                    p.nome, p.email || "", p.etapas.length + "/" + TOTAL,
+                    atual ? nomeEtapa(atual) : "Concluiu", nomeEtapa(p.ultima_etapa),
+                    data(p.ultimo_acesso), p.etapas.join(" ")
+                ]);
+            });
+            var conteudo = "﻿" + linhas.map(function (l) {
+                return l.map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(";");
+            }).join("\r\n");
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([conteudo], { type: "text/csv;charset=utf-8" }));
+            a.download = "progresso-formacao-hi.csv";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+
+        busca.addEventListener("input", desenhar);
+        ordem.addEventListener("change", desenhar);
+        document.getElementById("admAtualizar").addEventListener("click", carregar);
+        document.getElementById("admCsv").addEventListener("click", csv);
+
+        conta.aoEntrar(function (usuario) {
+            painel.hidden = true;
+            aviso("Verificando permissão…");
+            conta.rest("admins?select=user_id&user_id=eq." + encodeURIComponent(usuario.id))
+                .then(function (r) {
+                    if (r && r.length) {
+                        carregar();
+                    } else {
+                        aviso("Esta conta não tem permissão de administrador.", true);
+                    }
+                })
+                .catch(function (e) {
+                    aviso("Não foi possível verificar a permissão: " + e.message, true);
+                });
+        });
+
+    })();
+    </script>
+</body>
+</html>
