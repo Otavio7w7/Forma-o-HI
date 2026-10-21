@@ -17,9 +17,14 @@ partir das páginas HTML.
 Forma-o-HI/
 ├── index.html                    ← página principal (home / índice das 15 etapas)
 ├── README.md
+├── supabase/
+│   └── configuracao.sql          ← SQL do login/progresso (rodar uma vez no Supabase)
 └── Assets/
     ├── responsive.css            ← CSS de responsividade compartilhado (todas as páginas)
     ├── busca-conteudo.js         ← busca da home dentro do conteúdo das etapas
+    ├── config-conta.js           ← URL e chave pública do Supabase (vazio = login desligado)
+    ├── conta.js                  ← login do colaborador e envio do progresso
+    ├── admin.html                ← Painel ADM (não linkado no site; só contas ADM)
     ├── fundamentos.html          ← Etapa 1
     ├── HIstudio.html             ← Etapa 2
     ├── telemetria.html           ← Etapa 3
@@ -89,6 +94,23 @@ Forma-o-HI/
    automaticamente, desde que esteja dentro de um `.step` com `<h3>`.
    Aberto como arquivo local (`file://`), o navegador bloqueia essa leitura
    e a busca volta a filtrar só pelo texto dos cards.
+7. **Login do colaborador e Painel ADM** (`Assets/conta.js`, carregado
+   pela home, pelas 15 etapas, por `projetos.html` e por `admin.html`).
+   Só funciona com `Assets/config-conta.js` preenchido; vazio, o site se
+   comporta como no item 5. Com ele preenchido:
+   - as páginas pedem login (e-mail + senha, aba "Criar conta" com nome);
+   - o progresso vai para a tabela `progresso` do Supabase (etapas
+     concluídas, última etapa aberta e último acesso). O que já estava no
+     `localStorage` antes do primeiro login é somado à conta;
+   - `Assets/admin.html` lista todos os colaboradores (etapa atual,
+     progresso, última etapa aberta, último acesso, exportar CSV) para
+     contas cadastradas na tabela `admins`.
+   A proteção dos dados é feita pelo RLS do banco (`supabase/configuracao.sql`),
+   não por esconder a página. Configuração: criar o projeto no Supabase,
+   rodar o SQL, em Authentication → Sign In / Providers → Email desligar
+   "Confirm email", preencher `config-conta.js` com Project URL e chave
+   anon/publishable, criar a própria conta pelo site e rodar o `insert`
+   do final do SQL para virar ADM.
 
 ### Mapa completo Etapa → Arquivo
 
