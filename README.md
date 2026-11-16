@@ -99,6 +99,10 @@ Forma-o-HI/
    Só funciona com `Assets/config-conta.js` preenchido; vazio, o site se
    comporta como no item 5. Com ele preenchido:
    - as páginas pedem login (e-mail + senha, aba "Criar conta" com nome);
+   - "Esqueci minha senha" envia o e-mail de redefinição do Supabase
+     (`/auth/v1/recover`, link de volta para a home do site); ao abrir o
+     link, o site pede a nova senha e já entra na conta. Exige a URL do
+     site nas Redirect URLs do Supabase (Authentication → URL Configuration);
    - o progresso vai para a tabela `progresso` do Supabase (etapas
      concluídas, última etapa aberta e último acesso). O que já estava no
      `localStorage` antes do primeiro login é somado à conta;

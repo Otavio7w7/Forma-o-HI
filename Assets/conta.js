@@ -179,7 +179,10 @@
         if (/email not confirmed/i.test(m)) return "E-mail ainda não confirmado. Fale com o administrador.";
         if (/unable to validate email|invalid format|email address .* is invalid/i.test(m)) return "E-mail inválido.";
         if (/signups not allowed/i.test(m)) return "Criação de contas desativada. Fale com o administrador.";
-        if (/rate limit|too many/i.test(m)) return "Muitas tentativas. Aguarde alguns minutos.";
+        if (/rate limit|too many|over_email_send_rate_limit/i.test(m + (erro.codigo || ""))) return "Muitas tentativas. Aguarde alguns minutos.";
+        if (/for security purposes|only request this after/i.test(m)) return "Aguarde um minuto antes de pedir outro link.";
+        if (/should be different|same_password/i.test(m + (erro.codigo || ""))) return "A nova senha precisa ser diferente da anterior.";
+        if (/weak|pwned|weak_password/i.test(m + (erro.codigo || ""))) return "Senha fraca. Use uma senha mais forte.";
         if (/failed to fetch|networkerror|load failed/i.test(m)) return "Sem conexão com o servidor. Verifique a internet.";
         return "Não foi possível concluir: " + m;
     }
@@ -278,6 +281,12 @@
     ----------------------------------------------------- */
 
     var gate = null;
+    var definirModo = null;
+
+    /* endereço da home do site (destino do link de redefinição de senha) */
+    function enderecoSite() {
+        return location.origin + location.pathname.replace(/\/Assets\/[^\/]*$/i, "/").replace(/[^\/]*$/, "");
+    }
 
     function criarLogin() {
         gate = document.createElement("div");
@@ -293,19 +302,25 @@
                     '<button type="button" role="tab" class="conta-aba ativa" data-modo="entrar" aria-selected="true">Entrar</button>' +
                     '<button type="button" role="tab" class="conta-aba" data-modo="criar" aria-selected="false">Criar conta</button>' +
                 '</div>' +
+                '<p class="conta-explica" hidden></p>' +
                 '<form class="conta-form" novalidate>' +
                     '<label class="conta-campo conta-campo-nome" hidden>Nome completo' +
                         '<input type="text" name="nome" autocomplete="name" maxlength="80">' +
                     '</label>' +
-                    '<label class="conta-campo">E-mail' +
+                    '<label class="conta-campo conta-campo-email">E-mail' +
                         '<input type="email" name="email" autocomplete="email" required>' +
                     '</label>' +
-                    '<label class="conta-campo">Senha' +
+                    '<label class="conta-campo conta-campo-senha"><span class="conta-rotulo-senha">Senha</span>' +
                         '<input type="password" name="senha" autocomplete="current-password" minlength="6" required>' +
+                    '</label>' +
+                    '<label class="conta-campo conta-campo-confirma" hidden>Repita a nova senha' +
+                        '<input type="password" name="confirma" autocomplete="new-password" minlength="6">' +
                     '</label>' +
                     '<p class="conta-msg" role="alert" hidden></p>' +
                     '<button type="submit" class="btn conta-enviar">Entrar</button>' +
                 '</form>' +
+                '<button type="button" class="conta-link conta-esqueci">Esqueci minha senha</button>' +
+                '<button type="button" class="conta-link conta-voltar" hidden>Voltar para o login</button>' +
                 '<p class="conta-aviso">Seu nome, e-mail, as etapas concluídas e a data do último acesso ficam ' +
                 'registrados para o acompanhamento do treinamento pela HI Tecnologia. ' +
                 'O progresso que você já marcou neste navegador é mantido.</p>' +
@@ -313,76 +328,150 @@
         document.body.appendChild(gate);
 
         var form = gate.querySelector(".conta-form");
+        var titulo = gate.querySelector("#contaTitulo");
+        var abas = gate.querySelector(".conta-abas");
+        var explica = gate.querySelector(".conta-explica");
         var campoNome = gate.querySelector(".conta-campo-nome");
+        var campoEmail = gate.querySelector(".conta-campo-email");
+        var campoSenha = gate.querySelector(".conta-campo-senha");
+        var campoConfirma = gate.querySelector(".conta-campo-confirma");
+        var rotuloSenha = gate.querySelector(".conta-rotulo-senha");
+        var esqueci = gate.querySelector(".conta-esqueci");
+        var voltar = gate.querySelector(".conta-voltar");
         var inputNome = form.elements.nome;
+        var inputEmail = form.elements.email;
         var inputSenha = form.elements.senha;
+        var inputConfirma = form.elements.confirma;
         var enviarBtn = gate.querySelector(".conta-enviar");
         var modo = "entrar";
 
+        var TEXTO_BOTAO = { entrar: "Entrar", criar: "Criar conta", recuperar: "Enviar link", nova: "Salvar nova senha" };
+        var TITULO = {
+            entrar: "Acesse o treinamento",
+            criar: "Acesse o treinamento",
+            recuperar: "Recuperar senha",
+            nova: "Defina uma nova senha"
+        };
+        var EXPLICA = {
+            recuperar: "Informe o e-mail da sua conta. Você vai receber um link para criar uma nova senha.",
+            nova: ""
+        };
+
+        /* entrar | criar | recuperar (pede o e-mail) | nova (volta pelo link do e-mail) */
+        definirModo = function (m) {
+            modo = m;
+            var abasVisiveis = m === "entrar" || m === "criar";
+            abas.hidden = !abasVisiveis;
+            Array.prototype.forEach.call(gate.querySelectorAll(".conta-aba"), function (a) {
+                var ativa = a.getAttribute("data-modo") === m;
+                a.classList.toggle("ativa", ativa);
+                a.setAttribute("aria-selected", ativa ? "true" : "false");
+            });
+            titulo.textContent = TITULO[m];
+            explica.textContent = EXPLICA[m] || "";
+            explica.hidden = !EXPLICA[m];
+            campoNome.hidden = m !== "criar";
+            campoEmail.hidden = m === "nova";
+            campoSenha.hidden = m === "recuperar";
+            campoConfirma.hidden = m !== "nova";
+            rotuloSenha.textContent = m === "nova" ? "Nova senha" : "Senha";
+            inputSenha.setAttribute("autocomplete", m === "entrar" ? "current-password" : "new-password");
+            esqueci.hidden = m !== "entrar";
+            voltar.hidden = m !== "recuperar";
+            enviarBtn.textContent = TEXTO_BOTAO[m];
+            mensagem("");
+        };
+
         Array.prototype.forEach.call(gate.querySelectorAll(".conta-aba"), function (aba) {
             aba.addEventListener("click", function () {
-                modo = aba.getAttribute("data-modo");
-                Array.prototype.forEach.call(gate.querySelectorAll(".conta-aba"), function (a) {
-                    var ativa = a === aba;
-                    a.classList.toggle("ativa", ativa);
-                    a.setAttribute("aria-selected", ativa ? "true" : "false");
-                });
-                campoNome.hidden = modo !== "criar";
-                inputSenha.setAttribute("autocomplete", modo === "criar" ? "new-password" : "current-password");
-                enviarBtn.textContent = modo === "criar" ? "Criar conta" : "Entrar";
-                mensagem("");
+                definirModo(aba.getAttribute("data-modo"));
             });
+        });
+
+        esqueci.addEventListener("click", function () {
+            definirModo("recuperar");
+            inputEmail.focus();
+        });
+
+        voltar.addEventListener("click", function () {
+            definirModo("entrar");
+            inputEmail.focus();
         });
 
         form.addEventListener("submit", function (ev) {
             ev.preventDefault();
             var nome = inputNome.value.trim();
-            var email = form.elements.email.value.trim().toLowerCase();
+            var email = inputEmail.value.trim().toLowerCase();
             var senha = inputSenha.value;
 
             if (modo === "criar" && nome.length < 3) return mensagem("Informe seu nome completo.");
-            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return mensagem("Informe um e-mail válido.");
-            if (senha.length < 6) return mensagem("A senha precisa ter pelo menos 6 caracteres.");
+            if (modo !== "nova" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return mensagem("Informe um e-mail válido.");
+            if (modo !== "recuperar" && senha.length < 6) return mensagem("A senha precisa ter pelo menos 6 caracteres.");
+            if (modo === "nova" && senha !== inputConfirma.value) return mensagem("As duas senhas não são iguais.");
 
             enviarBtn.disabled = true;
             enviarBtn.textContent = "Aguarde…";
             mensagem("");
 
-            var pedido = modo === "criar"
-                ? chamar("/auth/v1/signup", { method: "POST", body: { email: email, password: senha, data: { nome: nome } } })
-                : chamar("/auth/v1/token?grant_type=password", { method: "POST", body: { email: email, password: senha } });
+            var pedido;
+            if (modo === "recuperar") {
+                pedido = chamar("/auth/v1/recover?redirect_to=" + encodeURIComponent(enderecoSite()), {
+                    method: "POST",
+                    body: { email: email }
+                }).then(function () {
+                    definirModo("entrar");
+                    inputEmail.value = email;
+                    mensagem("Se existir uma conta com " + email + ", um link para criar uma nova senha foi enviado. " +
+                        "Confira a caixa de entrada e o spam.", true);
+                });
+            } else if (modo === "nova") {
+                pedido = token().then(function (t) {
+                    return chamar("/auth/v1/user", { method: "PUT", body: { password: senha } }, t);
+                }).then(function () {
+                    form.reset();
+                    definirModo("entrar");
+                    entrou();
+                });
+            } else {
+                pedido = (modo === "criar"
+                    ? chamar("/auth/v1/signup", { method: "POST", body: { email: email, password: senha, data: { nome: nome } } })
+                    : chamar("/auth/v1/token?grant_type=password", { method: "POST", body: { email: email, password: senha } })
+                ).then(function (resp) {
+                    if (!resp || !resp.access_token) {
+                        throw new Error("Conta criada, mas o acesso ainda não foi liberado (confirmação de e-mail ativa). Fale com o administrador.");
+                    }
+                    guardarSessao(resp);
+                    if (modo === "criar" && !sessao.user.nome) sessao.user.nome = nome;
+                    form.reset();
+                    entrou();
+                });
+            }
 
-            pedido.then(function (resp) {
-                if (!resp || !resp.access_token) {
-                    throw new Error("Conta criada, mas o acesso ainda não foi liberado (confirmação de e-mail ativa). Fale com o administrador.");
-                }
-                guardarSessao(resp);
-                if (modo === "criar" && !sessao.user.nome) sessao.user.nome = nome;
-                form.reset();
-                entrou();
-            }).catch(function (erro) {
+            pedido.catch(function (erro) {
                 mensagem(/Conta criada/.test(erro.message) ? erro.message : traduzirErro(erro));
             }).then(function () {
                 enviarBtn.disabled = false;
-                enviarBtn.textContent = modo === "criar" ? "Criar conta" : "Entrar";
+                enviarBtn.textContent = TEXTO_BOTAO[modo];
             });
         });
     }
 
-    function mensagem(txt) {
+    function mensagem(txt, ok) {
         var p = gate && gate.querySelector(".conta-msg");
         if (!p) return;
         p.textContent = txt;
         p.hidden = !txt;
+        p.classList.toggle("ok", !!ok);
     }
 
-    function mostrarLogin(txt) {
+    function mostrarLogin(txt, modo) {
         if (!gate) criarLogin();
         gate.hidden = false;
         document.documentElement.classList.add("conta-bloqueada");
+        definirModo(modo || "entrar");
         mensagem(txt || "");
         removerUsuario();
-        var campo = gate.querySelector('input[name="email"]');
+        var campo = gate.querySelector(modo === "nova" ? 'input[name="senha"]' : 'input[name="email"]');
         if (campo) setTimeout(function () { campo.focus(); }, 50);
     }
 
@@ -616,8 +705,48 @@
         }
     };
 
-    sessao = carregarSessao();
-    if (sessao) {
+    /* volta pelo link do e-mail (redefinição de senha): o Supabase manda
+       a sessão ou o erro no hash da URL (#access_token=...&type=recovery) */
+    function lerRetornoEmail() {
+        var h = location.hash.replace(/^#/, "");
+        if (!/(^|&)(access_token|error_description|error_code)=/.test(h)) return null;
+        var p = {};
+        h.split("&").forEach(function (par) {
+            var i = par.indexOf("=");
+            if (i > 0) p[decodeURIComponent(par.slice(0, i))] = decodeURIComponent(par.slice(i + 1).replace(/\+/g, " "));
+        });
+        try {
+            history.replaceState(null, "", location.pathname + location.search);
+        } catch (e) {
+            location.hash = "";
+        }
+        return p;
+    }
+
+    var retorno = lerRetornoEmail();
+
+    if (retorno && retorno.access_token && retorno.refresh_token) {
+        chamar("/auth/v1/user", {}, retorno.access_token).then(function (u) {
+            guardarSessao({
+                access_token: retorno.access_token,
+                refresh_token: retorno.refresh_token,
+                expires_at: Number(retorno.expires_at) || 0,
+                expires_in: Number(retorno.expires_in) || 3600,
+                user: u
+            });
+            if (retorno.type === "recovery") {
+                mostrarLogin("", "nova");
+            } else {
+                entrou();
+            }
+        }, function () {
+            mostrarLogin("Link inválido ou expirado. Peça um novo em \"Esqueci minha senha\".");
+        });
+    } else if (retorno) {
+        mostrarLogin(/expired|otp_expired/i.test((retorno.error_code || "") + (retorno.error_description || ""))
+            ? "O link expirou ou já foi usado. Peça um novo em \"Esqueci minha senha\"."
+            : "Link inválido: " + (retorno.error_description || retorno.error_code || "erro desconhecido") + ".");
+    } else if ((sessao = carregarSessao())) {
         token().then(entrou, function () {
             /* sem rede: segue com a sessão salva; renovar() já pede login se ela expirou */
             if (sessao) entrou();

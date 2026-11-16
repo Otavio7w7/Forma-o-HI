@@ -1326,6 +1326,42 @@ html.conta-bloqueada body {
     display: none;
 }
 
+.conta-msg.ok {
+    background: #e7f4ea;
+    color: #1e6b34;
+}
+
+.conta-abas[hidden],
+.conta-explica[hidden],
+.conta-link[hidden] {
+    display: none;
+}
+
+.conta-explica {
+    margin: 0 0 14px;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.conta-link {
+    display: block;
+    margin: 12px auto 0;
+    padding: 4px 8px;
+    border: 0;
+    background: none;
+    color: var(--azul-hi, #004A8F);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.conta-link:hover {
+    color: #00366b;
+}
+
 .conta-caixa .conta-enviar {
     width: 100%;
     background: var(--azul-hi, #004A8F);
@@ -1585,6 +1621,19 @@ html[data-theme="dark"] .conta-campo input {
 html[data-theme="dark"] .conta-msg {
     background: #4a1f1a;
     color: #ffb4a8;
+}
+
+html[data-theme="dark"] .conta-msg.ok {
+    background: #173a22;
+    color: #a6e3b4;
+}
+
+html[data-theme="dark"] .conta-link {
+    color: var(--esc-azul-texto);
+}
+
+html[data-theme="dark"] .conta-explica {
+    color: var(--esc-texto-2);
 }
 
 html[data-theme="dark"] .conta-aviso,
