@@ -1,283 +1,381 @@
-# Programa de Formação — HI Tecnologia
+<div align="center">
 
-Site estático (HTML/CSS/JS puro, sem build, sem frameworks) usado como portal
-da jornada de formação técnica do Suporte Técnico da HI Tecnologia. Reúne,
-em uma página inicial, as 15 etapas do programa, cada uma linkando para uma
-página de conteúdo específica dentro de `Assets/`.
+# 🎓 Programa de Formação — HI Tecnologia
 
-Não há backend: os "conteúdos" das aulas (PDFs, apostilas, provas) ficam
-hospedados no OneDrive/Google Drive da empresa e são apenas linkados a
-partir das páginas HTML.
+**Portal da jornada de formação técnica do Suporte Técnico da HI Tecnologia**
+
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Supabase](https://img.shields.io/badge/Supabase-opcional-3ECF8E?style=flat&logo=supabase&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-publicado-222?style=flat&logo=github)
+
+[🌐 Acessar o site](https://otavio7w7.github.io/Forma-o-HI/) ·
+[⚡ Guia rápido](#-guia-rápido) ·
+[🛠️ Manutenção](#️-como-fazer-manutenção) ·
+[⚠️ Pontos de atenção](#️-pontos-de-atenção)
+
+</div>
 
 ---
 
-## 1. Estrutura de pastas
+## 📌 Sobre o projeto
 
+Site estático — **HTML, CSS e JS puros, sem build e sem frameworks** — que
+reúne em uma página inicial as **15 etapas** do programa de formação. Cada
+etapa abre uma página de conteúdo própria dentro de `Assets/`.
+
+| ✅ O que o site tem | ❌ O que o site **não** tem |
+|---|---|
+| Home com as 15 etapas em cards (accordion) | Backend próprio ou CMS |
+| Busca dentro do conteúdo das etapas | Etapa de build (`npm`, bundler etc.) |
+| Progresso do aluno (local ou na nuvem) | Materiais hospedados no projeto |
+| Modo escuro | CSS visual centralizado |
+| Login de colaboradores e Painel ADM *(opcional, via Supabase)* | |
+
+> 📎 Os materiais das aulas (PDFs, apostilas, provas, vídeos) ficam no
+> **OneDrive / Google Drive / YouTube** da empresa e são apenas **linkados**
+> pelas páginas.
+
+---
+
+## 📑 Sumário
+
+1. [⚡ Guia rápido](#-guia-rápido)
+2. [🚀 Rodando localmente](#-rodando-localmente)
+3. [📁 Estrutura de pastas](#-estrutura-de-pastas)
+4. [🧭 Como o site funciona](#-como-o-site-funciona)
+5. [✨ Funcionalidades](#-funcionalidades)
+6. [🗺️ Mapa Etapa → Arquivo](#️-mapa-etapa--arquivo)
+7. [🧩 Padrão de código](#-padrão-de-código)
+8. [🖼️ Imagens](#️-imagens)
+9. [🛠️ Como fazer manutenção](#️-como-fazer-manutenção)
+10. [⚠️ Pontos de atenção](#️-pontos-de-atenção)
+
+---
+
+## ⚡ Guia rápido
+
+Para quem só quer editar algo e seguir em frente:
+
+| Eu quero… | Onde mexer |
+|---|---|
+| ✏️ Mudar o texto de uma etapa | O arquivo da etapa em `Assets/` ([ver mapa](#️-mapa-etapa--arquivo)) |
+| 🔗 Trocar um link de material ou prova | O `href` do botão na página daquela etapa |
+| ➕ Adicionar uma etapa nova | [Criar uma nova etapa](#-criar-uma-nova-etapa-ex-etapa-16) |
+| 🎨 Mudar cores / identidade visual | O bloco `<style>` de **cada** HTML |
+| 📱 Ajustar responsividade ou modo escuro | `Assets/responsive.css` (compartilhado) |
+| 🔐 Ligar o login e o Painel ADM | [Configurar o Supabase](#-login-do-colaborador-e-painel-adm) |
+
+---
+
+## 🚀 Rodando localmente
+
+Não há nada para instalar. Basta servir a pasta:
+
+```bash
+# na raiz do projeto
+python -m http.server 8000
+# depois abra http://localhost:8000
 ```
+
+> 💡 Dá para abrir o `index.html` com duplo clique, mas em `file://` o
+> navegador bloqueia a **busca no conteúdo** (ela volta a filtrar só pelo
+> texto dos cards). Use um servidor local para testar tudo.
+
+---
+
+## 📁 Estrutura de pastas
+
+```text
 Forma-o-HI/
-├── index.html                    ← página principal (home / índice das 15 etapas)
+├── index.html                       🏠 Home — índice das 15 etapas
 ├── README.md
 ├── supabase/
-│   └── configuracao.sql          ← SQL do login/progresso (rodar uma vez no Supabase)
+│   └── configuracao.sql             🗄️ SQL do login/progresso (rodar uma vez)
 └── Assets/
-    ├── responsive.css            ← CSS de responsividade compartilhado (todas as páginas)
-    ├── busca-conteudo.js         ← busca da home dentro do conteúdo das etapas
-    ├── config-conta.js           ← URL e chave pública do Supabase (vazio = login desligado)
-    ├── conta.js                  ← login do colaborador e envio do progresso
-    ├── admin.html                ← Painel ADM (não linkado no site; só contas ADM)
-    ├── fundamentos.html          ← Etapa 1
-    ├── HIstudio.html             ← Etapa 2
-    ├── telemetria.html           ← Etapa 3
-    ├── spdsw.html                ← Etapa 4
-    ├── postgre_sql.html          ← Etapa 5
-    ├── HIscadapro.html           ← Etapa 6
-    ├── atendimento_ao_cliente.html ← Etapa 7
-    ├── mqtt.html                 ← Etapa 8
-    ├── gtonC_e_esc.html          ← Etapa 9
-    ├── gtonM.html                ← Etapa 10
-    ├── gtonP.html                ← Etapa 11
-    ├── ihm_touch.html            ← Etapa 12
-    ├── ihm_alfanumerica.html     ← Etapa 13
-    ├── radios.html               ← Etapa 14
-    ├── etapa_final.html          ← Etapa 15 (conclusão / desafios)
-    ├── projetos.html             ← "Parte 2", projetos práticos linkados a partir da etapa_final
-    └── Files/                    ← imagens usadas nas páginas acima (uma por página, ver seção 4)
+    ├── responsive.css               📱 Responsividade + modo escuro + .etapa-nav (todas as páginas)
+    ├── tema.js                      🌙 Alternância claro/escuro (todas as páginas)
+    ├── progresso.js                 ✅ "Marcar etapa como concluída" + painel de progresso
+    ├── busca-conteudo.js            🔎 Busca da home dentro do conteúdo das etapas
+    ├── config-conta.js              🔑 URL e chave pública do Supabase (vazio = login desligado)
+    ├── conta.js                     👤 Login do colaborador e envio do progresso
+    ├── admin.html                   🛡️ Painel ADM (não linkado; só contas ADM)
+    ├── fundamentos.html … radios.html   📘 Etapas 1 a 14 (ver mapa)
+    ├── etapa_final.html             🏁 Etapa 15 — conclusão / desafios
+    ├── projetos.html                🧪 "Parte 2" — projetos práticos
+    └── Files/                       🖼️ Imagens das páginas (uma por página)
 ```
 
-> **Atenção:** o site é publicado no GitHub Pages, que diferencia
-> maiúsculas/minúsculas. Os nomes de arquivo devem ser usados exatamente
-> como estão (ex.: `HIscadapro.html`, `Files/HIscadaPRO.png`,
-> `Files/SPDSW.PNG`, `gtonC_e_esc.html`).
+> [!WARNING]
+> O **GitHub Pages diferencia maiúsculas de minúsculas**. Use os nomes de
+> arquivo exatamente como estão — ex.: `HIscadapro.html`,
+> `Files/HIscadaPRO.png`, `Files/SPDSW.PNG`, `gtonC_e_esc.html`.
 
 ---
 
-## 2. Como o site funciona (fluxo de navegação)
+## 🧭 Como o site funciona
 
-1. O usuário abre **`index.html`**. Essa é a única página que
-   fica "fora" da pasta `Assets` — todas as outras 16 páginas ficam dentro
-   dela.
-2. Essa página tem:
-   - Um **Hero** de boas-vindas com imagem e vídeos de introdução.
-   - Uma seção **Introdução ao Departamento**.
-   - A seção **Fases da Formação**, que é a mais importante: contém uma
-     barra de ferramentas (busca + botões "Abrir todas" / "Fechar todas")
-     e um grid com **15 cards**, um por etapa. Cada card é um
-     accordion (abre/fecha em CSS puro, usando `<input type="checkbox">`
-     + `<label>`, sem JavaScript) e tem um botão **"Acesso ao Conteúdo"**
-     que aponta para o arquivo correspondente dentro de `Assets/`.
-3. Cada página de `Assets/*.html` é independente: tem seu próprio
-   `<head>`/`<style>` (o CSS visual é próprio de cada arquivo; só a
-   responsividade é compartilhada via `Assets/responsive.css` — ver seção 5), mostra o conteúdo daquela etapa
-   (lista de materiais, links para OneDrive/Google Drive/vídeos, links para
-   a prova) e termina com a barra de navegação (`.etapa-nav`): botão
-   **"Voltar"** para `../index.html` e botões **etapa anterior / próxima
-   etapa** (a Etapa 1 não tem anterior; a Etapa 15 não tem próxima).
-4. A **Etapa 15** (`etapa_final.html`) é diferente: além de concluir o
-   programa, ela linka para `projetos.html`, uma segunda página ("Parte 2")
-   com desafios/projetos práticos finais. `projetos.html` tem, ao final da
-   lista de projetos, links de volta para a Etapa 15 e para a página inicial.
-5. **Progresso do aluno** (`Assets/progresso.js`, carregado pela home e
-   pelas 15 etapas): cada etapa tem, acima da `.etapa-nav`, o botão
-   **"Marcar etapa como concluída"** (`.btn-concluir[data-etapa="N"]`).
-   A marcação fica salva no `localStorage` do navegador (chave
-   `formacaoHI.etapasConcluidas`) e a home mostra o painel
-   **"X de 15 etapas concluídas"** com barra, botão "Zerar progresso" e o
-   selo **✓ Concluída** nos cards. Não há servidor: o progresso vale só
-   para aquele navegador.
-6. **Busca no conteúdo** (`Assets/busca-conteudo.js`, carregado só pela
-   home): na primeira vez que a pesquisa é usada, a home lê as páginas das
-   15 etapas (os blocos `.step` de cada uma). A partir de 2 letras, mostra
-   o painel `#buscaConteudo` com os passos que contêm o termo (ignora
-   acentos e maiúsculas) e mantém visíveis os cards dessas etapas. Cada
-   resultado abre a etapa já rolada até o título do passo (Text Fragment
-   `#:~:text=`). Não há índice para manter: um passo novo entra na busca
-   automaticamente, desde que esteja dentro de um `.step` com `<h3>`.
-   Aberto como arquivo local (`file://`), o navegador bloqueia essa leitura
-   e a busca volta a filtrar só pelo texto dos cards.
-7. **Login do colaborador e Painel ADM** (`Assets/conta.js`, carregado
-   pela home, pelas 15 etapas, por `projetos.html` e por `admin.html`).
-   Só funciona com `Assets/config-conta.js` preenchido; vazio, o site se
-   comporta como no item 5. Com ele preenchido:
-   - as páginas pedem login (e-mail + senha, aba "Criar conta" com nome);
-   - "Esqueci minha senha" envia o e-mail de redefinição do Supabase
-     (`/auth/v1/recover`, link de volta para a home do site); ao abrir o
-     link, o site pede a nova senha e já entra na conta. Exige a URL do
-     site nas Redirect URLs do Supabase (Authentication → URL Configuration);
-   - o progresso vai para a tabela `progresso` do Supabase (etapas
-     concluídas, última etapa aberta e último acesso). O que já estava no
-     `localStorage` antes do primeiro login é somado à conta;
-   - `Assets/admin.html` lista todos os colaboradores (etapa atual,
-     progresso, última etapa aberta, último acesso, exportar CSV) para
-     contas cadastradas na tabela `admins`.
-   A proteção dos dados é feita pelo RLS do banco (`supabase/configuracao.sql`),
-   não por esconder a página. Configuração: criar o projeto no Supabase,
-   rodar o SQL, em Authentication → Sign In / Providers → Email desligar
-   "Confirm email", preencher `config-conta.js` com Project URL e chave
-   anon/publishable, criar a própria conta pelo site e rodar o `insert`
-   do final do SQL para virar ADM.
+```mermaid
+flowchart LR
+    A["🏠 index.html<br/>Home"] -->|Acesso ao Conteúdo| B["📘 Etapas 1–14<br/>Assets/*.html"]
+    B -->|anterior / próxima| B
+    B -->|próxima| C["🏁 Etapa 15<br/>etapa_final.html"]
+    C -->|Parte 2| D["🧪 projetos.html"]
+    B -.->|Voltar| A
+    C -.->|Voltar| A
+    D -.->|Voltar| A
+    D -.-> C
+    E["🛡️ admin.html<br/>(acesso direto)"]
+```
 
-### Mapa completo Etapa → Arquivo
-
-| Etapa | Título                                             | Arquivo (`Assets/`)         |
-|------:|-----------------------------------------------------|------------------------------|
-| 1     | Fundamentos da Automação Industrial                  | `fundamentos.html`           |
-| 2     | Programação de CLPs no ambiente HIstudio             | `HIstudio.html`              |
-| 3     | Portal de Telemetria — Supervisório em Nuvem         | `telemetria.html`            |
-| 4     | Programação de CLPs no ambiente SPDSW                | `spdsw.html`                 |
-| 5     | Banco de Dados PostgreSQL                            | `postgre_sql.html`           |
-| 6     | HIscada Pro — Sistema de Supervisão Local            | `HIscadapro.html`            |
-| 7     | Atendimento ao Cliente e Rotinas do Suporte          | `atendimento_ao_cliente.html` |
-| 8     | Protocolo MQTT para aplicações IoT                   | `mqtt.html`                  |
-| 9     | Gateways GTON C SET e ESC717                         | `gtonC_e_esc.html`           |
-| 10    | Modem Industrial GTON M e suas aplicações            | `gtonM.html`                 |
-| 11    | Gateway programável GTON P                           | `gtonP.html`                 |
-| 12    | IHMs Touch Screen Weintek e IHM GTI5                 | `ihm_touch.html`             |
-| 13    | IHMs Alfanuméricas HI Tecnologia                     | `ihm_alfanumerica.html`      |
-| 14    | Comunicação Wireless utilizando Rádios               | `radios.html`                |
-| 15    | Conclusão do programa e Desafios                     | `etapa_final.html`           |
-| —     | Projetos práticos (Parte 2, linkada pela Etapa 15)   | `projetos.html`              |
+1. **`index.html`** é a única página fora de `Assets/`. Ela tem:
+   - um **Hero** de boas-vindas com imagem e vídeos de introdução;
+   - a seção **Introdução ao Departamento**;
+   - a seção **Fases da Formação** (a principal): barra de ferramentas
+     (busca + "Abrir todas" / "Fechar todas") e um grid com **15 cards**.
+     Cada card é um accordion em **CSS puro** (`<input type="checkbox">` +
+     `<label>`) com o botão **"Acesso ao Conteúdo"**.
+2. **Cada página de etapa é independente**: tem seu próprio `<head>`/`<style>`,
+   mostra os materiais e a prova, e termina com a barra `.etapa-nav`
+   (**Voltar** → `../index.html` + etapa anterior / próxima). A Etapa 1 não
+   tem "anterior"; a Etapa 15 não tem "próxima".
+3. **A Etapa 15** conclui o programa e linka para `projetos.html`, que ao
+   final tem links de volta para a Etapa 15 e para a home.
 
 ---
 
-## 3. Padrão de código de cada página
+## ✨ Funcionalidades
 
-### 3.1 Página inicial (`index.html`)
+<details>
+<summary><b>✅ Progresso do aluno</b> — <code>Assets/progresso.js</code></summary>
+
+<br/>
+
+- Carregado pela home e pelas 15 etapas.
+- Cada etapa tem, acima da `.etapa-nav`, o botão **"Marcar etapa como
+  concluída"** (`.btn-concluir[data-etapa="N"]`).
+- A marcação fica no `localStorage` (chave `formacaoHI.etapasConcluidas`).
+- A home mostra o painel **"X de 15 etapas concluídas"** com barra, botão
+  **"Zerar progresso"** e o selo **✓ Concluída** nos cards.
+- Sem login, o progresso vale **só para aquele navegador**.
+
+</details>
+
+<details>
+<summary><b>🔎 Busca no conteúdo</b> — <code>Assets/busca-conteudo.js</code></summary>
+
+<br/>
+
+- Carregado só pela home.
+- No primeiro uso da pesquisa, a home lê as páginas das 15 etapas (os
+  blocos `.step` de cada uma).
+- A partir de **2 letras**, mostra o painel `#buscaConteudo` com os passos
+  que contêm o termo (ignora acentos e maiúsculas) e mantém visíveis os
+  cards dessas etapas.
+- Cada resultado abre a etapa já rolada até o título do passo (Text
+  Fragment `#:~:text=`).
+- **Não há índice para manter**: um passo novo entra na busca sozinho,
+  desde que esteja dentro de um `.step` com `<h3>`.
+- Em `file://` o navegador bloqueia a leitura e a busca filtra só pelo
+  texto dos cards.
+
+</details>
+
+<details>
+<summary><b>🌙 Modo escuro</b> — <code>Assets/tema.js</code></summary>
+
+<br/>
+
+- Carregado no `<head>` de todas as páginas, logo após o `responsive.css`,
+  para aplicar o tema antes de a página aparecer.
+- A escolha fica no `localStorage` (chave `hi-tema`).
+- As cores do tema escuro ficam em `Assets/responsive.css`.
+
+</details>
+
+<details id="-login-do-colaborador-e-painel-adm">
+<summary><b>🔐 Login do colaborador e Painel ADM</b> — <code>Assets/conta.js</code></summary>
+
+<br/>
+
+Carregado pela home, pelas 15 etapas, por `projetos.html` e por
+`admin.html`. **Só funciona com `Assets/config-conta.js` preenchido** —
+vazio, o site se comporta como no progresso local.
+
+**Com o login ligado:**
+
+- as páginas pedem login (e-mail + senha; aba "Criar conta" com nome);
+- **"Esqueci minha senha"** envia o e-mail de redefinição do Supabase
+  (`/auth/v1/recover`, com link de volta para a home). Ao abrir o link, o
+  site pede a nova senha e já entra na conta;
+- o progresso vai para a tabela `progresso` (etapas concluídas, última
+  etapa aberta e último acesso). O que já estava no `localStorage` antes
+  do primeiro login é **somado** à conta;
+- `Assets/admin.html` lista todos os colaboradores (etapa atual, progresso,
+  última etapa aberta, último acesso, exportar CSV) para contas cadastradas
+  na tabela `admins`.
+
+> 🛡️ A proteção dos dados é feita pelo **RLS do banco**
+> (`supabase/configuracao.sql`), não por esconder a página.
+
+**Passo a passo da configuração:**
+
+1. Crie o projeto no [Supabase](https://supabase.com).
+2. Rode `supabase/configuracao.sql` no SQL Editor.
+3. Em **Authentication → Sign In / Providers → Email**, desligue
+   **"Confirm email"**.
+4. Em **Authentication → URL Configuration**, adicione a URL do site nas
+   **Redirect URLs** (necessário para o "Esqueci minha senha").
+5. Preencha `Assets/config-conta.js` com a **Project URL** e a chave
+   **anon/publishable**.
+6. Crie sua própria conta pelo site.
+7. Rode o `insert` do final do SQL para virar **ADM**.
+
+</details>
+
+---
+
+## 🗺️ Mapa Etapa → Arquivo
+
+| # | Título | Arquivo (`Assets/`) | Imagem (`Files/`) |
+|--:|---|---|---|
+| 1 | Fundamentos da Automação Industrial | `fundamentos.html` | `Fundamentos.png` |
+| 2 | Programação de CLPs no ambiente HIstudio | `HIstudio.html` | `HIstudio.png` |
+| 3 | Portal de Telemetria — Supervisório em Nuvem | `telemetria.html` | `portal.png` |
+| 4 | Programação de CLPs no ambiente SPDSW | `spdsw.html` | `SPDSW.PNG` |
+| 5 | Banco de Dados PostgreSQL | `postgre_sql.html` | `Postgresql.png` |
+| 6 | HIscada Pro — Sistema de Supervisão Local | `HIscadapro.html` | `HIscadaPRO.png` |
+| 7 | Atendimento ao Cliente e Rotinas do Suporte | `atendimento_ao_cliente.html` | `AtendimentoAoCliente.png` |
+| 8 | Protocolo MQTT para aplicações IoT | `mqtt.html` | `mqtt-logo.png` |
+| 9 | Gateways GTON C SET e ESC717 | `gtonC_e_esc.html` | `GTON-C.png` |
+| 10 | Modem Industrial GTON M e suas aplicações | `gtonM.html` | `GTON-M.png` |
+| 11 | Gateway programável GTON P | `gtonP.html` | `GTON-P.jpg` |
+| 12 | IHMs Touch Screen Weintek e IHM GTI5 | `ihm_touch.html` | `IHM_GTI5.png` |
+| 13 | IHMs Alfanuméricas HI Tecnologia | `ihm_alfanumerica.html` | `MMI700.png` |
+| 14 | Comunicação Wireless utilizando Rádios | `radios.html` | `radio.png` |
+| 15 | Conclusão do programa e Desafios | `etapa_final.html` | `ParteFinal.jpg` |
+| — | Projetos práticos (Parte 2) | `projetos.html` | `HILINO.png` |
+
+---
+
+## 🧩 Padrão de código
+
+<details>
+<summary><b>🏠 Página inicial</b> — <code>index.html</code></summary>
+
+<br/>
+
 - CSS com variáveis (`:root { --azul-hi; --laranja-hi; ... }`), grid
-  responsivo (`.grid-container` com `auto-fit`/`minmax`), cards com
-  accordion via CSS puro.
-- JavaScript (uma única `<script>` no final do `<body>`, IIFE) responsável
-  por 4 comportamentos:
-  - **Busca** (`#stageSearch`): filtra os cards de etapa pelo texto digitado
-    (e, com `Assets/busca-conteudo.js`, pelo conteúdo das etapas).
-  - **Abrir todas / Fechar todas** (`#openStages` / `#closeStages`): marca/
-    desmarca todos os checkboxes dos accordions visíveis.
-  - **Botão "Voltar ao topo"** (`#backToTop`): aparece após rolar 450px.
-  - `updateStages()` roda uma vez na inicialização.
+  responsivo (`.grid-container` com `auto-fit`/`minmax`) e cards com
+  accordion em CSS puro.
+- Um único `<script>` no final do `<body>` (IIFE) com 4 comportamentos:
 
-### 3.2 Páginas de conteúdo (`Assets/*.html`)
-Seguem (com pequenas variações visuais) o mesmo esqueleto:
-1. `<head>` com `<style>` próprio (paleta de cores redeclarada, quase
-   idêntica à da home).
-2. `<header>` simples com o título "HI Tecnologia".
-3. `<section class="hero">` com título da etapa, texto explicativo e uma
-   imagem (`Files/<algo>.png|jpg`).
-4. `<section class="section">` com o conteúdo prático da etapa: geralmente
-   dividido em blocos `.step` (ex.: "1. Leitura de Documentos",
-   "2. Avaliação Prática"), cada um com botões (`.btn`, `.btn-secondary`)
-   que apontam para links externos (OneDrive, Google Drive, YouTube).
-5. Barra `.etapa-nav` com **"Voltar"** (`../index.html`) e os botões de
-   etapa anterior / próxima etapa (estilo em `Assets/responsive.css`).
-6. `<footer>` com o aviso de copyright.
+| Comportamento | Elemento | O que faz |
+|---|---|---|
+| Busca | `#stageSearch` | Filtra os cards pelo texto (e, com `busca-conteudo.js`, pelo conteúdo das etapas) |
+| Abrir / Fechar todas | `#openStages` / `#closeStages` | Marca/desmarca os checkboxes dos accordions visíveis |
+| Voltar ao topo | `#backToTop` | Aparece após rolar 450px |
+| Inicialização | `updateStages()` | Roda uma vez ao carregar |
 
-`etapa_final.html` e `projetos.html` seguem essa mesma lógica, mas com
-layout mais elaborado (múltiplas seções, botão "voltar ao topo" próprio,
-etc.), pois concentram o encerramento do programa.
+</details>
 
----
+<details>
+<summary><b>📘 Páginas de etapa</b> — <code>Assets/*.html</code></summary>
 
-## 4. Imagens (`Assets/Files/`)
+<br/>
 
-| Arquivo                | Usado em                     |
-|-------------------------|-------------------------------|
-| `Formacao.png`          | `index.html` (hero)           |
-| `Fundamentos.png`       | `fundamentos.html`            |
-| `HIstudio.png`          | `HIstudio.html`               |
-| `portal.png`            | `telemetria.html`             |
-| `SPDSW.PNG`             | `spdsw.html` (extensão em maiúsculas) |
-| `Postgresql.png`        | `postgre_sql.html`            |
-| `HIscadaPRO.png`        | `HIscadapro.html`             |
-| `AtendimentoAoCliente.png` | `atendimento_ao_cliente.html` |
-| `mqtt-logo.png`         | `mqtt.html`                   |
-| `GTON-C.png`            | `gtonC_e_esc.html`            |
-| `GTON-M.png`            | `gtonM.html`                  |
-| `GTON-P.jpg`            | `gtonP.html`                  |
-| `IHM_GTI5.png`          | `ihm_touch.html`              |
-| `MMI700.png`            | `ihm_alfanumerica.html`       |
-| `radio.png`             | `radios.html`                 |
-| `ParteFinal.jpg`        | `etapa_final.html`            |
-| `HILINO.png`            | `projetos.html`               |
-| `Aprendizado.jpg`       | **não utilizada** (arquivo órfão) |
+Todas seguem (com pequenas variações visuais) o mesmo esqueleto:
+
+```html
+<head>     <!-- <style> próprio, paleta quase idêntica à da home -->
+<header>   <!-- título "HI Tecnologia" -->
+<section class="hero">     <!-- título da etapa, texto e imagem Files/... -->
+<section class="section">  <!-- blocos .step com botões .btn / .btn-secondary -->
+<button class="btn-concluir" data-etapa="N">  <!-- marcar como concluída -->
+<nav class="etapa-nav">    <!-- Voltar + anterior / próxima -->
+<footer>   <!-- copyright -->
+```
+
+`etapa_final.html` e `projetos.html` seguem a mesma lógica, com layout
+mais elaborado (várias seções, "voltar ao topo" próprio etc.).
+
+</details>
 
 ---
 
-## 5. Como fazer manutenção
+## 🖼️ Imagens
 
-### Editar o texto/links de uma etapa existente
-Abra o arquivo correspondente em `Assets/` (ver tabela da seção 2) e edite
-o texto ou os links dentro dos blocos `.step`. Não é necessário mexer na
-página inicial.
+Todas ficam em `Assets/Files/` — uma por página (ver a coluna **Imagem** do
+[mapa](#️-mapa-etapa--arquivo)). Além delas:
 
-### Criar uma nova etapa (ex.: Etapa 16)
-1. **Duplique** um arquivo existente parecido em `Assets/` (ex.: copie
-   `fundamentos.html` para `nova_etapa.html`) e ajuste: `<title>`, o `<h1>`
-   do hero, o texto e os links de conteúdo/prova, e a imagem em
-   `Files/` (adicione a nova imagem em `Assets/Files/`).
-2. Confirme que o link **"Voltar"** continua apontando para
-   `../index.html` e ajuste os botões de etapa anterior/próxima na
-   `.etapa-nav` da nova página e das etapas vizinhas.
-3. Na página principal (`index.html`), dentro da seção
-   **"Fases da Formação"**, copie um bloco `<!-- ETAPA N --> ... <div class="card">...</div>` inteiro, cole antes do fechamento do
-   `.grid-container` das etapas, e ajuste:
-   - o `id` do checkbox (`id="etapa16"`, deve ser único),
-   - o `for` do `<label>` correspondente,
-   - o título `<h3>`,
-   - o texto de `.card-content`,
-   - o `href` do botão para `Assets/nova_etapa.html`.
-4. Atualize o contador estático "15 etapas" próximo ao campo de busca (o
-   JS recalcula o número exibido dinamicamente durante buscas, mas o
-   texto inicial é fixo no HTML).
-5. Não é necessário alterar o `<script>` — ele seleciona os cards
-   automaticamente via `.formation-tools ~ .grid-container .card`, então
-   qualquer novo card dentro do mesmo grid já é filtrado/aberto/fechado
-   junto com os demais.
-
-### Trocar/gerenciar links de conteúdo (OneDrive, Google Drive, vídeos)
-Os materiais (PDFs, provas, vídeos) **não ficam no projeto** — são apenas
-links `<a href="https://1drv.ms/...">` ou `https://docs.google.com/...`
-para arquivos hospedados fora do site. Para atualizar um material, basta
-trocar a URL do link na página da etapa correspondente; não é preciso
-subir arquivo novo neste projeto.
-
-### Estilo visual
-Cada página tem seu próprio bloco `<style>` no `<head>`, com variáveis de
-cor bem parecidas (`--azul-hi: #004A8F`, `--laranja-hi: #F26522`, etc.).
-O único CSS compartilhado é `Assets/responsive.css`, carregado por todas as
-17 páginas depois dos estilos locais: ele cuida da responsividade
-(tablet/mobile) e do estilo da barra `.etapa-nav`. Para mudar a identidade
-visual (cores, fontes) de forma consistente, ainda é necessário editar o
-`<style>` de cada arquivo HTML.
+| Arquivo | Uso |
+|---|---|
+| `Formacao.png` | Hero da `index.html` |
+| `Aprendizado.jpg` | ⚠️ **Não utilizada** (arquivo órfão) |
 
 ---
 
-## 6. Problemas conhecidos / pontos de atenção
+## 🛠️ Como fazer manutenção
 
-- **CSS visual duplicado**: o CSS de cada página está no próprio HTML
-  (só a responsividade é compartilhada em `Assets/responsive.css`).
-  Qualquer mudança visual "global" (ex.: trocar a cor institucional) exige
-  editar arquivo por arquivo. Não há JS compartilhado.
-- **Maiúsculas/minúsculas nos nomes de arquivo**: o GitHub Pages diferencia
-  caixa. As referências atuais batem com os arquivos (`Files/HIscadaPRO.png`,
-  `Files/SPDSW.PNG`); ao renomear ou adicionar arquivos, mantenha a grafia
-  exata nos `href`/`src`.
-- **Imagem órfã**: `Assets/Files/Aprendizado.jpg` não é referenciada em
-  nenhuma página — pode ser removida com segurança ou pode ter sido
-  reservada para um uso futuro.
-- **Contador de etapas fixo**: o texto "15 etapas" ao lado da busca é
-  estático no HTML; ele não se atualiza sozinho se você adicionar/remover
-  etapas (a busca em si recalcula o total de resultados filtrados, mas o
-  valor inicial exibido antes de qualquer busca precisa ser editado à mão).
-- **Sem backend/CMS**: qualquer atualização de conteúdo é feita editando o
-  HTML diretamente; não há painel administrativo.
+### ✏️ Editar texto ou links de uma etapa
+
+Abra o arquivo da etapa em `Assets/` ([ver mapa](#️-mapa-etapa--arquivo)) e
+edite os blocos `.step`. Não é preciso mexer na home.
+
+### 🔗 Trocar links de conteúdo (OneDrive, Google Drive, vídeos)
+
+Os materiais **não ficam no projeto** — são links
+(`https://1drv.ms/...`, `https://docs.google.com/...`). Basta trocar a URL
+no `href` da página da etapa; não é preciso subir arquivo novo.
+
+### ➕ Criar uma nova etapa (ex.: Etapa 16)
+
+- [ ] **1. Crie a página** — duplique uma etapa parecida em `Assets/`
+  (ex.: `fundamentos.html` → `nova_etapa.html`) e ajuste `<title>`, o `<h1>`
+  do hero, textos, links de conteúdo/prova e a imagem (adicione-a em
+  `Assets/Files/`).
+- [ ] **2. Ajuste a navegação** — confirme o **Voltar** (`../index.html`),
+  o `data-etapa` do botão de concluir e os botões anterior/próxima na
+  `.etapa-nav` da nova página **e das etapas vizinhas**.
+- [ ] **3. Adicione o card na home** — em **Fases da Formação**, copie um
+  bloco `<!-- ETAPA N --> ... <div class="card">...</div>` inteiro, cole
+  antes do fechamento do `.grid-container` e ajuste:
+  - `id` do checkbox (ex.: `id="etapa16"`, deve ser único);
+  - `for` do `<label>` correspondente;
+  - título `<h3>` e texto de `.card-content`;
+  - `href` do botão → `Assets/nova_etapa.html`.
+- [ ] **4. Atualize os textos fixos** — o contador **"15 etapas"** ao lado
+  da busca e o **"0 de 15 etapas concluídas"** estão escritos no HTML.
+
+> ✅ Não é preciso mexer no `<script>`: ele seleciona os cards via
+> `.formation-tools ~ .grid-container .card`, então o novo card já é
+> filtrado/aberto/fechado com os demais.
+
+### 🎨 Estilo visual
+
+Cada página tem seu próprio `<style>` com variáveis de cor parecidas
+(`--azul-hi: #004A8F`, `--laranja-hi: #F26522` etc.). O único CSS
+compartilhado é `Assets/responsive.css`, carregado por todas as páginas
+depois dos estilos locais (responsividade, modo escuro e `.etapa-nav`).
+
+> Para mudar cores/fontes de forma consistente, ainda é preciso editar o
+> `<style>` de **cada** arquivo HTML.
 
 ---
 
-## 7. Resumo rápido para quem só quer editar
+## ⚠️ Pontos de atenção
 
-- Quero mudar o texto de uma etapa → edite o arquivo dela em `Assets/`.
-- Quero trocar um link de material/prova → edite o `href` do botão na
-  página daquela etapa.
-- Quero adicionar uma etapa nova → siga a seção "Criar uma nova etapa"
-  acima (duplicar página + adicionar card na home).
-- Quero mudar a cor/identidade visual → edite o bloco `<style>` em cada
-  arquivo HTML (o único CSS central é `Assets/responsive.css`, só de
-  responsividade).
+| | Problema | Impacto |
+|---|---|---|
+| 🎨 | **CSS visual duplicado** em cada HTML | Mudança "global" (ex.: cor institucional) exige editar arquivo por arquivo |
+| 🔠 | **Maiúsculas/minúsculas** nos nomes de arquivo | O GitHub Pages diferencia caixa — mantenha a grafia exata em `href`/`src` |
+| 🖼️ | **Imagem órfã** `Assets/Files/Aprendizado.jpg` | Pode ser removida ou reservada para uso futuro |
+| 🔢 | **Contador "15 etapas" fixo** no HTML | Não se atualiza ao adicionar/remover etapas (a busca recalcula, mas o valor inicial é manual) |
+| 📝 | **Sem CMS** | Todo conteúdo é atualizado editando o HTML diretamente |
+
+---
+
+<div align="center">
+<sub>Feito para o time de Suporte Técnico da HI Tecnologia 💙🧡</sub>
+</div>
